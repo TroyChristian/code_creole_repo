@@ -2,16 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Category(models.Model):
-	category_name = models.CharField(max_length=255)
+	category_name_en = models.CharField(max_length=255)
+	category_name_ht = models.CharField(max_length=255)
 
 	def __str__(self):
-		return self.category_name
+		return f"{self.category_name_en} / {self.category_name_ht}"
 
 class Tag(models.Model):
-	tag_name = models.CharField(max_length=255)
+	tag_name_en = models.CharField(max_length=255)
+	tag_name_ht = models.CharField(max_length=255)
 
 	def __str__(self):
-		return self.tag_name
+		return f"{self.tag_name_en} / {self.tag_name_ht}"
 
 class Comment(models.Model):
 	content = models.TextField()
@@ -25,10 +27,10 @@ class Comment(models.Model):
 class Article(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 	tags = models.ManyToManyField(Tag)
-	article_title_english = models.CharField(max_length=255)
-	article_title_creole = models.CharField(max_length=255)
-	article_content_english = models.TextField()
-	article_content_creole = models.TextField()
+	article_title_en = models.CharField(max_length=255)
+	article_title_ht = models.CharField(max_length=255)
+	article_content_en = models.TextField()
+	article_content_ht = models.TextField()
 	contributors = models.ManyToManyField(User, related_name="article_contributors")
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_creator")
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -36,4 +38,4 @@ class Article(models.Model):
 	like_counter = models.PositiveIntegerField(default=0)
 
 	def __str__(self):
-		return self.article_title_english
+		return f"{self.article_title_en} / {self.article_title_ht}"
