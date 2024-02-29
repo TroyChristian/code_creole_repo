@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import environ
 import os
 from pathlib import Path 
+from django.utils.translation import gettext_lazy as _ 
 
 # Initialise environment variables
 env = environ.Env()
@@ -47,11 +48,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #local
+    "articles", 
+    "api", #DRF api app
+    #3rd party 
+    'rest_framework'
+
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware", # locale middleware for translation
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -123,7 +131,21 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = True 
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('ht', _('Haitian Creole')),
+
+
+
+] 
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+
+
+]
 
 
 # Static files (CSS, JavaScript, Images)
