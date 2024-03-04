@@ -1,7 +1,7 @@
 #django
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
-from .models import Article
+from .models import Article, Category, Tag
 from django.utils.translation import get_language
 
 #third partys 
@@ -10,7 +10,12 @@ import requests
 
 def home(request):
 	current_language = get_language()
-	#response = requests.get('http://localhost:8000/api/')
 	articles = Article.objects.all()
-	return render(request, 'articles/article_list.html', {'article_list': articles, 'current_language': current_language})
+	categories = Category.objects.all() 
+	tags = Tag.objects.all() 
+	#search_form_here
+	return render(request, 'articles/home.html', {'article_list': articles, 'current_language': current_language})
 
+def article_detail_view(request, article_pk):
+	article = Article.objects.get_object_or_404(pk=article_pk)
+	
