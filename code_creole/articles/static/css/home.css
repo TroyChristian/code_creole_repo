@@ -1,0 +1,253 @@
+:root {
+    --text-50: rgb(235, 233, 252);
+    --text-100: rgb(215, 210, 249);
+    --text-200: rgb(175, 166, 242);
+    --text-300: rgb(135, 121, 236);
+    --text-400: rgb(94, 76, 230);
+    --text-500: rgb(54, 32, 223);
+    --text-600: rgb(43, 25, 179);
+    --text-700: rgb(33, 19, 134);
+    --text-800: rgb(22, 13, 89);
+    --text-900: rgb(11, 6, 45);
+    --text-950: rgb(5, 3, 22);
+
+    --background-50: rgb(235, 235, 250);
+    --background-100: rgb(214, 214, 245);
+    --background-200: rgb(173, 173, 235);
+    --background-300: rgb(133, 133, 224);
+    --background-400: rgb(92, 92, 214);
+    --background-500: rgb(51, 51, 204);
+    --background-600: rgb(41, 41, 163);
+    --background-700: rgb(31, 31, 122);
+    --background-800: rgb(20, 20, 82);
+    --background-900: rgb(10, 10, 41);
+    --background-950: rgb(5, 5, 20);
+
+    --primary-50: rgb(234, 234, 251);
+    --primary-100: rgb(214, 212, 247);
+    --primary-200: rgb(173, 169, 239);
+    --primary-300: rgb(132, 126, 231);
+    --primary-400: rgb(91, 84, 222);
+    --primary-500: rgb(49, 41, 214);
+    --primary-600: rgb(40, 33, 171);
+    --primary-700: rgb(30, 24, 129);
+    --primary-800: rgb(20, 16, 86);
+    --primary-900: rgb(10, 8, 43);
+    --primary-950: rgb(5, 4, 21);
+
+    --secondary-50: rgb(231, 229, 255);
+    --secondary-100: rgb(207, 204, 255);
+    --secondary-200: rgb(158, 153, 255);
+    --secondary-300: rgb(110, 102, 255);
+    --secondary-400: rgb(61, 51, 255);
+    --secondary-500: rgb(13, 0, 255);
+    --secondary-600: rgb(10, 0, 204);
+    --secondary-700: rgb(8, 0, 153);
+    --secondary-800: rgb(5, 0, 102);
+    --secondary-900: rgb(3, 0, 51);
+    --secondary-950: rgb(1, 0, 26);
+
+    --accent-50: rgb(230, 229, 255);
+    --accent-100: rgb(206, 204, 255);
+    --accent-200: rgb(156, 153, 255);
+    --accent-300: rgb(107, 102, 255);
+    --accent-400: rgb(58, 51, 255);
+    --accent-500: rgb(8, 0, 255);
+    --accent-600: rgb(7, 0, 204);
+    --accent-700: rgb(5, 0, 153);
+    --accent-800: rgb(3, 0, 102);
+    --accent-900: rgb(2, 0, 51);
+    --accent-950: rgb(1, 0, 26);
+}
+
+/* 
+    this is left commented till i add the javascript to toggole these colors
+    :root[data-theme="dark"] {
+    --text: #eae9fc;
+    --background: #010104;
+    --primary: #3a31d8;
+    --secondary: #020024;
+    --accent: #0600c2;
+} */
+
+*::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--background-50);
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {}
+
+.content {
+    padding: 10px;
+}
+
+
+.home_nav_con {
+    display: grid;
+    grid-template-columns: 1fr 2fr 15%;
+    background-color: var(--accent-100);
+    padding: 12px;
+    border-radius: 0.2rem;
+
+}
+
+.nav_title,
+.sub_title {
+    color: var(--primary-500);
+}
+
+.img_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+}
+
+.grid_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_con {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search_con>input[type='search'] {
+    width: 400px;
+    padding: 6px;
+    height: 200px;
+}
+
+.sign_in {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+
+}
+
+.home_dashboard {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15%;
+
+}
+
+.articles_con {
+
+    padding: 12px;
+}
+
+.link_con {
+    border: black solid 1px;
+    padding: 1rem;
+    background-color: var(--primary-100);
+}
+
+.article_link {
+    display: flex;
+    flex-direction: row;
+}
+
+.article {
+    width: 100%;
+}
+
+.article_head {
+    display: flex;
+    flex-direction: column;
+}
+
+.article_head>.head {
+    align-self: center;
+    width: 75%;
+    height: 350px;
+    justify-self: center;
+    margin: 12px 0;
+
+}
+
+
+.date-time {
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+}
+
+.mini_logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.article_border {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    height: 1px;
+    border-bottom: dotted black 2px;
+    width: 25%;
+}
+
+
+
+
+.categories {
+    border-left: solid 0.5px rgb(45, 45, 45);
+    padding: 10px;
+}
+
+.input_tag_container,
+.input_categories_container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-200);
+    color: var(--accent-400);
+    margin-bottom: 15px;
+}
+
+.sub_div {
+    display: flex;
+}
+
+.footer {
+    background-color: var(--accent-100);
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 0.2rem;
+}
+
+.footer_icons {
+    width: 10px;
+    height: 10px;
+}
