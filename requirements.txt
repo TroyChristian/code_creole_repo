@@ -1,0 +1,15 @@
+asgiref @ file:///work/perseverance-python-buildout/croot/asgiref_1698866701569/work
+certifi==2024.2.2
+charset-normalizer==3.3.2
+Django @ file:///work/perseverance-python-buildout/croot/django_1698884878321/work
+django-environ==0.11.2
+django-extensions==3.2.3
+djangorestframework==3.14.0
+idna==3.6
+psycopg2==2.9.9
+pytz==2024.1
+requests==2.31.0
+setuptools==68.2.2
+sqlparse @ file:///work/perseverance-python-buildout/croot/sqlparse_1698874574933/work
+urllib3==2.2.1
+wheel==0.41.2
