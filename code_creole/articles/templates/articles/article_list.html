@@ -1,7 +1,49 @@
+{% load i18n %}
+<form action="/i18n/setlang/" method="post" id="language_form">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{% url 'home'  %}"/>
+    <select name="language" onchange="changeLanguage()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% for lang in LANGUAGES %}
+            <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
+                {{ lang.1 }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+
 <h1> All Articles </h1> 
+<p> Current display language code: {{current_language}}
+
+<!-- English Articles -->
+{% if current_language == "en" %}
 {% for article in article_list %}
 <ul> 
-	<li> Title: {{ article.title_en }} </li> 
-	<li> Category: {{ article.category }}
+	<li> Title: {{ article.article_title_en }} </li> 
+	<li> Category: {{ article.category.category_name_en }}
 <ul>
 {% endfor %} 
+{% endif %}
+<!-- English Articles End --> 
+
+<!-- Haitian Articles -->
+{% if current_language == "ht" %}
+{% for article in article_list %}
+<ul> 
+	<li> Title: {{ article.article_title_ht }} </li> 
+	<li> Category: {{ article.category.category_name_ht }}
+<ul>
+{% endfor %} 
+{% endif %}
+<!-- Haitian Articles End --> 
+
+
+
+
+<script>
+function changeLanguage() {
+    document.getElementById('language_form').submit();
+}
+</script>

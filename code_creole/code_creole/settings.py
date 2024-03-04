@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     "articles", 
     "api", #DRF api app
     #3rd party 
-    'rest_framework'
+    'rest_framework',
+    'django_extensions'
 
 ]
 
