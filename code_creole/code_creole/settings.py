@@ -17,7 +17,7 @@ from django.utils.translation import gettext_lazy as _
 # Initialise environment variables
 env = environ.Env()
 # Read .env file
-environ.Env.read_env("/home/nkisi/Desktop/code_creole_repo/code_creole/code_creole/code_creole_secrets.env")
+environ.Env.read_env("C:/Users/Core/Desktop/Code_Creole/code_creole_repo/code_creole/code_creole_secrets.env")
 SECRET_KEY = env('SECRET_KEY')
 
 

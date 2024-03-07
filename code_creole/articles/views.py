@@ -16,6 +16,10 @@ def home(request):
 	#search_form_here
 	return render(request, 'articles/home.html', {'article_list': articles, 'current_language': current_language})
 
-def article_detail_view(request, article_pk):
-	article = Article.objects.get_object_or_404(pk=article_pk)
-	
+def article_detail_view(request):
+	#article = Article.objects.get_object_or_404(pk=article_pk)
+	return render(request, 'articles/article_detail.html')
+
+
+
+

@@ -6,158 +6,424 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Creole home</title>
      <link rel="stylesheet" href="{% static 'css/home.css' %}">
+     <!---
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
 </head>
 <body>
     <div class="content">
         <div class="home_nav_con">
-            <div class="img_div"><img class="header_logo" id="header_logo" src="/images/Code_Creole _logo.png" alt="code creole logo"></div>
-            <div class="grid_box">
-            
-                <div class="">
-                 <h2 class="nav_title">Code Creole</h2>
-                 <h4 class="sub_title">Your Source for learing about technology in Haitian Creole</h4>
+            <div class="sub_con">
+                    <div class="img_div"><img class="header_logo" id="header_logo" src="/static/css/code_creole_log.png" alt="code creole logo"></div>
+                <div class="grid_box">
+                
+                    <div class="">
+                    <h2 class="nav_title">Code Creole</h2>
+                    <h4 class="sub_title">Your Source for learing about technology in Haitian Creole</h4>
+                    </div>
+                    <div class="search_con">
+                        <label for="auth_search"><img src="/images/search.svg"></label>   
+                        <input type="search" placeholder="search article..." name="auth_search" id="auth_search">
+                    </div>
                 </div>
-                <div class="search_con">
-                    <label for="auth_search"><img src="/images/search.svg"></label>   
-                    <input type="search" placeholder="search article..." name="auth_search" id="auth_search">
-                </div>
-            </div>
 
-            <div class="controls">
-                <div class="sign_in">
-                    <a>sign in</a>
+                <div class="controls">
+                    <div class="sign_in">
+                        <a>sign in</a>
+                        <button>Selected Language</button>
+                    </div>
+                    
+                    <div class="categories">
+                        <div class="category_select">
+                            <details>
+                                <summary>categories</summary>
+                                <div class="input_categories_container">
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="cat_1" id="cat_1">
+                                         <label for="cat_1">HTML</label>
+                                    </div>
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="cat_2" id="cat_2">
+                                        <label for="cat_2">CSS</label>
+                                    </div>
+                                    
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="cat_3" id="cat_3">
+                                        <label>Javascript</label>
+                                    </div>
+                                    
+                                    <div class="sub_div">
+                                        <input type="checkbox" class="cat_5" id="cat_5" name="cat_5">
+                                        <label for="cat_5">Python</label>
+                                    </div>
+                                    
+                                    <div class="sub_div">
+                                        <input type="checkbox" id="cat_6" name="cat_6">
+                                        <label for="cat_6">Django</label>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </details>
+        
+                            <details>
+                                <summary>tags</summary>
+                                <div class="input_tag_container">
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="tag_1" id="tag_1">
+                                        <label for="tag_1">Python</label>
+                                    </div>
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="tag_2" id="tag_2">
+                                        <label for="tag_2">Django</label>
+                                    </div>
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="tag_2" id="tag_2">
+                                        <label for="tag_2">HTML</label>
+                                    </div>
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="tag_3" id="tag_3">
+                                        <label for="tag_3">CSS</label>
+                                    </div>
+                                    <div class="sub_div">
+                                        <input type="checkbox" name="tag_4" id="tag_4">
+                                         <label for="tag_4">Javascript</label>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </details>
+                        </div>
+                    </div> <!--this is the closing tag for categories div-->
+                    
                 </div>
-               
-                <button>Selected Language</button>
+                
             </div>
         </div>
 
 
         <div class="home_dashboard">
-            <div class="articles_con">
-               <div class="link_con">
-                    <a class="article_link">
-                        <div class="article">
-                            <div class="article_head">
-                                <img class="head" src="/images/Code_Creole _logo.png" alt="Aritcle_img">
-                                <h3>Python Dictionary 101</h3>
-                                <h5>Troy Christian</h5>
-                            </div>
-                            
-                            <div class="date-time">
-                                <img src="/images/Code_Creole _logo.png" class="mini_logo" alt="Code Creole Logo">
-                                <p class="">Code Creole Technology Blog</p>
-                                <p class="date">March 12 2024</p>
-                                <p class="time">10 minute read</p>
-                            </div>
-                        </div>
-                    </a>
-               </div>
-               <!---seperation of diffrent links to articles-->
-               <div class="article_border"></div>
-                <div class="link_con">
-                    <a class="article_link">
-                        <div class="article">
-                            <div class="article_head">
-                                <img class="head" src="/images/Code_Creole _logo.png" alt="Aritcle_img">
-                                <h3>Grid vs FlexBox</h3>
-                                <h5>Tyler Christian</h5>
-                            </div>
-                            
-                            <div class="date-time">
-                                <img class="mini_logo" src="/images/Code_Creole _logo.png" alt="Code Creole Logo">
-                                <p class="">Code Creole Technology Blog</p>
-                                <p class="date">March 13 2024</p>
-                                <p class="time">10 minute read</p>
-                            </div>
-                        </div>
-                    </a>
-                </div> 
-            </div>
 
-            
-
-            <div class="categories">
-                <div class="category_select">
-                    <details>
-                        <summary>categories</summary>
-                        <div class="input_categories_container">
-                            <div class="sub_div">
-                                <input type="checkbox" name="cat_1" id="cat_1">
-                                 <label for="cat_1">HTML</label>
-                            </div>
-                            <div class="sub_div">
-                                <input type="checkbox" name="cat_2" id="cat_2">
-                                <label for="cat_2">CSS</label>
-                            </div>
-                            
-                            <div class="sub_div">
-                                <input type="checkbox" name="cat_3" id="cat_3">
-                                <label>Javascript</label>
-                            </div>
-                            
-                            <div class="sub_div">
-                                <input type="checkbox" class="cat_5" id="cat_5" name="cat_5">
-                                <label for="cat_5">Python</label>
-                            </div>
-                            
-                            <div class="sub_div">
-                                <input type="checkbox" id="cat_6" name="cat_6">
-                                <label for="cat_6">Django</label>
-                            </div>
-                            
+            <div class="num1_articles_con ">
+                <div class="num1_article">
+                    <a class="art1_link">
+                     <img class="thumb_nail" src="static\css\Untitled.jpeg"> 
+                    </a>
+                    <div class="container">
+                        <a href="http://"><h3>Python 101</h3></a>
+                        <div class="author">
+                            <p>by: Troy Christian</p>
+                            <p>, Tyler Christian</p>
                         </div>
                         
-                    </details>
-
-                    <details>
-                        <summary>tags</summary>
-                        <div class="input_tag_container">
-                            <div class="sub_div">
-                                <input type="checkbox" name="tag_1" id="tag_1">
-                                <label for="tag_1">Python</label>
-                            </div>
-                            <div class="sub_div">
-                                <input type="checkbox" name="tag_2" id="tag_2">
-                                <label for="tag_2">Django</label>
-                            </div>
-                            <div class="sub_div">
-                                <input type="checkbox" name="tag_2" id="tag_2">
-                                <label for="tag_2">HTML</label>
-                            </div>
-                            <div class="sub_div">
-                                <input type="checkbox" name="tag_3" id="tag_3">
-                                <label for="tag_3">CSS</label>
-                            </div>
-                            <div class="sub_div">
-                                <input type="checkbox" name="tag_4" id="tag_4">
-                                 <label for="tag_4">Javascript</label>
-                            </div>
-                            
-                            
+                        <div class="text">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi aspernatur incidunt tenetur est officia? Eius?</p>
                         </div>
-                    </details>
+
+                        
+                            
+                            <div class="info">
+                                <div class="img_div">
+                                    <img class="sub_logo" src="/static/css/code_creole_log.png">
+                                </div>
+                                <div class="text_div flex_row">
+                                    <p class="name">Code Creole</p>
+                                    <p class="date">05/12/23</p>
+                                    <p class="time_to_read">10 mins</p>
+                                </div>
+                                
+                            </div>
+                                
+                        
+                        
+                        
+                    </div>
                 </div>
-            </div> <!--this is the closing tag for categories div-->
+            </div> <!---end tag for most popular article of the day--->
             
-            
+
+            <div class="articles_con ">
+
+                
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+               
+
+            </div>
+
+            <div class="tri_row">
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://" >
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <a href="http://">
+                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
+                        <p>Python 101</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>by: Troy Christian</p>
+                        <p>, Tyler Christian</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/css/code_creole_log.png">
+                        <div class="extras-sub">
+                            <p class="name">Code Creole</p>
+                            <div class="flex_div">   
+                                <p class="time_to_read">10 mins to read</p>
+                                <p class="date">05/12/23</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!---the end of the three row stacks-->
+
         </div><!----this div-tag is the closing tag for homedashboard
                     this div is the parent div that contains the links
                     to articles and the side pannel for the tags and categories-->
-                    <div class="pagination">
-                        <span>&#8678;</span> page 1 <span>&#8680;</span> <!--this span is acting as a placeholder till we load in live pagination-->
-                    </div>
-      
+                   
+    <div class="pagination">
+        <span>&#8678;</span> page 1 <span>&#8680;</span> <!--this span is acting as a placeholder till we load in live pagination-->
     </div>
-    <footer >
+    </div>
+    <footer>
         <div class="footer">
             <a>About Code Creole</a>
             <a>Contact Us</a>
-            <a>Follow US: <img class="footer_icons" src="/images/twitter_icon.png"> </a>
-            <a>Subscribe: <img class="footer_icons" src="/images/youtube_icon.png"> </a>
+            <a class="social"> 
+                <div>
+                 <p>Follow Us:</p>
+                 <img class="social_icon" src="static/css/x_logo.jpeg">
+                </div>
+            </a>
+
+            <a class="social"> 
+                <div>
+                 <p>Follow Us:</p>
+                 <img class="social_icon" src="static\css\youtube-music-logo-youtube.png">
+                </div>
+            </a>
         </div>
     </footer>
     <!--- javascript tag --->
     <script src="/js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
