@@ -5,8 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article blog</title>
+    <link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <div class="content">
+        <nav>
+            <img class="head_logo" src="/static/css/code_creole_log.png">
+            <div class="search_div">
+                <h3>Your Source For learing coding in Hatian Creole</h3>
+                <input type="search" placeholder="search" name="search_nav" id="search_nav">
+            </div>
+            <div class="select_div">
+                <select>
+                    <option>English</option>
+                    <option>Carole</option>
+                </select>
+                <a href="http://">sign in</a>
+            </div>
+            
+            
+        </nav>
+
+        <div class="interactions">
+            <div class="title_block">
+                <h1 class="title">Pythpn 101</h1>
+                <div class="publishers_block">
+                    <img class="logo" src="/static/css/code_creole_log.png">
+                    <p>Published in: Computer Science: Python</p>
+                    <p>Published by Troy Christian</p>
+                    <p>6min read</p>
+                    <p>1 day ago</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="likes">
+                    <img id="likes" name="likes" src="\static\icons\icons8-thumbs-up-50.png" alt="thumbs_up">
+                    <label for="likes">100</label>
+                </div>
+                
+                <div class="comments">
+                    <img id="comment" name="comment" src="/static/icons/icons8-comment-60.png" alt="comments">
+                    <label for="comment">80</label>
+                </div>
+                <button>save</button>
+            </div>
+        </div>
+
+        
+        <div class="article">
+            <img class="article_img_header" src="/static\css\Untitled.jpeg" alt="article_img_main">
+            
+
+                <div class="f_col">
+                    <p>Main Body Text Block 2: The article continues with the next part, introducing new ideas and evidence to further explore the topic.</p>
+                    <img class="article_img" src="static/css/article_img1.jpg" alt="Description of Image 3">
+                    <figcaption>Caption: "Image 3: Further exploration of the topic with a focus on a particular detail."</figcaption>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. Imperdiet proin fermentum leo vel orci porta non. Sed enim ut sem viverra aliquet eget 
+                        sit amet tellus. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Nulla pellentesque dignissim enim sit amet venenatis 
+                        urna cursus eget. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Aliquam purus sit amet luctus venenatis 
+                        lectus magna fringilla. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Tempor orci dapibus ultrices in iaculis nunc sed augue. 
+                        Turpis tincidunt id aliquet risus. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Id interdum velit laoreet id donec. Euismod
+                        elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Arcu dictum varius duis at. Cursus in hac habitasse platea dictumst 
+                        quisque sagittis purus sit. Nisi est sit amet facilisis magna. Ultrices eros in cursus turpis massa tincidunt dui ut. Cum sociis natoque penatibus et magnis dis parturient montes. Lacus luctus accumsan tortor posuere ac ut consequat. Et ligula ullamcorper malesuada proin libero nunc consequat interdum varius.
+                        Elit ut aliquam purus sit. Egestas maecenas pharetra convallis posuere morbi 
+                        leo. Fusce id velit ut tortor pretium viverra suspendisse. Purus sit amet luctus venenatis lectus magna fringilla. Felis eget velit 
+                        aliquet sagittis id consectetur purus ut. Id neque aliquam vestibulum morbi. Tincidunt ornare massa eget egestas purus viverra. Viverra 
+                        orci sagittis eu volutpat odio facilisis. Habitant morbi tristique senectus et netus et malesuada fames ac. Tincidunt praesent semper
+                        feugiat nibh sed pulvinar proin gravida.
+                        Nec feugiat in fermentum posuere urna nec tincidunt. In massa tempor nec 
+                        feugiat nisl pretium fusce id. Tortor dignissim convallis aenean et tortor at. Malesuada fames ac turpis egestas. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Integer eget aliquet nibh praesent tristique magna sit. Varius vel pharetra vel turpis nunc eget lorem. Condimentum vitae sapien pellentesque habitant morbi tristique senectus. In eu mi bibendum neque egestas. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Faucibus ornare suspendisse sed nisi lacus sed. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Mattis ullamcorper velit sed ullamcorper morbi. Nec 
+                        feugiat in fermentum posuere urna nec tincidunt praesent.</p>
+                </div>
+            
+                <div class="f_col">
+                    <p>Conclusion Text Block: This section summarizes the main points discussed in the article, offering reflections or a call to action.</p>
+                    <img class="article_img" src="static/css/article_img1.jpg" alt="Description of Final Image">
+                    <figcaption>Caption: "Final Image: A summarizing visual that encapsulates the core message of the article."</figcaption>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. Imperdiet proin fermentum leo vel orci porta non. Sed enim ut sem viverra aliquet eget 
+                        sit amet tellus. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Nulla pellentesque dignissim enim sit amet venenatis 
+                        urna cursus eget. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Aliquam purus sit amet luctus venenatis 
+                        lectus magna fringilla. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Tempor orci dapibus ultrices in iaculis nunc sed augue. 
+                        Turpis tincidunt id aliquet risus. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Id interdum velit laoreet id donec. Euismod
+                        elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Arcu dictum varius duis at. Cursus in hac habitasse platea dictumst 
+                        quisque sagittis purus sit. Nisi est sit amet facilisis magna. Ultrices eros in cursus turpis massa tincidunt dui ut. Cum sociis natoque penatibus et magnis dis parturient montes. Lacus luctus accumsan tortor posuere ac ut consequat. Et ligula ullamcorper malesuada proin libero nunc consequat interdum varius.
+                        Elit ut aliquam purus sit. Egestas maecenas pharetra convallis posuere morbi 
+                        leo. Fusce id velit ut tortor pretium viverra suspendisse. Purus sit amet luctus venenatis lectus magna fringilla. Felis eget velit 
+                        aliquet sagittis id consectetur purus ut. Id neque aliquam vestibulum morbi. Tincidunt ornare massa eget egestas purus viverra. Viverra 
+                        orci sagittis eu volutpat odio facilisis. Habitant morbi tristique senectus et netus et malesuada fames ac. Tincidunt praesent semper
+                        feugiat nibh sed pulvinar proin gravida.
+                        Nec feugiat in fermentum posuere urna nec tincidunt. In massa tempor nec 
+                        feugiat nisl pretium fusce id. Tortor dignissim convallis aenean et tortor at. Malesuada fames ac turpis egestas. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Integer eget aliquet nibh praesent tristique magna sit. Varius vel pharetra vel turpis nunc eget lorem. Condimentum vitae sapien pellentesque habitant morbi tristique senectus. In eu mi bibendum neque egestas. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Faucibus ornare suspendisse sed nisi lacus sed. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Mattis ullamcorper velit sed ullamcorper morbi. Nec 
+                        feugiat in fermentum posuere urna nec tincidunt praesent.</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+        
 </body>
 </html>
