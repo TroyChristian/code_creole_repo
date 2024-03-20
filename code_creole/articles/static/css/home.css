@@ -78,7 +78,7 @@
 }
 
 html {
-    background-color: var(--background-50);
+    background-color:  #17171a;
 }
 
 a {
@@ -123,7 +123,7 @@ a {
 }
 
 .grid_box {
-    flex: 2; /* Center column for title, slogan, and search */
+    flex: 16; /* Center column for title, slogan, and search */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,8 +133,28 @@ a {
     display: flex;
     align-items: center;
     margin-top: 10px; /* Space between slogan and search bar */
-    width: 50%;
+    width: 60%;
+    
 }
+
+.search-input {
+    border: none;
+    padding: 10px;
+    margin-right: 5px;
+    outline: none;
+    flex-grow: 1;
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button .fas {
+    color: #e4e4e4;
+    font-size: 20px;
+  }
 
 .search_con input[type="search"] {
     padding: 10px;
@@ -150,19 +170,23 @@ a {
 }
 
 .controls {
-    
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    height: 100px;
+    margin-right: 20px;
 }
 
 
 
-.sign_in a, .controls button {
-    background: none;
-    border: 1px solid #fff; 
+.sign_in a, .controls  button {
+    background-color: #0c0c0c;
     color: #fff;
     padding: 10px;
-    margin-left: 10px; 
     cursor: pointer;
+    border: white solid 1px;
+    border-radius: 0.2rem;
 }
 
 .category_select details {
@@ -173,10 +197,6 @@ a {
     cursor: pointer;
 }
 
-/* Hover effect on links, buttons, and category/tag summaries */
-.sign_in a:hover, .controls button:hover, .category_select summary:hover {
-    background-color: #222; /* Slightly lighter on hover */
-}
 
 /* Ensure category/tag checkboxes and labels are aligned and readable */
 .input_categories_container .sub_div, .input_tag_container .sub_div {
@@ -277,7 +297,7 @@ h3, .author, .text, .info {
     margin: 20px auto; 
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(147, 169, 255);
     
 }
 

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Creole home</title>
      <link rel="stylesheet" href="{% static 'css/home.css' %}">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
      <!---
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
 </head>
@@ -21,14 +23,19 @@
                     <h4 class="sub_title">Your Source for learing about technology in Haitian Creole</h4>
                     </div>
                     <div class="search_con">
-                        <label for="auth_search"><img src="/images/search.svg"></label>   
-                        <input type="search" placeholder="search article..." name="auth_search" id="auth_search">
+                        <input type="text" class="search-input" placeholder="Search...">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </div>
 
                 <div class="controls">
                     <div class="sign_in">
-                        <a>sign in</a>
+                        <button>sign in</button>
+                    </div>
+
+                    <div class="language">
                         <select>
                             <option>English</option>
                             <option>Carole</option>
@@ -37,59 +44,15 @@
                     
                     <div class="categories">
                         <div class="category_select">
-                            <details>
-                                <summary>categories</summary>
-                                <div class="input_categories_container">
-                                    <div class="sub_div">
-                                        <a>HTML</a>
-                                    </div>
-                                    <div class="sub_div">
-                                        <a>CSS</a>
-                                    </div>
-                                    
-                                    <div class="sub_div">
-                                        <a>Javascript</a>
-                                    </div>
-                                    
-                                    <div class="sub_div">
-                                        <a>Python</a>
-                                    </div>
-                                    
-                                    <div class="sub_div">
-                                        <a>Django</a>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </details>
-        
-                            <details>
-                                <summary>tags</summary>
-                                <div class="input_tag_container">
-                                    <div class="sub_div">
-                                        <input type="checkbox" name="tag_1" id="tag_1">
-                                        <label for="tag_1">Python</label>
-                                    </div>
-                                    <div class="sub_div">
-                                        <input type="checkbox" name="tag_2" id="tag_2">
-                                        <label for="tag_2">Django</label>
-                                    </div>
-                                    <div class="sub_div">
-                                        <input type="checkbox" name="tag_2" id="tag_2">
-                                        <label for="tag_2">HTML</label>
-                                    </div>
-                                    <div class="sub_div">
-                                        <input type="checkbox" name="tag_3" id="tag_3">
-                                        <label for="tag_3">CSS</label>
-                                    </div>
-                                    <div class="sub_div">
-                                        <input type="checkbox" name="tag_4" id="tag_4">
-                                         <label for="tag_4">Javascript</label>
-                                    </div>
-                                    
-                                    
-                                </div>
-                            </details>
+                            <select name="" id="">
+                                <option value="">Python</option>
+                                <option value="">Django</option>
+                                <option value="">Linux</option>
+                                <option value="">SSH</option>
+                                <option value="">JavaScript</option>
+                                <option value="">HTML</option>
+                                <option value="">CSS</option>
+                            </select>
                         </div>
                     </div> <!--this is the closing tag for categories div-->
                     
@@ -396,8 +359,13 @@
                     this div is the parent div that contains the links
                     to articles and the side pannel for the tags and categories-->
                    
-    <div class="pagination">
-        <span>&#8678;</span> page 1 <span>&#8680;</span> <!--this span is acting as a placeholder till we load in live pagination-->
+    <div class="pagination w3-bar">
+        <a href="#" class="w3-button w3-hover-white">&laquo;</a>
+        <a href="#" class="w3-button w3-white w3-hover-white">1</a>
+        <a href="#" class="w3-button w3-hover-white">2</a>
+        <a href="#" class="w3-button w3-hover-white">3</a>
+        <a href="#" class="w3-button w3-hover-white">4</a>
+        <a href="#" class="w3-button w3-hover-white">&raquo;</a>
     </div>
     </div>
     <footer>
