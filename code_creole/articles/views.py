@@ -10,7 +10,7 @@ import requests
 
 def home(request):
 	current_language = get_language()
-	articles = Article.objects.all()
+	articles = Article.objects.all().order_by("-created_at")
 	categories = Category.objects.all() 
 	tags = Tag.objects.all() 
 	#search_form_here

@@ -20,7 +20,7 @@
                 
                     <div class="">
                     <h2 class="nav_title">Code Creole</h2>
-                    <h4 class="sub_title">Your Source for learing about technology in Haitian Creole</h4>
+                    <h4 class="sub_title">Your Source for learning about technology in Haitian Creole. Powered by AI.</h4>
                     </div>
                     <div class="search_con">
                         <input type="text" class="search-input" placeholder="Search...">
@@ -38,7 +38,7 @@
                     <div class="language">
                         <select>
                             <option>English</option>
-                            <option>Carole</option>
+                            <option>Creole</option>
                         </select>
                     </div>
                     
@@ -63,7 +63,8 @@
 
 
         <div class="home_dashboard">
-
+            {% for article in articles %}
+            {% if forloop.first %}
             <div class="num1_articles_con ">
                 <div class="num1_article">
                     <a class="art1_link">
@@ -99,10 +100,10 @@
                         
                     </div>
                 </div>
-            </div> <!---end tag for most popular article of the day--->
-            
+            </div> <!---end tag for most recently created article.--->
+            {% else %} <!-- if the article is not the most recently created, apply secondary styling -->
 
-            <div class="articles_con ">
+            <div class="articles_con "> <!-- all of the articles older than the most recently created should be in this div or recieve its stylings -->
 
                 
 
@@ -128,234 +129,13 @@
                     </div>
                 </div>
 
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
 
-               
 
-            </div>
+            </div> <!---the end of the three row stacks--> 
+            {% endif %} <!-- ending the check if the article is the first in the queryset --> 
+            {% endfor %}
 
-            <div class="tri_row">
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://" >
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!---the end of the three row stacks-->
-
-        </div><!----this div-tag is the closing tag for homedashboard
+        </div><!----this div-tag is the closing tag for home dashboard
                     this div is the parent div that contains the links
                     to articles and the side pannel for the tags and categories-->
                    
