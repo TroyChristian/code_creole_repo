@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import get_language 
+#this app
+
 
 class Category(models.Model):
 	category_name_en = models.CharField(max_length=255)
@@ -38,4 +41,24 @@ class Article(models.Model):
 	like_counter = models.PositiveIntegerField(default=0)
 
 	def __str__(self):
-		return f"{self.article_title_en} / {self.article_title_ht}"
+		return f"{self.article_title_en} / {self.article_title_ht}" 
+
+	def get_title(self):
+		"""Get the articles title depending on current language selected"""
+		current_language = get_language() 
+		if current_language == 'ht':
+			return self.article_title_ht
+		else:
+			return self.article_title_en
+	def get_content(self, current_language):
+		"""Get the articles content depending on current language selected"""
+		current_language = get_language() 
+		if current_language == 'ht':
+			return self.article_title_ht
+		else:
+			return self.article_title_en
+
+	
+
+
+
