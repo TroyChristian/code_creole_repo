@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-28 19:13-0500\n"
+"POT-Creation-Date: 2024-04-10 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,55 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: code_creole/settings.py:131
-msgid "English"
-msgstr ""
+#: articles/templates/articles/article_detail.html:22
+#: articles/templates/articles/home.html:24
+msgid "source"
+msgstr "Sous ou pou aprann sou teknoloji an kreyòl ayisyen."
 
-#: code_creole/settings.py:132
+#: articles/templates/articles/article_detail.html:42
+msgid "Published in"
+msgstr "Pibliye nan"
+
+#: articles/templates/articles/article_detail.html:43
+msgid "Published by"
+msgstr "Pibliye pa"
+
+#: articles/templates/articles/article_detail.html:44
+#: articles/templates/articles/home.html:92
+msgid "Contributers"
+msgstr "Kontribye yo"
+
+#: articles/templates/articles/article_detail.html:47
+#: articles/templates/articles/home.html:110
+msgid "time_to_read"
+msgstr "tan pou li"
+
+#: articles/templates/articles/article_detail.html:47
+#: articles/templates/articles/home.html:110
+msgid "minutes"
+msgstr "minit"
+
+#: articles/templates/articles/home.html:90
+msgid "Created by"
+msgstr "Kreye pa"
+
+#: articles/templates/articles/home.html:171
+msgid "About Code Creole"
+msgstr "Sou Kòd Kreyòl"
+
+#: articles/templates/articles/home.html:172
+msgid "Contact Us"
+msgstr "Kontakte Nou"
+
+#: articles/templates/articles/home.html:175
+#: articles/templates/articles/home.html:183
+msgid "Follow Us"
+msgstr "Swiv Nou"
+
+#: code_creole/settings.py:139
+msgid "English"
+msgstr "Angle"
+
+#: code_creole/settings.py:140
 msgid "Haitian Creole"
-msgstr ""
+msgstr "Kreyòl Ayisyen"

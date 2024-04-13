@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
                 
                     <div class="">
                     <h2 class="nav_title">Code Creole</h2>
-                    <h4 class="sub_title">Your Source for learing about technology in Haitian Creole</h4>
+                    <h4 class="sub_title">{% trans "source" %}</h4>
                     </div>
                     <div class="search_con">
                         <input type="text" class="search-input" placeholder="Search...">
@@ -32,14 +33,25 @@
 
                 <div class="controls">
                     <div class="sign_in">
-                        <button>sign in</button>
+                        <button>Sign In</button>
                     </div>
 
                     <div class="language">
-                        <select>
-                            <option>English</option>
-                            <option>Carole</option>
+                        <form action="/i18n/setlang/" method="post" id="language_form">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{% url 'home'  %}"/>
+                        <select name="language" onchange="changeLanguage()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% for lang in LANGUAGES %}
+                                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
+                                    {{ lang.1 }}
+                                </option>
+                            {% endfor %}
                         </select>
+                    </form>
+
+                     
                     </div>
                     
                     <div class="categories">
@@ -63,21 +75,27 @@
 
 
         <div class="home_dashboard">
-
+            {% for article in articles %}
+            {% if forloop.first %}
             <div class="num1_articles_con ">
+                <a href="{{ article.get_absolute_url }}">
                 <div class="num1_article">
-                    <a class="art1_link">
+                    <a href="{{ article.get_absolute_url }}" class="art1_link">
                      <img class="thumb_nail" src="static\css\Untitled.jpeg"> 
                     </a>
+                                
                     <div class="container">
-                        <a href="http://"><h3>Python 101</h3></a>
+                        <h3>{{ article.get_title }}</h3>
                         <div class="author">
-                            <p>by: Troy Christian</p>
-                            <p>, Tyler Christian</p>
+                            <p> {% trans "Created by" %}: {{ article.created_by.username }}</p> 
+                            <br>
+                            <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
+                             {{ contributor.username }}
+                            {% endfor %}</p>
                         </div>
                         
                         <div class="text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi aspernatur incidunt tenetur est officia? Eius?</p>
+                            <p>{{ article.get_content }}</p>
                         </div>
 
                         
@@ -89,20 +107,21 @@
                                 <div class="text_div flex_row">
                                     <p class="name">Code Creole</p>
                                     <p class="date">05/12/23</p>
-                                    <p class="time_to_read">10 mins</p>
+                                    <p class="time_to_read"> {% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
                                 </div>
                                 
                             </div>
-                                
+
                         
                         
                         
                     </div>
                 </div>
-            </div> <!---end tag for most popular article of the day--->
-            
 
-            <div class="articles_con ">
+            </div> <!---end tag for most recently created article.--->
+            {% else %} <!-- if the article is not the most recently created, apply secondary styling -->
+
+            <div class="articles_con "> <!-- all of the articles older than the most recently created should be in this div or recieve its stylings -->
 
                 
 
@@ -128,234 +147,13 @@
                     </div>
                 </div>
 
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
 
-               
 
-            </div>
+            </div> <!---the end of the three row stacks--> 
+            {% endif %} <!-- ending the check if the article is the first in the queryset --> 
+            {% endfor %}
 
-            <div class="tri_row">
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://" >
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article">
-                    <a href="http://">
-                        <img class="thumb_nail" src="static\css\Untitled.jpeg">
-                        <p>Python 101</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>by: Troy Christian</p>
-                        <p>, Tyler Christian</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/css/code_creole_log.png">
-                        <div class="extras-sub">
-                            <p class="name">Code Creole</p>
-                            <div class="flex_div">   
-                                <p class="time_to_read">10 mins to read</p>
-                                <p class="date">05/12/23</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!---the end of the three row stacks-->
-
-        </div><!----this div-tag is the closing tag for homedashboard
+        </div><!----this div-tag is the closing tag for home dashboard
                     this div is the parent div that contains the links
                     to articles and the side pannel for the tags and categories-->
                    
@@ -369,20 +167,22 @@
     </div>
     </div>
     <footer>
-        <div class="footer">
-            <a>About Code Creole</a>
-            <a>Contact Us</a>
+        <div class="footer" href="https://twitter.com/CodeCreole1804" target="_blank">
+            <a> {% trans "About Code Creole" %}</a>
+            <a> {% trans "Contact Us" %}</a>
             <a class="social"> 
                 <div>
-                 <p>Follow Us:</p>
+                 <p> {% trans "Follow Us" %}:</p>
                  <img class="social_icon" src="static/css/x_logo.jpeg">
                 </div>
             </a>
 
-            <a class="social"> 
+            <a class="social" href="https://www.youtube.com/@CodeCreole" target="_blank"> 
                 <div>
-                 <p>Follow Us:</p>
+                
+                 <p>{% trans "Follow Us" %}:</p>
                  <img class="social_icon" src="static\css\youtube-music-logo-youtube.png">
+             
                 </div>
             </a>
         </div>
@@ -391,5 +191,12 @@
     <script src="/js/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <!-- javascript for toggling currently selected language -->
+    <script>
+function changeLanguage() {
+    document.getElementById('language_form').submit();
+}
+</script>
+
 </body>
 </html>

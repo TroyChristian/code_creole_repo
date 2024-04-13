@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
                 <nav class="navbar">
                     <img class="head_logo" src="/static/css/code_creole_log.png" alt="Code Creole Logo">
                     <div class="search_div">
-                        <h3>Your Source For Learning Coding in Haitian Creole</h3>
+                        <h3>{% trans "source" %}</h3>
                         <input type="search" placeholder="search" name="search_nav" id="search_nav">
                     </div>
                     <div class="select_div">
@@ -35,13 +36,16 @@
                 
                 <article>
                     <header class="title_block">
-                        <h1 class="title">Python 101</h1>
+                        <h1 class="title"> {{ article.get_title }}</h1>
                         <div class="publishers_block">
                             <img class="logo" src="/static/css/code_creole_log.png" alt="Publisher Logo">
-                            <p>Published in: Computer Science: Python</p>
-                            <p>Published by Troy Christian</p>
-                            <p>6min read</p>
-                            <p>1 day ago</p>
+                            <p> {% trans "Published in": %} {{ article.category.get_category_name }}</p>
+                            <p> {% trans "Published by": %} {{ article.created_by }}</p>
+                            <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
+                             {{ contributor.username }}
+                            {% endfor %}</p>
+                            <p>{% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
+                            <p>{{ article.created_at }}</p>
                         </div>
                     </header>
     
@@ -63,7 +67,7 @@
     
                     <div class="article_content">
                         <img class="article_img_header" src="/static/css/Untitled.jpeg" alt="Article Main Image">
-                        <p class="font_white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, eaque eum iste veritatis ipsum consectetur nesciunt, facilis placeat fugiat culpa magni incidunt ipsam commodi minima similique? Sint pariatur, odit dolorem ipsum officia obcaecati! Cum mollitia eveniet placeat similique sit nostrum quidem quo, ab inventore amet facere nemo possimus expedita culpa nobis obcaecati consequatur ipsa dolore reprehenderit, veniam earum? Quas, fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam corporis, ullam dolore consectetur veritatis numquam aliquid dolorem blanditiis ratione quaerat veniam incidunt! Nulla repellendus asperiores quod dolore, ab magni iste ea molestias saepe autem quaerat suscipit rerum et at nihil obcaecati, itaque, repellat natus totam rem facilis numquam libero. Necessitatibus eius maxime velit, ea itaque tempore dignissimos eos cum odio blanditiis voluptatem. Iste explicabo aliquid alias dolorum aut quod expedita! Culpa reprehenderit perferendis dolorum inventore dolorem tempore eum. Vel nemo optio magni quos excepturi quidem cupiditate odio doloremque omnis cum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos soluta vitae quod fugiat eius tempore error! Ex nam eligendi ad omnis, magni enim blanditiis quibusdam cumque. Minima vero quo nemo, eos ipsum a quia possimus voluptates nesciunt deserunt quos sunt reprehenderit amet minus asperiores voluptatum aperiam! Nobis nihil similique necessitatibus accusantium alias, ipsa soluta ex facilis voluptates nulla accusamus fuga sapiente nemo dolorem delectus aliquam neque eaque sint voluptatibus. Aperiam culpa architecto, aspernatur unde cumque autem ab fugit ipsam animi. Repudiandae, numquam. Quod animi vitae, vero modi nisi nostrum dignissimos numquam eaque molestias eius amet cum sapiente commodi esse nobis eveniet ad itaque facere exercitationem temporibus voluptatum accusamus molestiae inventore labore? Tenetur officiis tempora, reprehenderit commodi similique veritatis soluta ducimus, culpa, quidem unde eveniet! Distinctio ut molestiae natus possimus culpa assumenda aut voluptate tenetur ratione totam repudiandae, esse sapiente incidunt sequi suscipit blanditiis fugiat dolores eos odit illum nam perspiciatis consequatur rem sint. Delectus unde at ut laborum officiis rerum cumque voluptatem voluptatibus natus dolore, magni doloremque? Distinctio dolor doloremque excepturi minus sapiente. Officia, harum quibusdam in rem quam exercitationem, molestias odit quaerat reprehenderit nobis nisi. Sed at iusto praesentium tempora, autem asperiores repellat similique sunt repudiandae ex est, ducimus iste placeat totam maxime quia consequatur ut accusamus eaque dolores corrupti cum cumque. Reprehenderit excepturi alias laudantium unde, nesciunt, enim vero velit numquam earum nemo perspiciatis quis nobis magni libero at obcaecati aut provident tempore voluptatem? Iure nemo ipsam consequuntur, mollitia fugit vel perspiciatis nihil esse doloremque beatae amet placeat laboriosam nesciunt quidem necessitatibus explicabo voluptas accusantium voluptatum at eius. Ipsum consequuntur reiciendis ut aliquam tenetur eos voluptatibus perspiciatis accusamus harum molestias ad numquam eum quaerat nostrum, nulla deleniti autem tempora dolorum, a explicabo facilis. Asperiores eaque consequatur aliquam sequi aut voluptate alias repellat dolores ullam, reiciendis temporibus, illum modi, nulla rem consequuntur veritatis doloribus nesciunt impedit quas? Delectus aut quas iusto laborum, debitis natus velit aperiam architecto. Sit et error voluptate voluptatum delectus temporibus, nesciunt ipsam expedita repellat neque nostrum libero ullam minus, sequi molestias! Sapiente eveniet reprehenderit odit veritatis autem rerum sed, nam culpa ipsum, corrupti necessitatibus praesentium consectetur eius aliquam. Officiis, nobis beatae quo a deleniti doloribus nihil animi enim, consequatur repellendus eos omnis doloremque corporis. Dicta placeat, maiores numquam itaque ipsam accusamus quis minima quo at id incidunt odio corporis modi eveniet reprehenderit! Ipsa odit unde vitae aspernatur necessitatibus! Laboriosam quia quae aliquid cum inventore perferendis, et expedita soluta incidunt? Beatae alias, consequuntur nam, accusantium error laborum aperiam ratione quod doloribus quae, nihil pariatur sit perferendis officia maiores magni quis! At incidunt tempora nisi rerum aliquam quo facere, vitae commodi pariatur explicabo odio dicta error voluptatum sit iure autem nemo esse quam fugit unde vero corporis maxime deserunt voluptatibus. Quod, laboriosam error? Itaque quam nisi, ea impedit perferendis exercitationem reiciendis est, fugit sed aperiam culpa architecto magnam fuga voluptate amet ratione harum iste quia vitae! Ipsam similique eaque, consequuntur dignissimos eos ducimus sit ab distinctio possimus facilis perferendis qui nam nemo obcaecati porro quasi nostrum quod neque necessitatibus. Velit quas odio assumenda maxime explicabo quam hic labore expedita eos nisi optio laboriosam quia aut mollitia, eaque provident repellendus vel corporis. Soluta eius, ipsa totam quibusdam labore natus magnam eos error dicta, eligendi quidem! Tempore reiciendis sequi corporis? Esse totam iure fugiat aperiam atque mollitia, officia iusto quisquam ea velit assumenda nobis veritatis nesciunt repellat, id dolores eos doloremque laborum. Distinctio quos dignissimos rem ullam cupiditate enim dolores qui hic asperiores atque? Itaque, quas consequatur exercitationem cumque doloribus cupiditate voluptates maiores aut omnis error eaque maxime quaerat ducimus quidem impedit quod corporis suscipit molestiae inventore consectetur reprehenderit dicta, a officiis veniam. Hic quidem veritatis consequatur quis eius, doloremque ex itaque distinctio ipsa alias odio fugit consectetur non iure! Repellendus doloremque dignissimos molestias, placeat sint perferendis omnis eos autem non ut itaque quasi, illum consequatur sequi dicta asperiores eveniet numquam vitae deserunt exercitationem possimus corrupti. Sunt possimus illo quos quibusdam! Similique obcaecati quo ea ratione quas excepturi harum explicabo cum id culpa neque, doloribus a error ad? Quos nostrum placeat velit quis et qui, eligendi sunt maiores magni quia tempore beatae earum, odio provident reiciendis, in praesentium perspiciatis quaerat voluptatem. Facere impedit repudiandae veritatis earum repellendus. Quasi officia mollitia tempora in sequi, veritatis nemo nostrum quae animi beatae dolorum vitae eius eligendi soluta distinctio repudiandae natus suscipit deserunt aliquam qui inventore provident culpa! Vitae ex ut nobis error quis alias corporis cum temporibus, harum aliquid ipsam iusto? Unde eos facere ea debitis ex dolorem quia beatae asperiores. Quam voluptatem nobis deserunt, nesciunt id voluptas labore, maxime veniam rem recusandae voluptatum obcaecati iure impedit qui eaque magni? Eos consectetur minima incidunt eum sapiente, ea facilis fuga earum qui nemo esse deserunt quibusdam perferendis repellat voluptatum voluptate inventore commodi quaerat pariatur architecto repudiandae magni atque neque! Voluptate fugit corporis at similique. Rerum atque, perspiciatis, libero aperiam et veritatis porro mollitia nam deserunt necessitatibus dolorem velit exercitationem ea architecto similique error. Earum vero aliquid repellat modi itaque, eum officiis adipisci ut deleniti id iure nesciunt pariatur placeat enim temporibus quidem ullam distinctio asperiores quae numquam iusto dolorum harum! Voluptatibus consectetur id expedita non, perspiciatis cupiditate quas. Earum vero quam, sequi veritatis minus eos odit quos cupiditate doloremque culpa doloribus! Unde quae eaque repellat impedit quam culpa aliquam et laudantium earum nostrum iure dignissimos, eligendi iste illo dolorum tempora saepe rem tenetur adipisci cupiditate minus numquam eius recusandae velit. Fuga aperiam est eius repellendus ullam molestias culpa corporis totam repellat sit voluptas beatae debitis earum aspernatur, obcaecati quia repudiandae ut perspiciatis. Obcaecati quisquam cumque cum dolor. Voluptates atque iste illo earum, at inventore suscipit labore provident nesciunt cum libero laboriosam nihil neque dignissimos asperiores ducimus, doloribus, officia ratione! Architecto inventore, accusamus, consectetur eveniet pariatur natus tempore commodi officiis repellendus alias et placeat minima adipisci nisi eos suscipit omnis illum? Laborum magnam sed mollitia qui ipsam nemo voluptas, harum voluptates tempora non temporibus rerum aut expedita a error explicabo dolorum alias dolore iste, similique, reiciendis excepturi. Aut, molestiae eos repellat voluptatibus animi quos.</p>
+                        <p class="font_white">{{ article.get_content }}</p>
                         <!-- Article's main content goes here -->
                     </div>
 
@@ -153,104 +157,5 @@
 
 
 
-    <!-- <div class="content">
-        <nav>
-            <img class="head_logo" src="/static/css/code_creole_log.png">
-            <div class="search_div">
-                <h3>Your Source For learing coding in Hatian Creole</h3>
-                <input type="search" placeholder="search" name="search_nav" id="search_nav">
-            </div>
-            <div class="select_div">
-                <select>
-                    <option>English</option>
-                    <option>Carole</option>
-                </select>
-                <a href="http://">sign in</a>
-            </div>
-            
-            
-        </nav>
 
-        <div class="interactions">
-            <div class="title_block">
-                <h1 class="title">Python 101</h1>
-                <div class="publishers_block">
-                    <img class="logo" src="/static/css/code_creole_log.png">
-                    <p>Published in: Computer Science: Python</p>
-                    <p>Published by Troy Christian</p>
-                    <p>6min read</p>
-                    <p>1 day ago</p>
-                </div>
-            </div>
-
-            <div class="stats">
-                <div class="likes">
-                    <img class="likes" id="likes" name="likes" src="\static\icons\icons8-thumbs-up-50.png" alt="thumbs_up">
-                    <label for="likes">100</label>
-                </div>
-                
-                <div class="comments">
-                    <img class="comment" id="comment" name="comment" src="/static/icons/icons8-comment-60.png" alt="comments">
-                    <label for="comment">80</label>
-                </div>
-                <button>save</button>
-            </div>
-        </div>
-
-        <div class="comment_section">
-            <div class="">
-                
-            </div>
-        </div>
-        
-        <div class="article">
-            <img class="article_img_header" src="/static\css\Untitled.jpeg" alt="article_img_main">
-            
-
-                <div class="f_col">
-                    <p>Main Body Text Block 2: The article continues with the next part, introducing new ideas and evidence to further explore the topic.</p>
-                    <img class="article_img" src="static/css/article_img1.jpg" alt="Description of Image 3">
-                    <figcaption>Caption: "Image 3: Further exploration of the topic with a focus on a particular detail."</figcaption>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                        incididunt ut labore et dolore magna aliqua. Imperdiet proin fermentum leo vel orci porta non. Sed enim ut sem viverra aliquet eget 
-                        sit amet tellus. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Nulla pellentesque dignissim enim sit amet venenatis 
-                        urna cursus eget. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Aliquam purus sit amet luctus venenatis 
-                        lectus magna fringilla. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Tempor orci dapibus ultrices in iaculis nunc sed augue. 
-                        Turpis tincidunt id aliquet risus. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Id interdum velit laoreet id donec. Euismod
-                        elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Arcu dictum varius duis at. Cursus in hac habitasse platea dictumst 
-                        quisque sagittis purus sit. Nisi est sit amet facilisis magna. Ultrices eros in cursus turpis massa tincidunt dui ut. Cum sociis natoque penatibus et magnis dis parturient montes. Lacus luctus accumsan tortor posuere ac ut consequat. Et ligula ullamcorper malesuada proin libero nunc consequat interdum varius.
-                        Elit ut aliquam purus sit. Egestas maecenas pharetra convallis posuere morbi 
-                        leo. Fusce id velit ut tortor pretium viverra suspendisse. Purus sit amet luctus venenatis lectus magna fringilla. Felis eget velit 
-                        aliquet sagittis id consectetur purus ut. Id neque aliquam vestibulum morbi. Tincidunt ornare massa eget egestas purus viverra. Viverra 
-                        orci sagittis eu volutpat odio facilisis. Habitant morbi tristique senectus et netus et malesuada fames ac. Tincidunt praesent semper
-                        feugiat nibh sed pulvinar proin gravida.
-                        Nec feugiat in fermentum posuere urna nec tincidunt. In massa tempor nec 
-                        feugiat nisl pretium fusce id. Tortor dignissim convallis aenean et tortor at. Malesuada fames ac turpis egestas. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Integer eget aliquet nibh praesent tristique magna sit. Varius vel pharetra vel turpis nunc eget lorem. Condimentum vitae sapien pellentesque habitant morbi tristique senectus. In eu mi bibendum neque egestas. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Faucibus ornare suspendisse sed nisi lacus sed. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Mattis ullamcorper velit sed ullamcorper morbi. Nec 
-                        feugiat in fermentum posuere urna nec tincidunt praesent.</p>
-                </div>
-            
-                <div class="f_col">
-                    <p>Conclusion Text Block: This section summarizes the main points discussed in the article, offering reflections or a call to action.</p>
-                    <img class="article_img" src="static/css/article_img1.jpg" alt="Description of Final Image">
-                    <figcaption>Caption: "Final Image: A summarizing visual that encapsulates the core message of the article."</figcaption>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                        incididunt ut labore et dolore magna aliqua. Imperdiet proin fermentum leo vel orci porta non. Sed enim ut sem viverra aliquet eget 
-                        sit amet tellus. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Nulla pellentesque dignissim enim sit amet venenatis 
-                        urna cursus eget. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Aliquam purus sit amet luctus venenatis 
-                        lectus magna fringilla. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Tempor orci dapibus ultrices in iaculis nunc sed augue. 
-                        Turpis tincidunt id aliquet risus. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Id interdum velit laoreet id donec. Euismod
-                        elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Arcu dictum varius duis at. Cursus in hac habitasse platea dictumst 
-                        quisque sagittis purus sit. Nisi est sit amet facilisis magna. Ultrices eros in cursus turpis massa tincidunt dui ut. Cum sociis natoque penatibus et magnis dis parturient montes. Lacus luctus accumsan tortor posuere ac ut consequat. Et ligula ullamcorper malesuada proin libero nunc consequat interdum varius.
-                        Elit ut aliquam purus sit. Egestas maecenas pharetra convallis posuere morbi 
-                        leo. Fusce id velit ut tortor pretium viverra suspendisse. Purus sit amet luctus venenatis lectus magna fringilla. Felis eget velit 
-                        aliquet sagittis id consectetur purus ut. Id neque aliquam vestibulum morbi. Tincidunt ornare massa eget egestas purus viverra. Viverra 
-                        orci sagittis eu volutpat odio facilisis. Habitant morbi tristique senectus et netus et malesuada fames ac. Tincidunt praesent semper
-                        feugiat nibh sed pulvinar proin gravida.
-                        Nec feugiat in fermentum posuere urna nec tincidunt. In massa tempor nec 
-                        feugiat nisl pretium fusce id. Tortor dignissim convallis aenean et tortor at. Malesuada fames ac turpis egestas. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Integer eget aliquet nibh praesent tristique magna sit. Varius vel pharetra vel turpis nunc eget lorem. Condimentum vitae sapien pellentesque habitant morbi tristique senectus. In eu mi bibendum neque egestas. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Faucibus ornare suspendisse sed nisi lacus sed. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Mattis ullamcorper velit sed ullamcorper morbi. Nec 
-                        feugiat in fermentum posuere urna nec tincidunt praesent.</p>
-                </div>
-            </div>
-        </div>
-    </div> old html being saved incase its needed again later -->
 </html>

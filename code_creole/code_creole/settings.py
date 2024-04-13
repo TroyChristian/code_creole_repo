@@ -17,7 +17,8 @@ from django.utils.translation import gettext_lazy as _
 # Initialise environment variables
 env = environ.Env()
 # Read .env file
-environ.Env.read_env("C:/Users/Core/Desktop/Code_Creole/code_creole_repo/code_creole/code_creole_secrets.env")
+#environ.Env.read_env("C:/Users/Core/Desktop/Code_Creole/code_creole_repo/code_creole/code_creole_secrets.env")
+environ.Env.read_env("/home/nkisi/Desktop/code_creole_repo/code_creole/code_creole/code_creole_secrets.env")
 SECRET_KEY = env('SECRET_KEY')
 
 
@@ -31,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ht-f_ly62am5h)1&8^i#j@^)huh8n1__6$87x*29&nw#d%)3$l"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
