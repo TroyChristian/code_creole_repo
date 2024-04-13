@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import get_language 
 from django.utils.translation import activate
+from django.utils.translation import gettext as _
 from .models import Article, Category, Tag
 
 
@@ -22,12 +23,13 @@ def home(request):
 	categories = Category.objects.all() 
 	tags = Tag.objects.all() 
 	#search_form_here
-	import pdb; pdb.set_trace()
+	
 	return render(request, 'articles/home.html', {'articles': articles})
 
-def article_detail_view(request):
-	#article = Article.objects.get_object_or_404(pk=article_pk)
-	return render(request, 'articles/article_detail.html')
+def article_detail_view(request, article_id):
+	article = get_object_or_404(Article, pk=article_id)
+	context = {"article":article}
+	return render(request, 'articles/article_detail.html', context)
 
 @csrf_exempt
 def set_language(request):

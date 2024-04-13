@@ -21,7 +21,7 @@
                 
                     <div class="">
                     <h2 class="nav_title">Code Creole</h2>
-                    <h4 class="sub_title">Your Source for learning about technology in Haitian Creole. Powered by AI.</h4>
+                    <h4 class="sub_title">{% trans "source" %}</h4>
                     </div>
                     <div class="search_con">
                         <input type="text" class="search-input" placeholder="Search...">
@@ -78,15 +78,20 @@
             {% for article in articles %}
             {% if forloop.first %}
             <div class="num1_articles_con ">
+                <a href="{{ article.get_absolute_url }}">
                 <div class="num1_article">
-                    <a class="art1_link">
+                    <a href="{{ article.get_absolute_url }}" class="art1_link">
                      <img class="thumb_nail" src="static\css\Untitled.jpeg"> 
                     </a>
+                                
                     <div class="container">
-                        <a href="http://"><h3>{{ article.get_title }}</h3></a>
+                        <h3>{{ article.get_title }}</h3>
                         <div class="author">
-                            <p>by: Troy Christian</p>
-                            <p>, Tyler Christian</p>
+                            <p> {% trans "Created by" %}: {{ article.created_by.username }}</p> 
+                            <br>
+                            <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
+                             {{ contributor.username }}
+                            {% endfor %}</p>
                         </div>
                         
                         <div class="text">
@@ -102,16 +107,17 @@
                                 <div class="text_div flex_row">
                                     <p class="name">Code Creole</p>
                                     <p class="date">05/12/23</p>
-                                    <p class="time_to_read">10 mins</p>
+                                    <p class="time_to_read"> {% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
                                 </div>
                                 
                             </div>
-                                
+
                         
                         
                         
                     </div>
                 </div>
+
             </div> <!---end tag for most recently created article.--->
             {% else %} <!-- if the article is not the most recently created, apply secondary styling -->
 
@@ -161,20 +167,22 @@
     </div>
     </div>
     <footer>
-        <div class="footer">
-            <a>About Code Creole</a>
-            <a>Contact Us</a>
+        <div class="footer" href="https://twitter.com/CodeCreole1804" target="_blank">
+            <a> {% trans "About Code Creole" %}</a>
+            <a> {% trans "Contact Us" %}</a>
             <a class="social"> 
                 <div>
-                 <p>Follow Us:</p>
+                 <p> {% trans "Follow Us" %}:</p>
                  <img class="social_icon" src="static/css/x_logo.jpeg">
                 </div>
             </a>
 
-            <a class="social"> 
+            <a class="social" href="https://www.youtube.com/@CodeCreole" target="_blank"> 
                 <div>
-                 <p>Follow Us:</p>
+                
+                 <p>{% trans "Follow Us" %}:</p>
                  <img class="social_icon" src="static\css\youtube-music-logo-youtube.png">
+             
                 </div>
             </a>
         </div>
