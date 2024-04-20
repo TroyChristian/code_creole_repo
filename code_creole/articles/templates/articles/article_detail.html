@@ -39,8 +39,8 @@
                         <h1 class="title"> {{ article.get_title }}</h1>
                         <div class="publishers_block">
                             <img class="logo" src="/static/css/code_creole_log.png" alt="Publisher Logo">
-                            <p> {% trans "Published in": %} {{ article.category.get_category_name }}</p>
-                            <p> {% trans "Published by": %} {{ article.created_by }}</p>
+                            <p> {% trans "Published in" %}: {{ article.category.get_category_name }}</p>
+                            <p> {% trans "Published by" %}: {{ article.created_by }}</p>
                             <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
                              {{ contributor.username }}
                             {% endfor %}</p>
