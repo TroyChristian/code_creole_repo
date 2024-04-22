@@ -255,6 +255,7 @@ a {
 h3, .author, .text, .info {
     margin: 10px 0;
     display: flex;
+    flex-direction: column;
 }
 
 .time_to_read, .date, .name {
@@ -262,17 +263,6 @@ h3, .author, .text, .info {
 }
 
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .info {
-        flex-direction: column;
-        align-items: start;
-    }
-
-    .sub_logo {
-        margin-bottom: 10px;
-    }
-}
 
 
 
@@ -305,15 +295,6 @@ h3, .author, .text, .info {
     width: 100%;
 }
 
-.article > a {
-    width: 100%;
-    
-    height: 100%;
-}
-
-.article > a > img {
-    width: 100%;
-}
 
 .article > a > p {
     color: blue;
@@ -367,6 +348,7 @@ h3, .author, .text, .info {
 }
 
 
+
 /* Ensure the images and other content are also centered and well-structured */
 .thumb_nail, .extras, .author_block {
     text-align: center;
@@ -374,7 +356,9 @@ h3, .author, .text, .info {
 
  .thumb_nail {
     margin: 0 auto; 
-    
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
 }
 
 .sub_logo {
@@ -442,4 +426,126 @@ h3, .author, .text, .info {
 .social_icon {
     width: auto;
     height: 50px;
+}
+
+
+/* Media Queries */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .sub_logo {
+        margin-bottom: 10px;
+    }
+}
+
+
+@media screen and (max-width: 1250px) {
+    .tri_row  {
+        margin-top: 15px;
+        grid-template-columns: repeat(2, 2fr);
+        justify-content: center;
+        width: auto;
+        margin: auto;
+        gap: 25px;
+        align-self: center;
+        padding: 2px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width:951px)  {
+   
+    
+    .num1_article {
+       
+    }
+}
+
+@media screen and (min-width:400px) and (max-width: 825px) {
+    .tri_row  {
+        margin-top: 15px;
+        grid-template-columns: repeat(1, 4fr);
+        justify-content: center;
+        width: auto;
+        margin: auto;
+        gap: 25px;
+        align-self: center;
+        padding: 2px;
+        margin-top: 15px;
+    }
+
+    .articles_con {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(1, 4fr);
+        justify-content: center;
+        width: auto;
+        margin: auto;
+        gap: 25px;
+        align-self: center;
+        padding: 2px;
+      }
+
+    .num1_article {
+        width: 150;
+        margin-left: 15px;
+        margin-right: 15px;
+    }  
+
+    .header_logo  {
+        display: hidden;
+    }
+}
+
+@media screen and (min-width:100px) and (max-width:600px) {
+    .text_div {
+        display: flex;
+        flex-direction: column;
+    }  
+
+    .header_logo {
+        display: none;
+    }
+
+    .sub_con {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .search_con {
+        width: auto;
+    }
+
+    .controls {
+        margin-top: 10px;
+    }
+
+
+    .articles_con {
+        display: grid;
+        grid-template-columns: repeat(1, 4fr);
+    }
+
+    .tri_row {
+        display: grid;
+        grid-template-columns: repeat(1, 4fr); 
+    }
+
+    .article {
+        width: auto;
+    }
+
+    .footer {
+        display: flex;
+        padding: 25px;
+    }
+
+    .footer > a {
+        flex-shrink: 1;
+    }
 }
