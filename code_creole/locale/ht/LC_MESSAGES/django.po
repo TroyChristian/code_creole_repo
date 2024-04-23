@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-10 23:40-0400\n"
+"POT-Creation-Date: 2024-04-23 19:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: articles/templates/articles/article_detail.html:22
-#: articles/templates/articles/home.html:24
-msgid "source"
-msgstr "Sous ou pou aprann sou teknoloji an kreyòl ayisyen."
-
-#: articles/templates/articles/article_detail.html:42
+#: articles/templates/articles/article_detail.html:29
 msgid "Published in"
 msgstr "Pibliye nan"
 
-#: articles/templates/articles/article_detail.html:43
+#: articles/templates/articles/article_detail.html:30
 msgid "Published by"
 msgstr "Pibliye pa"
 
-#: articles/templates/articles/article_detail.html:44
-#: articles/templates/articles/home.html:92
+#: articles/templates/articles/article_detail.html:31
+#: articles/templates/articles/home.html:105
 msgid "Contributers"
 msgstr "Kontribye yo"
 
-#: articles/templates/articles/article_detail.html:47
-#: articles/templates/articles/home.html:110
+#: articles/templates/articles/article_detail.html:34
+#: articles/templates/articles/home.html:125
 msgid "time_to_read"
 msgstr "tan pou li"
 
-#: articles/templates/articles/article_detail.html:47
-#: articles/templates/articles/home.html:110
+#: articles/templates/articles/article_detail.html:34
+#: articles/templates/articles/home.html:125
 msgid "minutes"
 msgstr "minit"
 
-#: articles/templates/articles/home.html:90
+#: articles/templates/articles/home.html:23
+msgid "source"
+msgstr "Sous ou pou aprann sou teknoloji an kreyòl ayisyen."
+
+#: articles/templates/articles/home.html:103
 msgid "Created by"
 msgstr "Kreye pa"
 
-#: articles/templates/articles/home.html:171
+#: articles/templates/articles/home.html:420
 msgid "About Code Creole"
 msgstr "Sou Kòd Kreyòl"
 
-#: articles/templates/articles/home.html:172
+#: articles/templates/articles/home.html:421
 msgid "Contact Us"
 msgstr "Kontakte Nou"
 
-#: articles/templates/articles/home.html:175
-#: articles/templates/articles/home.html:183
+#: articles/templates/articles/home.html:424
+#: articles/templates/articles/home.html:432
 msgid "Follow Us"
 msgstr "Swiv Nou"
 

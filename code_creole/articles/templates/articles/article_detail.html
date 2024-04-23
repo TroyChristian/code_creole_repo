@@ -15,7 +15,11 @@
 
     <body>
         <div class="content">
-            <img class="water_mark" src="/static/icons/Flag_of_Haiti.svg.png" alt="flag">
+            {% if current_language == "ht" %}
+            <img class="water_mark" src="/static/icons/Flag_of_Haiti.svg.png" alt="haiti-flag">
+            {% else %}
+            <img class="water_mark" src="/static/icons/usa_flag.png" alt="usa-flag">
+            {% endif %}
 <!-- navbar should be inherited from parent template here -->
     
             <main>
