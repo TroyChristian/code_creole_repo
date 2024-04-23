@@ -1,9 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import get_language 
+from django.urls import reverse
+#this app
+
 
 class Category(models.Model):
 	category_name_en = models.CharField(max_length=255)
 	category_name_ht = models.CharField(max_length=255)
+	def get_category_name(self):
+		"""Get the articles title depending on current language selected"""
+		current_language = get_language() 
+		if current_language == 'ht':
+			return self.category_name_ht
+		else:
+			return self.category_name_en
 
 	def __str__(self):
 		return f"{self.category_name_en} / {self.category_name_ht}"
@@ -38,4 +49,28 @@ class Article(models.Model):
 	like_counter = models.PositiveIntegerField(default=0)
 
 	def __str__(self):
-		return f"{self.article_title_en} / {self.article_title_ht}"
+		return f"{self.article_title_en} / {self.article_title_ht}" 
+
+	def get_title(self):
+		"""Get the articles title depending on current language selected"""
+		current_language = get_language() 
+		if current_language == 'ht':
+			return self.article_title_ht
+		else:
+			return self.article_title_en
+	def get_content(self, current_language):
+		"""Get the articles content depending on current language selected"""
+		current_language = get_language() 
+		if current_language == 'ht':
+			return self.article_title_ht
+		else:
+			return self.article_title_en 
+
+	def get_contributors(self):
+		return list(self.contributors.all())
+
+	def get_absolute_url(self):
+		# Assuming you have a URL pattern named 'article_detail' that takes an 'article_id'
+		return reverse('article_detail', args=[str(self.id)])
+
+
