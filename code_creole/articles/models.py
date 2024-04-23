@@ -58,13 +58,13 @@ class Article(models.Model):
 			return self.article_title_ht
 		else:
 			return self.article_title_en
-	def get_content(self, current_language):
+	def get_content(self):
 		"""Get the articles content depending on current language selected"""
 		current_language = get_language() 
 		if current_language == 'ht':
-			return self.article_title_ht
+			return self.article_content_ht
 		else:
-			return self.article_title_en 
+			return self.article_content_en 
 
 	def get_contributors(self):
 		return list(self.contributors.all())

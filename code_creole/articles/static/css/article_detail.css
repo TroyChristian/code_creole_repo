@@ -133,8 +133,8 @@ select {
 }
 
 .logo {
-    width: 75vw;
-    height: 75vh;
+    width: 25vw;
+    height: 50vh;
     align-items: center;
     justify-content: center;
     justify-self: center;
@@ -154,7 +154,8 @@ select {
 }
 
 .article_content {
-    padding: 2rem;
+    padding: 2rem; 
+    color:#fff;
 }
 
 .article_content p {
@@ -208,7 +209,7 @@ body, html {
 .select_div {
     display: flex;
     flex-direction: column-reverse;
-    align-items: baseline;
+    align-items: end;
     justify-content: space-between;
     padding: 10px;
     height: 100px;
@@ -381,7 +382,44 @@ form > textarea {
     width: 100%;
     resize: none;
     height: 50px;
+} 
+
+/* General text styling */
+.article {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding: 20px;
 }
+
+/* Styling for code blocks */
+.code-block {
+    background-color: #f4f4f4; /* Light grey background */
+    border-left: 5px solid #f90; /* Orange left border */
+    padding: 10px 15px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto; /* Ensures the block is scrollable horizontally if the code is too long */
+    display: block;
+    white-space: pre-wrap; /* Maintains whitespace formatting */
+    margin: 10px 0; /* Adds top and bottom spacing for separation */
+    font-size: 0.9em;
+    color:#000000;
+
+} 
+
+
+
+/* Styling for inline code */
+.inline-code {
+    background-color: #eef;
+    border: 1px solid #bdd;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color:#000000;
+}
+
 
 /* Custom CSS for smaller card */
 

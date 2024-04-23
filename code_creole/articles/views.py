@@ -5,14 +5,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import get_language 
 from django.utils.translation import activate
 from django.utils.translation import gettext as _
-from .models import Article, Category, Tag
+from .models import Article, Category, Tag 
+from .handlers import format_content
 
 
 #python 
 import json
 
 #third partys 
-import requests
+import requests 
+import markdown 
 # Create your views here.
 
 AVAILABLE_LANGUAGES = ['en', 'ht']
@@ -27,8 +29,11 @@ def home(request):
 	return render(request, 'articles/home.html', {'articles': articles})
 
 def article_detail_view(request, article_id):
+	md = markdown.Markdown(extensions=["fenced_code"])
 	article = get_object_or_404(Article, pk=article_id)
-	context = {"article":article}
+	raw_article_content = article.get_content()
+	formatted_content = format_content(raw_article_content)
+	context = {"article":article, "formatted_content":formatted_content} 
 	return render(request, 'articles/article_detail.html', context)
 
 @csrf_exempt
