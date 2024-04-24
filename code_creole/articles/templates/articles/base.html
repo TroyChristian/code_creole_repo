@@ -1,0 +1,107 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/nav_bar_footer.css' %}">
+{% block header %}
+
+{% endblock %}
+</head>
+<body>
+    <div class="home_nav_con">
+        <div class="sub_con">
+            <div class="img_div"> <a href="{% url 'home' %}"><img class="header_logo hidden-xs hidden-sm img-responsive" id="header_logo" src="{% static 'icons/codecreole.jpg' %}" alt="Code Creole logo"> </a></div>
+            <div class="grid_box">
+                <div class="">
+                    <h2 class="nav_title">Code Creole</h2>
+                    <h4 class="sub_title">{% trans "source" %}</h4>
+                </div>
+                <div class="search_con">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="sign_in">
+                    <button>Sign In</button>
+                </div>
+                <div class="language">
+                    <form action="/i18n/setlang/" method="post" id="language_form">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{% url 'home' %}"/>
+                        <select name="language" onchange="changeLanguage()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% for lang in LANGUAGES %}
+                                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
+                                    {{ lang.1 }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    <!-- Content from child templates will go here -->
+    {% endblock %}
+
+    <footer>
+        <div class="footer">
+            <a> {% trans "About Code Creole" %}</a>
+            <a> {% trans "Contact Us" %}</a>
+            <a class="social" href="https://twitter.com/CodeCreole1804" target="_blank"> 
+                <div>
+                 <p> {% trans "Follow Us" %}:</p>
+                 <img class="social_icon" src="static/icons/x_logo.jpeg">
+                </div>
+            </a>
+
+            <a class="social" href="https://www.youtube.com/@CodeCreole" target="_blank"> 
+                <div>
+                
+                 <p>{% trans "Follow Us" %}:</p>
+                 <img class="social_icon" src="static/icons/youtube-music-logo-youtube.png">
+             
+                </div>
+            </a>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/base.js' %}"></script>
+        <!--- javascript tag --->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <!-- javascript for toggling currently selected language -->
+    <script>
+function changeLanguage() {
+        // Get the current URL from the window location
+    var currentUrl = window.location.href;
+
+    // Set the 'next' input field to the current URL
+    document.getElementsByName('next')[0].value = currentUrl;
+
+    // Log to console for debugging (optional)
+    console.log("Redirecting to:", currentUrl);
+
+    // Submit the form
+    document.getElementById('language_form').submit();
+}
+</script>
+{% block script %}
+
+{% endblock %}
+    </body>
+}
+}
+</html>
+
+
+

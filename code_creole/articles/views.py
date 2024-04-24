@@ -19,6 +19,10 @@ import requests
 AVAILABLE_LANGUAGES = ['en', 'ht']
 LANGUAGE_SESSION_KEY = 'django_language'
 
+
+def sign_up(request):
+	return render(request, 'articles/sign-up.html')
+
 def home(request):
 	articles = Article.objects.all().order_by("-created_at")
 	categories = Category.objects.all() 

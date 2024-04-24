@@ -266,7 +266,7 @@ section {
 }
 
 .water_mark {
-   position: absolute;
+  /* position: absolute;*/
    width: 150px;
    height: 100px;
    right: 5px;
