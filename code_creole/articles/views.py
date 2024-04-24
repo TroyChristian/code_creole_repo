@@ -4,10 +4,15 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import get_language 
 from django.utils.translation import activate
+#Django
 from django.utils.translation import gettext as _
+from django.contrib.auth import login , logout, authenticate, get_user_model, update_session_auth_hash
+from django.contrib import messages
 from .models import Article, Category, Tag 
 from .handlers import format_content
 
+#this app
+from .forms import LoginForm
 
 #python 
 import json
@@ -23,13 +28,47 @@ LANGUAGE_SESSION_KEY = 'django_language'
 def sign_up(request):
 	return render(request, 'articles/sign-up.html')
 
+def login_view(request):
+	if request.method == "GET":
+		form = LoginForm()
+		context = {"form":form}
+		return render(request, "articles/login.html", context)
+
+
+	if request.method == "POST":
+		form = LoginForm(request.POST or None)
+		if form.is_valid(): #Captcha is checked on form validation
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				try:
+					login(request, user)
+					
+					return redirect('home')
+				except Exception as e:
+					messages.error(request, f"{e}")
+					return redirect("login_view")
+			else:
+				messages.error(request, "Invalid username/password.")
+				return redirect("login_view")
+		else: 
+			messages.error(request, "Invalid username/password.")
+			return redirect("login_view")
+
+
+def logout_view(request):
+	logout(request)
+	return redirect('home')
+
 def home(request):
-	articles = Article.objects.all().order_by("-created_at")
-	categories = Category.objects.all() 
-	tags = Tag.objects.all() 
-	#search_form_here
-	
-	return render(request, 'articles/home.html', {'articles': articles})
+	if request.method == "GET":
+		articles = Article.objects.all().order_by("-created_at")
+		categories = Category.objects.all() 
+		tags = Tag.objects.all() 
+		#search_form_here
+		
+		return render(request, 'articles/home.html', {'articles': articles})
 
 def article_detail_view(request, article_id):
 	current_language = get_language()
