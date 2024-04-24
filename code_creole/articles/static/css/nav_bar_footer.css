@@ -1,0 +1,551 @@
+:root {
+    --text-50: rgb(235, 233, 252);
+    --text-100: rgb(215, 210, 249);
+    --text-200: rgb(175, 166, 242);
+    --text-300: rgb(135, 121, 236);
+    --text-400: rgb(94, 76, 230);
+    --text-500: rgb(54, 32, 223);
+    --text-600: rgb(43, 25, 179);
+    --text-700: rgb(33, 19, 134);
+    --text-800: rgb(22, 13, 89);
+    --text-900: rgb(11, 6, 45);
+    --text-950: rgb(5, 3, 22);
+
+    --background-50: rgb(235, 235, 250);
+    --background-100: rgb(214, 214, 245);
+    --background-200: rgb(173, 173, 235);
+    --background-300: rgb(133, 133, 224);
+    --background-400: rgb(92, 92, 214);
+    --background-500: rgb(51, 51, 204);
+    --background-600: rgb(41, 41, 163);
+    --background-700: rgb(31, 31, 122);
+    --background-800: rgb(20, 20, 82);
+    --background-900: rgb(10, 10, 41);
+    --background-950: rgb(5, 5, 20);
+
+    --primary-50: rgb(234, 234, 251);
+    --primary-100: rgb(214, 212, 247);
+    --primary-200: rgb(173, 169, 239);
+    --primary-300: rgb(132, 126, 231);
+    --primary-400: rgb(91, 84, 222);
+    --primary-500: rgb(49, 41, 214);
+    --primary-600: rgb(40, 33, 171);
+    --primary-700: rgb(30, 24, 129);
+    --primary-800: rgb(20, 16, 86);
+    --primary-900: rgb(10, 8, 43);
+    --primary-950: rgb(5, 4, 21);
+
+    --secondary-50: rgb(231, 229, 255);
+    --secondary-100: rgb(207, 204, 255);
+    --secondary-200: rgb(158, 153, 255);
+    --secondary-300: rgb(110, 102, 255);
+    --secondary-400: rgb(61, 51, 255);
+    --secondary-500: rgb(13, 0, 255);
+    --secondary-600: rgb(10, 0, 204);
+    --secondary-700: rgb(8, 0, 153);
+    --secondary-800: rgb(5, 0, 102);
+    --secondary-900: rgb(3, 0, 51);
+    --secondary-950: rgb(1, 0, 26);
+
+    --accent-50: rgb(230, 229, 255);
+    --accent-100: rgb(206, 204, 255);
+    --accent-200: rgb(156, 153, 255);
+    --accent-300: rgb(107, 102, 255);
+    --accent-400: rgb(58, 51, 255);
+    --accent-500: rgb(8, 0, 255);
+    --accent-600: rgb(7, 0, 204);
+    --accent-700: rgb(5, 0, 153);
+    --accent-800: rgb(3, 0, 102);
+    --accent-900: rgb(2, 0, 51);
+    --accent-950: rgb(1, 0, 26);
+}
+
+/* 
+    this is left commented till i add the javascript to toggole these colors
+    :root[data-theme="dark"] {
+    --text: #eae9fc;
+    --background: #010104;
+    --primary: #3a31d8;
+    --secondary: #020024;
+    --accent: #0600c2;
+} */
+
+*::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color:  #17171a;
+}
+
+a {
+    text-decoration: none;
+}
+
+.content {
+    width: 100%;
+    height: 200%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+.home_nav_con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0c0c; /* Dark background color */
+    padding: 20px;
+    margin: -20px -20px 15px -20px;
+    color: #fff; /* White text color */
+}
+
+.sub_con {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img_div {
+    flex: 1; /* Logo area */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header_logo {
+    max-width: 100px; /* Adjust based on your logo size */
+    height: auto;
+    border-radius: 50%;
+}
+
+.grid_box {
+    flex: 16; /* Center column for title, slogan, and search */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search_con {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Space between slogan and search bar */
+    width: 60%;
+    
+}
+
+.search-input {
+    border: none;
+    padding: 10px;
+    margin-right: 5px;
+    outline: none;
+    flex-grow: 1;
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button .fas {
+    color: #e4e4e4;
+    font-size: 20px;
+  }
+
+.search_con input[type="search"] {
+    padding: 10px;
+    margin-left: 10px; /* Space between icon and input field */
+    background-color: #1a1a1a; /* Slightly lighter than the nav background */
+    border: none;
+    color: #fff; /* White text color */
+    width: 100%;
+}
+
+.search_con input[type="search"]::placeholder {
+    color: #ccc; /* Lighter color for placeholder text */
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    height: 100px;
+    margin-right: 20px;
+}
+
+
+
+.sign_in a, .controls  button {
+    background-color: #0c0c0c;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border: white solid 1px;
+    border-radius: 0.2rem;
+}
+
+.category_select details {
+    margin-left: 20px; /* Space between language select and categories */
+}
+
+.category_select summary {
+    cursor: pointer;
+}
+
+
+/* Ensure category/tag checkboxes and labels are aligned and readable */
+.input_categories_container .sub_div, .input_tag_container .sub_div {
+    margin: 5px 0;
+}
+
+.input_categories_container label, .input_tag_container label {
+    margin-left: 5px;
+}
+
+
+.home_dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 200%;
+
+}
+
+.num1_articles_con {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+.num1_article {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.art1_link {
+    flex: 1; /* Allows the image link to grow and fill the space */
+}
+
+.art1_link img {
+    width: 100%; /* Make the image responsive within its container */
+    height: 100%;
+    display: block;
+    
+}
+
+.container {
+    padding: 0 10px; 
+    margin-left: 5px;
+}
+
+/* Enhance readability and aesthetics */
+h3, .author, .text, .info {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.time_to_read, .date, .name {
+    color: #585656ef;
+}
+
+
+
+
+
+.articles_con {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    width: auto;
+    margin: auto;
+    gap: 25px;
+    align-self: center;
+    padding: 2px;
+}
+
+.article {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    margin: 20px auto; 
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgb(147, 169, 255);
+    
+}
+
+.article > * {
+    width: 100%;
+}
+
+
+.article > a > p {
+    color: blue;
+}
+
+.author_block {
+    display: flex;
+
+}
+
+.extras {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+
+.flex_div {
+    display: flex;
+  
+    justify-content: space-around;
+    color: #585656ef;
+}
+
+.flex_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+
+.info {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tri_row {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    width: auto;
+    margin: auto;
+    gap: 25px;
+    align-self: center;
+    padding: 2px;
+    margin-top: 15px;
+}
+
+
+
+/* Ensure the images and other content are also centered and well-structured */
+.thumb_nail, .extras, .author_block {
+    text-align: center;
+}
+
+ .thumb_nail {
+    margin: 0 auto; 
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+
+.sub_logo {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.name { 
+    color: #585656ef;
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center; 
+    background-color: #0c0c0c;
+    color: #fff;
+    margin: 15px -20px -20px -20px; 
+    height: 100px;
+}
+
+.footer a {
+    position: relative;
+    margin: 0 15px; 
+    text-decoration: none; 
+    color: #fff; 
+    transition: color 0.3s ease-in-out; 
+}
+
+.footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px; 
+    bottom: -5px; 
+    left: 50%;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out; 
+}
+
+.footer a:hover::after {
+    width: 100%; 
+    left: 0; 
+}
+
+.footer a:hover {
+    color: #e50914; 
+}
+
+
+
+.social {
+    display: flex;
+    flex-direction: row;
+}
+
+.social > div {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.social_icon {
+    width: auto;
+    height: 50px;
+}
+
+
+/* Media Queries */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .sub_logo {
+        margin-bottom: 10px;
+    }
+}
+
+
+@media screen and (max-width: 1250px) {
+    .tri_row  {
+        margin-top: 15px;
+        grid-template-columns: repeat(2, 2fr);
+        justify-content: center;
+        width: auto;
+        margin: auto;
+        gap: 25px;
+        align-self: center;
+        padding: 2px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width:951px)  {
+   
+    
+    .num1_article {
+       
+    }
+}
+
+@media screen and (min-width:400px) and (max-width: 825px) {
+    .tri_row  {
+        margin-top: 15px;
+        grid-template-columns: repeat(1, 4fr);
+        justify-content: center;
+        width: auto;
+        margin: auto;
+        gap: 25px;
+        align-self: center;
+        padding: 2px;
+        margin-top: 15px;
+    }
+
+    .articles_con {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(1, 4fr);
+        justify-content: center;
+        width: auto;
+        margin: auto;
+        gap: 25px;
+        align-self: center;
+        padding: 2px;
+      }
+
+    .num1_article {
+        width: 150;
+        margin-left: 15px;
+        margin-right: 15px;
+    }  
+
+    .header_logo  {
+        display: hidden;
+    }
+}
+
+@media screen and (min-width:100px) and (max-width:600px) {
+    .text_div {
+        display: flex;
+        flex-direction: column;
+    }  
+
+    .header_logo {
+        display: none;
+    }
+
+    .sub_con {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .search_con {
+        width: auto;
+    }
+
+    .controls {
+        margin-top: 10px;
+    }
+
+
+    .articles_con {
+        display: grid;
+        grid-template-columns: repeat(1, 4fr);
+    }
+
+    .tri_row {
+        display: grid;
+        grid-template-columns: repeat(1, 4fr); 
+    }
+
+    .article {
+        width: auto;
+    }
+
+    .footer {
+        display: flex;
+        padding: 25px;
+    }
+
+    .footer > a {
+        flex-shrink: 1;
+    }
+}
