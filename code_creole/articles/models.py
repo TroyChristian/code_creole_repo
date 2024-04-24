@@ -4,6 +4,19 @@ from django.utils.translation import get_language
 from django.urls import reverse
 #this app
 
+#third parties
+#PIL
+#from PIL import Image
+from PIL import Image as PILImage
+from pilkit.processors import ResizeToFill
+from pilkit.processors import ResizeToFit
+
+
+#Django Image Kit 
+from imagekit.models import ProcessedImageField
+from imagekit.models import ImageSpecField
+from imagekit.processors import Adjust
+
 
 class Category(models.Model):
 	category_name_en = models.CharField(max_length=255)
@@ -42,6 +55,8 @@ class Article(models.Model):
 	article_title_ht = models.CharField(max_length=255)
 	article_content_en = models.TextField()
 	article_content_ht = models.TextField()
+	main_image = models.ImageField(upload_to="article_main_images", null=True, blank=True) #if is main image show in LTD and in gallery view, else show static/defaults/no_image_available
+	thumbnail = ImageSpecField(source="main_image", processors=[ResizeToFit(433,243)], format="JPEG", options={"qaulity":100}) #show on listing card if is main image
 	contributors = models.ManyToManyField(User, related_name="article_contributors")
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_creator")
 	created_at = models.DateTimeField(auto_now_add=True)

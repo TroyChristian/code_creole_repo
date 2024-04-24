@@ -14,7 +14,6 @@ import json
 
 #third partys 
 import requests 
-import markdown 
 # Create your views here.
 
 AVAILABLE_LANGUAGES = ['en', 'ht']
@@ -29,11 +28,11 @@ def home(request):
 	return render(request, 'articles/home.html', {'articles': articles})
 
 def article_detail_view(request, article_id):
-	md = markdown.Markdown(extensions=["fenced_code"])
+	current_language = get_language()
 	article = get_object_or_404(Article, pk=article_id)
 	raw_article_content = article.get_content()
 	formatted_content = format_content(raw_article_content)
-	context = {"article":article, "formatted_content":formatted_content} 
+	context = {"article":article, "formatted_content":formatted_content, "current_language":current_language} 
 	return render(request, 'articles/article_detail.html', context)
 
 @csrf_exempt
@@ -41,7 +40,6 @@ def set_language(request):
 	if request.method == 'POST':
 		data = json.loads(request.body)
 		language = data.get('language')
-		import pdb; pdb.set_trace()
 		if language in AVAILABLE_LANGUAGES:
 			activate(language)
 			request.session[LANGUAGE_SESSION_KEY] = language

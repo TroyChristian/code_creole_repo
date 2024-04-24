@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-10 23:40-0400\n"
+"POT-Creation-Date: 2024-04-23 19:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,49 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: articles/templates/articles/article_detail.html:22
-#: articles/templates/articles/home.html:24
+#: articles/templates/articles/article_detail.html:29
+msgid "Published in"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:30
+msgid "Published by"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:31
+#: articles/templates/articles/home.html:105
+msgid "Contributers"
+msgstr "Contributers"
+
+#: articles/templates/articles/article_detail.html:34
+#: articles/templates/articles/home.html:125
+msgid "time_to_read"
+msgstr "time to read"
+
+#: articles/templates/articles/article_detail.html:34
+#: articles/templates/articles/home.html:125
+msgid "minutes"
+msgstr "minutes"
+
+#: articles/templates/articles/home.html:23
 msgid "source"
 msgstr ""
 "Your source for learning about technology in Haitian Creole. Powered by AI."
 
-#: articles/templates/articles/article_detail.html:42
-msgid "Published in"
-msgstr ""
-
-#: articles/templates/articles/article_detail.html:43
-msgid "Published by"
-msgstr ""
-
-#: articles/templates/articles/article_detail.html:44
-#: articles/templates/articles/home.html:92
-msgid "Contributers"
-msgstr "Contributers"
-
-#: articles/templates/articles/article_detail.html:47
-#: articles/templates/articles/home.html:110
-msgid "time_to_read"
-msgstr "time to read"
-
-#: articles/templates/articles/article_detail.html:47
-#: articles/templates/articles/home.html:110
-msgid "minutes"
-msgstr "minutes"
-
-#: articles/templates/articles/home.html:90
+#: articles/templates/articles/home.html:103
 msgid "Created by"
 msgstr "Created by"
 
-#: articles/templates/articles/home.html:171
+#: articles/templates/articles/home.html:420
 msgid "About Code Creole"
 msgstr "About Code Creole"
 
-#: articles/templates/articles/home.html:172
+#: articles/templates/articles/home.html:421
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: articles/templates/articles/home.html:175
-#: articles/templates/articles/home.html:183
+#: articles/templates/articles/home.html:424
+#: articles/templates/articles/home.html:432
 msgid "Follow Us"
 msgstr "Follow Us"
 
