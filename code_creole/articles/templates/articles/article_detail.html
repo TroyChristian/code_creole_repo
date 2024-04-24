@@ -29,7 +29,11 @@
                     <div class="title_block  col-xs col-sm col-md col-lg">
                         <h1 class="title"> {{ article.get_title }}</h1>
                         <div class="publishers_block">
+                            {% if article.main_image %}
+                            <img class="logo img-responsive" src="{{ article.main_image.url }}" alt="Publisher Logo">
+                            {% else %}
                             <img class="logo img-responsive" src="/static/css/code_creole_log.png" alt="Publisher Logo">
+                            {% endif %}
                             <p> {% trans "Published in" %}: {{ article.category.get_category_name }}</p>
                             <p> {% trans "Published by" %}: {{ article.created_by }}</p>
                             <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
