@@ -1,0 +1,28 @@
+/* Base styling for all messages */
+.message {
+    color: #FFFFFF; /* White text color */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Specific styles for different types of messages */
+.info {
+    background-color: #6c757d; /* Grey background for informational messages */
+}
+
+.success {
+    background-color: #28a745; /* Green background for success messages, adjust if you want grey shades */
+}
+
+.warning {
+    background-color: #ffc107; /* Yellow background for warnings, adjust if you want grey shades */
+}
+
+.error {
+    background-color: #dc3545; /* Red background for error messages, adjust if you want grey shades */
+}
+
+/* Additional styles could include transitions, shadows, or animations */

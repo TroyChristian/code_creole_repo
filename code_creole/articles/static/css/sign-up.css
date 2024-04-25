@@ -1,45 +1,59 @@
-:root {
-    --text-50: rgb(235, 233, 252);
-    --primary-500: rgb(49, 41, 214);
-    --background-50: rgb(235, 235, 250);
-    --accent-400: rgb(58, 51, 255);
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--background-50);
-    color: var(--text-50);
-    margin: 0;
-    padding: 0;
+html, body {
+    height: 100%; /* Ensures the full height can be used for layout calculations */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column; /* Stack elements vertically */
 }
+
+body > * {
+    flex-shrink: 0; /* Prevent navbar and footer from shrinking */
+}
+
+.content {
+    flex-grow: 1; /* Allow content area to take up any remaining space */
+    display: flex; /* Enables flexbox properties for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add padding around the content for spacing */
+}
+
 .signup-form {
-    background-color: var(--primary-500);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%; /* Full width of the content area */
+    max-width: 400px; /* Maximum width of the form */
+    padding: 20px; /* Padding inside the form */
+    background-color:#b0bec5; /* Primary color background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: auto;
 }
-h2 {
-   
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Comfortable padding inside inputs */
+    margin-bottom: 15px; /* Space between form fields */
+    border: 1px solid #ccc; /* Subtle border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
 }
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 4px;
-}
+
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--accent-400);
-    color: white;
-    
+    width: 100%; /* Full width button */
+    padding: 10px; /* Comfortable padding inside button */
+    background-color: var(--accent-400); /* Accent color background */
+    color: white; /* White text on accent background */
+    border: none; /* No border for button */
+    border-radius: 4px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .signup-form {
+        padding: 10px; /* Less padding on smaller screens */
+        max-width: 100%; /* Allow form to take full width on small devices */
+    }
+
+    .content {
+        padding: 10px; /* Less padding around the content area on smaller screens */
+    }
+}

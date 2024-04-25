@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:34-0400\n"
+"POT-Creation-Date: 2024-04-25 13:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,118 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: articles/templates/articles/article_detail.html:29
+#: articles/forms.py:15 articles/forms.py:19 articles/forms.py:35
+msgid "Username"
+msgstr ""
+
+#: articles/forms.py:24 articles/forms.py:28 articles/forms.py:36
+msgid "Password"
+msgstr ""
+
+#: articles/forms.py:34
+msgid "Email Address"
+msgstr ""
+
+#: articles/forms.py:37
+msgid "Confirm Password"
+msgstr ""
+
+#: articles/forms.py:50
+msgid "Passwords don't match"
+msgstr ""
+
+#: articles/forms.py:58
+msgid "Invalid email format."
+msgstr ""
+
+#: articles/forms.py:62
+msgid "Email already registered."
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:36
 msgid "Published in"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:30
+#: articles/templates/articles/article_detail.html:37
 msgid "Published by"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:31
-#: articles/templates/articles/home.html:105
+#: articles/templates/articles/article_detail.html:38
+#: articles/templates/articles/home.html:47
+#: articles/templates/articles/home.html:103
 msgid "Contributers"
 msgstr "Contributers"
 
-#: articles/templates/articles/article_detail.html:34
-#: articles/templates/articles/home.html:125
+#: articles/templates/articles/article_detail.html:41
+#: articles/templates/articles/home.html:73
+#: articles/templates/articles/home.html:112
 msgid "time_to_read"
 msgstr "time to read"
 
-#: articles/templates/articles/article_detail.html:34
-#: articles/templates/articles/home.html:125
+#: articles/templates/articles/article_detail.html:41
+#: articles/templates/articles/home.html:73
+#: articles/templates/articles/home.html:112
 msgid "minutes"
 msgstr "minutes"
 
-#: articles/templates/articles/home.html:23
+#: articles/templates/articles/base.html:20
 msgid "source"
 msgstr ""
 "Your source for learning about technology in Haitian Creole. Powered by AI."
 
-#: articles/templates/articles/home.html:103
-msgid "Created by"
-msgstr "Created by"
+#: articles/templates/articles/base.html:32
+#: articles/templates/articles/login.html:14
+#: articles/templates/articles/login.html:19
+msgid "Login"
+msgstr ""
 
-#: articles/templates/articles/home.html:420
+#: articles/templates/articles/base.html:38
+msgid "Logout"
+msgstr ""
+
+#: articles/templates/articles/base.html:69
 msgid "About Code Creole"
 msgstr "About Code Creole"
 
-#: articles/templates/articles/home.html:421
+#: articles/templates/articles/base.html:70
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: articles/templates/articles/home.html:424
-#: articles/templates/articles/home.html:432
+#: articles/templates/articles/base.html:73
+#: articles/templates/articles/base.html:81
 msgid "Follow Us"
 msgstr "Follow Us"
 
-#: code_creole/settings.py:139
+#: articles/templates/articles/home.html:43
+#: articles/templates/articles/home.html:102
+msgid "Created by"
+msgstr "Created by"
+
+#: articles/templates/articles/login.html:22
+msgid "Don't have an account?"
+msgstr ""
+
+#: articles/templates/articles/login.html:23
+#: articles/templates/articles/sign-up.html:17
+msgid "Sign Up"
+msgstr ""
+
+#: articles/views.py:44
+msgid "Account created!  Welcome to Code Creole!"
+msgstr ""
+
+#: articles/views.py:47
+msgid "An error occured during your request. Please try again."
+msgstr ""
+
+#: articles/views.py:73 articles/views.py:76
+msgid "Invalid username/password."
+msgstr ""
+
+#: code_creole/settings.py:146
 msgid "English"
 msgstr "English"
 
-#: code_creole/settings.py:140
+#: code_creole/settings.py:147
 msgid "Haitian Creole"
 msgstr "Haitian Creole"
