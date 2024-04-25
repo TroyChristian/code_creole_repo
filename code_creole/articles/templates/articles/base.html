@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'css/nav_bar_footer.css' %}">
+<link rel="icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
 {% block header %}
 
 {% endblock %}
@@ -28,7 +29,18 @@
             </div>
             <div class="controls">
                 <div class="sign_in">
-                    <button>Sign In</button>
+                    {% if request.user.is_anonymous %}
+                    <a href="{% url 'login_view'%}">{% trans 'Login' %}</a>
+                    {% else %}
+                        <div class="w3-dropdown-hover hover">
+                        <button class="w3-buttton w3-hover-white user">{{ request.user.username }}</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                          
+                          <a class="w3-bar-item w3-button link-item" href="{% url 'logout_view' %}">{% trans 'Logout' %}</a>
+                        </div>
+                      </div>
+
+                    {% endif %}
                 </div>
                 <div class="language">
                     <form action="/i18n/setlang/" method="post" id="language_form">

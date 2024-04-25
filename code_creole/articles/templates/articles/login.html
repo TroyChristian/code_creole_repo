@@ -1,0 +1,26 @@
+{% extends 'articles/base.html'%}
+{% load static %}
+{% load i18n %}
+{% block header %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'articles/messages.html' %}
+    <div class="form-container">
+    <div class="signup-form">
+        <h2>{% trans 'Login' %}</h2>
+        <form action="{% url 'login_view' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+
+            <button type="submit">{% trans 'Login' %}</button>
+
+        </form>
+        <p> {% trans "Don't have an account?" %} </p>
+        <a href="{% url 'sign_up' %}"> <button>{% trans 'Sign Up' %}</button> </a>
+    </div>
+</div> <!-- end form container -->
+{% endblock %}

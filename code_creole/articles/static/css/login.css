@@ -22,7 +22,7 @@ body > * {
     width: 100%; /* Full width of the content area */
     max-width: 400px; /* Maximum width of the form */
     padding: 20px; /* Padding inside the form */
-    background-color:#b0bec5; /* Primary color background */
+    background-color: #b0bec5;; /* Primary color background */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     margin: auto;
@@ -57,3 +57,4 @@ button {
         padding: 10px; /* Less padding around the content area on smaller screens */
     }
 }
+

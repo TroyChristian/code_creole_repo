@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:34-0400\n"
+"POT-Creation-Date: 2024-04-25 13:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,117 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: articles/templates/articles/article_detail.html:29
+#: articles/forms.py:15 articles/forms.py:19 articles/forms.py:35
+msgid "Username"
+msgstr "Non itilizatè"
+
+#: articles/forms.py:24 articles/forms.py:28 articles/forms.py:36
+msgid "Password"
+msgstr "Modpas"
+
+#: articles/forms.py:34
+msgid "Email Address"
+msgstr "Adrès imel"
+
+#: articles/forms.py:37
+msgid "Confirm Password"
+msgstr "Konfime modpas"
+
+#: articles/forms.py:50
+msgid "Passwords don't match"
+msgstr "Modpas yo pa koresponn"
+
+#: articles/forms.py:58
+msgid "Invalid email format."
+msgstr "Fòma imèl ki pa valab."
+
+#: articles/forms.py:62
+msgid "Email already registered."
+msgstr "Imèl deja anrejistre."
+
+#: articles/templates/articles/article_detail.html:36
 msgid "Published in"
 msgstr "Pibliye nan"
 
-#: articles/templates/articles/article_detail.html:30
+#: articles/templates/articles/article_detail.html:37
 msgid "Published by"
 msgstr "Pibliye pa"
 
-#: articles/templates/articles/article_detail.html:31
-#: articles/templates/articles/home.html:105
+#: articles/templates/articles/article_detail.html:38
+#: articles/templates/articles/home.html:47
+#: articles/templates/articles/home.html:103
 msgid "Contributers"
 msgstr "Kontribye yo"
 
-#: articles/templates/articles/article_detail.html:34
-#: articles/templates/articles/home.html:125
+#: articles/templates/articles/article_detail.html:41
+#: articles/templates/articles/home.html:73
+#: articles/templates/articles/home.html:112
 msgid "time_to_read"
 msgstr "tan pou li"
 
-#: articles/templates/articles/article_detail.html:34
-#: articles/templates/articles/home.html:125
+#: articles/templates/articles/article_detail.html:41
+#: articles/templates/articles/home.html:73
+#: articles/templates/articles/home.html:112
 msgid "minutes"
 msgstr "minit"
 
-#: articles/templates/articles/home.html:23
+#: articles/templates/articles/base.html:20
 msgid "source"
 msgstr "Sous ou pou aprann sou teknoloji an kreyòl ayisyen."
 
-#: articles/templates/articles/home.html:103
-msgid "Created by"
-msgstr "Kreye pa"
+#: articles/templates/articles/base.html:32
+#: articles/templates/articles/login.html:14
+#: articles/templates/articles/login.html:19
+msgid "Login"
+msgstr "Konekte"
 
-#: articles/templates/articles/home.html:420
+#: articles/templates/articles/base.html:38
+msgid "Logout"
+msgstr "Dekonekte"
+
+#: articles/templates/articles/base.html:69
 msgid "About Code Creole"
 msgstr "Sou Kòd Kreyòl"
 
-#: articles/templates/articles/home.html:421
+#: articles/templates/articles/base.html:70
 msgid "Contact Us"
 msgstr "Kontakte Nou"
 
-#: articles/templates/articles/home.html:424
-#: articles/templates/articles/home.html:432
+#: articles/templates/articles/base.html:73
+#: articles/templates/articles/base.html:81
 msgid "Follow Us"
 msgstr "Swiv Nou"
 
-#: code_creole/settings.py:139
+#: articles/templates/articles/home.html:43
+#: articles/templates/articles/home.html:102
+msgid "Created by"
+msgstr "Kreye pa"
+
+#: articles/templates/articles/login.html:22
+msgid "Don't have an account?"
+msgstr "Ou pa gen yon kont?"
+
+#: articles/templates/articles/login.html:23
+#: articles/templates/articles/sign-up.html:17
+msgid "Sign Up"
+msgstr "Enskri"
+
+#: articles/views.py:44
+msgid "Account created!  Welcome to Code Creole!"
+msgstr "Kont kreye! Byenvini nan Code Creole!"
+
+#: articles/views.py:47
+msgid "An error occured during your request. Please try again."
+msgstr "Yon erè te fèt pandan demann ou an. Tanpri eseye ankò."
+
+#: articles/views.py:73 articles/views.py:76
+msgid "Invalid username/password."
+msgstr "Non itilizatè/modpas envalid."
+
+#: code_creole/settings.py:146
 msgid "English"
 msgstr "Angle"
 
-#: code_creole/settings.py:140
+#: code_creole/settings.py:147
 msgid "Haitian Creole"
 msgstr "Kreyòl Ayisyen"
