@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import get_language 
@@ -61,7 +62,7 @@ class Article(models.Model):
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_creator")
 	created_at = models.DateTimeField(auto_now_add=True)
 	time_to_read = models.PositiveIntegerField()
-	like_counter = models.PositiveIntegerField(default=0)
+	like_count = models.PositiveIntegerField(default=0)
 
 	def __str__(self):
 		return f"{self.article_title_en} / {self.article_title_ht}" 
@@ -89,3 +90,10 @@ class Article(models.Model):
 		return reverse('article_detail', args=[str(self.id)])
 
 
+class UserLikesArticle(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	article = models.ForeignKey(Article, on_delete=models.CASCADE)
+	
+
+	class Meta:
+		unique_together = ("user", "article")
