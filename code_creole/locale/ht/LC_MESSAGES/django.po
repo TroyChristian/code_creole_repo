@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-25 13:42-0400\n"
+"POT-Creation-Date: 2024-04-26 12:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,30 +71,30 @@ msgstr "tan pou li"
 msgid "minutes"
 msgstr "minit"
 
-#: articles/templates/articles/base.html:20
+#: articles/templates/articles/base.html:21
 msgid "source"
 msgstr "Sous ou pou aprann sou teknoloji an kreyòl ayisyen."
 
-#: articles/templates/articles/base.html:32
+#: articles/templates/articles/base.html:33
 #: articles/templates/articles/login.html:14
 #: articles/templates/articles/login.html:19
 msgid "Login"
 msgstr "Konekte"
 
-#: articles/templates/articles/base.html:38
+#: articles/templates/articles/base.html:39
 msgid "Logout"
 msgstr "Dekonekte"
 
-#: articles/templates/articles/base.html:69
+#: articles/templates/articles/base.html:70
 msgid "About Code Creole"
 msgstr "Sou Kòd Kreyòl"
 
-#: articles/templates/articles/base.html:70
+#: articles/templates/articles/base.html:71
 msgid "Contact Us"
 msgstr "Kontakte Nou"
 
-#: articles/templates/articles/base.html:73
-#: articles/templates/articles/base.html:81
+#: articles/templates/articles/base.html:74
+#: articles/templates/articles/base.html:82
 msgid "Follow Us"
 msgstr "Swiv Nou"
 
@@ -112,17 +112,33 @@ msgstr "Ou pa gen yon kont?"
 msgid "Sign Up"
 msgstr "Enskri"
 
-#: articles/views.py:44
+#: articles/views.py:50
 msgid "Account created!  Welcome to Code Creole!"
 msgstr "Kont kreye! Byenvini nan Code Creole!"
 
-#: articles/views.py:47
+#: articles/views.py:53
 msgid "An error occured during your request. Please try again."
 msgstr "Yon erè te fèt pandan demann ou an. Tanpri eseye ankò."
 
-#: articles/views.py:73 articles/views.py:76
+#: articles/views.py:81 articles/views.py:84
 msgid "Invalid username/password."
 msgstr "Non itilizatè/modpas envalid."
+
+#: articles/views.py:135
+msgid "You must be logged in to like an article."
+msgstr "Ou dwe konekte pou renmen yon atik."
+
+#: articles/views.py:139
+msgid "You liked this article."
+msgstr "Ou te renmen atik sa a."
+
+#: articles/views.py:149
+msgid "You must be logged in to unlike an article."
+msgstr "Ou dwe konekte pou kontrèman ak yon atik."
+
+#: articles/views.py:153
+msgid "You unliked this article."
+msgstr "Ou pa renmen atik sa a."
 
 #: code_creole/settings.py:146
 msgid "English"

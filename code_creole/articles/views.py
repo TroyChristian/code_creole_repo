@@ -1,6 +1,8 @@
 #django
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import get_language 
 from django.utils.translation import gettext_lazy as _
@@ -10,7 +12,8 @@ from django.utils.translation import gettext as _
 from django.contrib.auth import login , logout, authenticate, get_user_model, update_session_auth_hash
 from django.contrib import messages
 from .models import Article, Category, Tag 
-from .handlers import format_content
+import articles.handlers as h
+
 
 #this app
 from .forms import LoginForm, RegistrationForm
@@ -103,8 +106,9 @@ def article_detail_view(request, article_id):
 	current_language = get_language()
 	article = get_object_or_404(Article, pk=article_id)
 	raw_article_content = article.get_content()
-	formatted_content = format_content(raw_article_content)
-	context = {"article":article, "formatted_content":formatted_content, "current_language":current_language} 
+	formatted_content = h.format_content(raw_article_content)
+	user_likes_article = h.check_if_article_liked(request.user, article)
+	context = {"article":article, "formatted_content":formatted_content, "current_language":current_language, "user_likes_article":user_likes_article} 
 	return render(request, 'articles/article_detail.html', context)
 
 @csrf_exempt
@@ -121,3 +125,32 @@ def set_language(request):
 	return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
 
 
+@require_POST
+def like_article(request, article_id):
+
+	user = request.user
+	article = get_object_or_404(Article, pk=article_id)
+
+	if not "is_currently_logged_in" in request.session:
+		messages.error(request, _("You must be logged in to like an article."))
+		return redirect("article_detail", article.pk)
+
+	if h.like_article(user, article):
+		messages.success(request, _("You liked this article."))
+		return redirect("article_detail", article.pk)
+	else:
+		return redirect("article_detail", article.pk)
+
+@require_POST
+def unlike_article(request, article_id):
+	user = request.user 
+	article = get_object_or_404(Article, pk=article_id)
+	if not "is_currently_logged_in" in request.session:
+		messages.error(request, _("You must be logged in to unlike an article."))
+		return redirect("article_detail", article.pk)
+
+	if h.unlike_article(user, article):
+		messages.success(request, _("You unliked this article."))
+		return redirect("article_detail", article.pk)
+	else:
+		return redirect("article_detail", article.pk)

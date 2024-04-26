@@ -49,14 +49,21 @@
                             <button onclick="scrollToComments()" class="like-button" > <!-- Using the same class name to keep things  dry -->
                                 <i class="fas fa-comment"></i> Comment
                             </button>
-                            <span id="commentCount">0</span> Comments
+                            <p id="commentCount">0</p> Comments
                         </div>
-                        <div class="like">
-                            <button class="like-button" onclick="incrementLike()">
-                                <i class="fas fa-thumbs-up"></i>
-                            </button>
-                            <span id="likeCount">0</span> Likes
+                        
+                     <div class="like">
+                    {%  if not user_likes_article %}
+                    <form action="{% url 'like_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
+                    {% else %}
+
+        
+          <form action="{% url 'unlike_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
+        {% endif %} 
+        
+                            <span id="likeCount">{{article.like_count}}</span> Likes
                         </div>
+
                         <button>Save</button>
                     </section>
     

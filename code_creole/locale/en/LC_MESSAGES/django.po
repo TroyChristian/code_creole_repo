@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-25 13:42-0400\n"
+"POT-Creation-Date: 2024-04-26 12:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,31 +72,31 @@ msgstr "time to read"
 msgid "minutes"
 msgstr "minutes"
 
-#: articles/templates/articles/base.html:20
+#: articles/templates/articles/base.html:21
 msgid "source"
 msgstr ""
 "Your source for learning about technology in Haitian Creole. Powered by AI."
 
-#: articles/templates/articles/base.html:32
+#: articles/templates/articles/base.html:33
 #: articles/templates/articles/login.html:14
 #: articles/templates/articles/login.html:19
 msgid "Login"
 msgstr ""
 
-#: articles/templates/articles/base.html:38
+#: articles/templates/articles/base.html:39
 msgid "Logout"
 msgstr ""
 
-#: articles/templates/articles/base.html:69
+#: articles/templates/articles/base.html:70
 msgid "About Code Creole"
 msgstr "About Code Creole"
 
-#: articles/templates/articles/base.html:70
+#: articles/templates/articles/base.html:71
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: articles/templates/articles/base.html:73
-#: articles/templates/articles/base.html:81
+#: articles/templates/articles/base.html:74
+#: articles/templates/articles/base.html:82
 msgid "Follow Us"
 msgstr "Follow Us"
 
@@ -114,16 +114,32 @@ msgstr ""
 msgid "Sign Up"
 msgstr ""
 
-#: articles/views.py:44
+#: articles/views.py:50
 msgid "Account created!  Welcome to Code Creole!"
 msgstr ""
 
-#: articles/views.py:47
+#: articles/views.py:53
 msgid "An error occured during your request. Please try again."
 msgstr ""
 
-#: articles/views.py:73 articles/views.py:76
+#: articles/views.py:81 articles/views.py:84
 msgid "Invalid username/password."
+msgstr ""
+
+#: articles/views.py:135
+msgid "You must be logged in to like an article."
+msgstr ""
+
+#: articles/views.py:139
+msgid "You liked this article."
+msgstr ""
+
+#: articles/views.py:149
+msgid "You must be logged in to unlike an article."
+msgstr ""
+
+#: articles/views.py:153
+msgid "You unliked this article."
 msgstr ""
 
 #: code_creole/settings.py:146
