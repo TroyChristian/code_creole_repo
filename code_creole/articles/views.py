@@ -11,12 +11,12 @@ from django.utils.translation import activate
 from django.utils.translation import gettext as _
 from django.contrib.auth import login , logout, authenticate, get_user_model, update_session_auth_hash
 from django.contrib import messages
-from .models import Article, Category, Tag 
+from .models import Article, Category, Tag, Thread, ThreadMessage
 import articles.handlers as h
 
 
 #this app
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, CommentForm
 
 #python 
 import json
@@ -103,13 +103,44 @@ def home(request):
 		return render(request, 'articles/home.html', {'articles': articles})
 
 def article_detail_view(request, article_id):
-	current_language = get_language()
-	article = get_object_or_404(Article, pk=article_id)
-	raw_article_content = article.get_content()
-	formatted_content = h.format_content(raw_article_content)
-	user_likes_article = h.check_if_article_liked(request.user, article)
-	context = {"article":article, "formatted_content":formatted_content, "current_language":current_language, "user_likes_article":user_likes_article} 
-	return render(request, 'articles/article_detail.html', context)
+	if request.method == "GET":
+		current_language = get_language()
+		article = get_object_or_404(Article, pk=article_id)
+		raw_article_content = article.get_content()
+		formatted_content = h.format_content(raw_article_content)
+		user_likes_article = h.check_if_article_liked(request.user, article)
+		form = CommentForm()
+		num_comments = 0
+		if article.thread:
+			comments = h.get_thread_messages_in_thread(article.thread)
+			num_comments = len(comments)
+
+		context = {"article":article, "formatted_content":formatted_content, "current_language":current_language, "user_likes_article":user_likes_article, "form":form, "comments":comments, "num_comments":num_comments} 
+		return render(request, 'articles/article_detail.html', context)
+
+	if request.method == "POST":
+		if "comment_form" in request.POST:
+			article = get_object_or_404(Article, pk=article_id)
+			if article.thread and article.thread.locked:
+				messages.warning(request, _("Cannot comment in a locked thread."))
+				return redirect(request.path)
+			
+			if not article.thread:
+				thread = Thread.objects.create()
+				article.thread = thread 
+				article.save() 
+			article_thread = article.thread 
+			comment_form = CommentForm(request.POST or None)
+			if comment_form.is_valid():
+				h.add_participants_to_thread(article_thread, [request.user]) #add the commenting user to the thread
+				sender = request.user
+				body = comment_form.cleaned_data.get("body")
+				h.add_thread_message_to_thread(article_thread, sender, body) #creates ThreadMessage, marks it read for the sender.
+				messages.success(request, _("Comment Created"))
+				return redirect(request.path)
+			else:
+				messages.error(request, _("Failed to add comment."))
+				return redirect(request.path)
 
 @csrf_exempt
 def set_language(request):

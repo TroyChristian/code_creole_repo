@@ -326,7 +326,7 @@ button:hover {
     margin-bottom: 20px;
 }
 
-form > textarea {
+.reply_text {
     width: 1200px;
     height: 40px;
     resize: none;
