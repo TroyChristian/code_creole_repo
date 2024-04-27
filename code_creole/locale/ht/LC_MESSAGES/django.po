@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-26 12:49-0400\n"
+"POT-Creation-Date: 2024-04-26 15:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,10 @@ msgstr "Fòma imèl ki pa valab."
 msgid "Email already registered."
 msgstr "Imèl deja anrejistre."
 
+#: articles/forms.py:73
+msgid "add a comment"
+msgstr "ajoute yon kòmantè"
+
 #: articles/templates/articles/article_detail.html:36
 msgid "Published in"
 msgstr "Pibliye nan"
@@ -70,6 +74,27 @@ msgstr "tan pou li"
 #: articles/templates/articles/home.html:112
 msgid "minutes"
 msgstr "minit"
+
+#: articles/templates/articles/article_detail.html:50
+msgid "Comment"
+msgstr "Kòmantè"
+
+#: articles/templates/articles/article_detail.html:52
+#: articles/templates/articles/article_detail.html:87
+msgid "Comments"
+msgstr "Kòmantè yo"
+
+#: articles/templates/articles/article_detail.html:64
+msgid "Likes"
+msgstr "Renmen Yo"
+
+#: articles/templates/articles/article_detail.html:67
+msgid "Save"
+msgstr "Sove"
+
+#: articles/templates/articles/article_detail.html:94
+msgid "Post Comment"
+msgstr "Afiche Kòmantè"
 
 #: articles/templates/articles/base.html:21
 msgid "source"
@@ -124,19 +149,31 @@ msgstr "Yon erè te fèt pandan demann ou an. Tanpri eseye ankò."
 msgid "Invalid username/password."
 msgstr "Non itilizatè/modpas envalid."
 
-#: articles/views.py:135
+#: articles/views.py:125
+msgid "Cannot comment in a locked thread."
+msgstr "Pa ka fè kòmantè nan yon fil fèmen."
+
+#: articles/views.py:139
+msgid "Comment Created"
+msgstr "Kòmantè Kreye"
+
+#: articles/views.py:142
+msgid "Failed to add comment."
+msgstr "Echwe pou ajoute kòmantè."
+
+#: articles/views.py:166
 msgid "You must be logged in to like an article."
 msgstr "Ou dwe konekte pou renmen yon atik."
 
-#: articles/views.py:139
+#: articles/views.py:170
 msgid "You liked this article."
 msgstr "Ou te renmen atik sa a."
 
-#: articles/views.py:149
+#: articles/views.py:180
 msgid "You must be logged in to unlike an article."
 msgstr "Ou dwe konekte pou kontrèman ak yon atik."
 
-#: articles/views.py:153
+#: articles/views.py:184
 msgid "You unliked this article."
 msgstr "Ou pa renmen atik sa a."
 

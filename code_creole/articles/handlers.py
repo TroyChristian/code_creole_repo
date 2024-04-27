@@ -39,6 +39,26 @@ def check_if_article_liked(user, article):
 
 
 
+### Threads and ThreadMessages ###
+# Helper Function 1: Add participants to the thread
+def add_participants_to_thread(thread, participants):
+	thread.participants.add(*participants)
 
+
+# Helper Function 2: Add a message to the thread
+def add_thread_message_to_thread(thread, sender, body):
+	message = ThreadMessage(thread=thread, sender=sender, body=body)
+	message.save()
+	
+
+
+def get_thread_messages_in_thread(thread):
+	thread_messages = ThreadMessage.objects.filter(thread=thread)
+	return thread_messages
+
+
+
+def remove_participants_from_thread(thread, participants):
+	thread.participants.remove(*participants) 
 
 

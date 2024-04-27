@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-26 12:49-0400\n"
+"POT-Creation-Date: 2024-04-26 15:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,6 +46,10 @@ msgstr ""
 msgid "Email already registered."
 msgstr ""
 
+#: articles/forms.py:73
+msgid "add a comment"
+msgstr ""
+
 #: articles/templates/articles/article_detail.html:36
 msgid "Published in"
 msgstr ""
@@ -71,6 +75,27 @@ msgstr "time to read"
 #: articles/templates/articles/home.html:112
 msgid "minutes"
 msgstr "minutes"
+
+#: articles/templates/articles/article_detail.html:50
+msgid "Comment"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:52
+#: articles/templates/articles/article_detail.html:87
+msgid "Comments"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:64
+msgid "Likes"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:67
+msgid "Save"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:94
+msgid "Post Comment"
+msgstr ""
 
 #: articles/templates/articles/base.html:21
 msgid "source"
@@ -126,19 +151,31 @@ msgstr ""
 msgid "Invalid username/password."
 msgstr ""
 
-#: articles/views.py:135
-msgid "You must be logged in to like an article."
+#: articles/views.py:125
+msgid "(Cannot comment in a locked thread."
 msgstr ""
 
 #: articles/views.py:139
+msgid "Comment Created"
+msgstr ""
+
+#: articles/views.py:142
+msgid "Failed to add comment."
+msgstr ""
+
+#: articles/views.py:166
+msgid "You must be logged in to like an article."
+msgstr ""
+
+#: articles/views.py:170
 msgid "You liked this article."
 msgstr ""
 
-#: articles/views.py:149
+#: articles/views.py:180
 msgid "You must be logged in to unlike an article."
 msgstr ""
 
-#: articles/views.py:153
+#: articles/views.py:184
 msgid "You unliked this article."
 msgstr ""
 

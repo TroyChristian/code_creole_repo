@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext_lazy as _
-
+from .models import Thread, ThreadMessage
 
 
 #this app
@@ -64,3 +64,17 @@ class RegistrationForm(forms.ModelForm):
 		# Any other custom email validation logic can go here
 
 		return email
+
+class CommentForm(forms.Form):
+	body = forms.CharField(label=False)
+
+	def __init__(self, *args, **kwargs):
+		super(CommentForm, self).__init__(*args, **kwargs)
+		self.fields['body'].widget = forms.TextInput(attrs=({'class':'reply_text','enter_comment':_('add a comment')}))
+
+class EditCommentForm(forms.ModelForm):
+	
+	class Meta:
+		model = ThreadMessage
+		fields =['body']
+

@@ -18,6 +18,33 @@ from imagekit.models import ProcessedImageField
 from imagekit.models import ImageSpecField
 from imagekit.processors import Adjust
 
+class Thread(models.Model):
+	participants = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='threads')
+	locked = models.BooleanField(default=False)
+	def __str__(self):
+		return f'Thread #{self.pk}'
+
+	def get_num_messages_in_thread(self):
+		thread_messages = ThreadMessage.objects.filter(thread=self.pk)
+		if thread_messages:
+			return len(thread_messages)
+		else:
+			return 0
+
+
+class ThreadMessage(models.Model):
+	thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='messages')
+	sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	body = models.TextField()
+	edited = models.BooleanField(default=False)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		ordering = ['created_at'] 
+
+
+	def __str__(self):
+		return f'Message #{self.pk}'
 
 class Category(models.Model):
 	category_name_en = models.CharField(max_length=255)
@@ -40,17 +67,11 @@ class Tag(models.Model):
 	def __str__(self):
 		return f"{self.tag_name_en} / {self.tag_name_ht}"
 
-class Comment(models.Model):
-	content = models.TextField()
-	created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-	like_counter = models.PositiveIntegerField(default=0)
-	created_at = models.DateTimeField(auto_now_add=True)
 
-	def __str__(self):
-		return f"Comment by {self.created_by.username}"
 
 class Article(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
+	thread = models.ForeignKey(Thread, on_delete=models.SET_NULL, null=True, blank=True)
 	tags = models.ManyToManyField(Tag)
 	article_title_en = models.CharField(max_length=255)
 	article_title_ht = models.CharField(max_length=255)
@@ -97,3 +118,4 @@ class UserLikesArticle(models.Model):
 
 	class Meta:
 		unique_together = ("user", "article")
+
