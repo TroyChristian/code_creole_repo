@@ -111,6 +111,7 @@ def article_detail_view(request, article_id):
 		user_likes_article = h.check_if_article_liked(request.user, article)
 		form = CommentForm()
 		num_comments = 0
+		comments = []
 		if article.thread:
 			comments = h.get_thread_messages_in_thread(article.thread)
 			num_comments = len(comments)
@@ -184,4 +185,31 @@ def unlike_article(request, article_id):
 		messages.success(request, _("You unliked this article."))
 		return redirect("article_detail", article.pk)
 	else:
-		return redirect("article_detail", article.pk)
+		return redirect("article_detail", article.pk) 
+
+@require_POST
+def delete_comment(request, article_id, thread_message_id ):
+	comment = get_object_or_404(ThreadMessage, pk=thread_message_id)
+	if comment.sender == request.user: #ensure the user can only delete their own comments
+		comment.delete()
+		messages.success(request, _("Comment Deleted"))
+		return redirect("article_detail", article_id)
+	else:
+		return redirect("article_detail", article_id)
+
+
+
+@require_POST
+def save_comment(request):
+    import json
+    data = json.loads(request.body)
+    comment_id = data['commentId']
+    new_text = data['text']
+
+    try:
+        comment = ThreadMessage.objects.get(pk=comment_id)
+        comment.body = new_text
+        comment.save()
+        return JsonResponse({'status': 'success'})
+    except Comment.DoesNotExist:
+        return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404)

@@ -74,6 +74,26 @@ body, html {
     font-family: 'Arial', sans-serif;
 }
 
+textarea {
+    width: 100%; 
+    box-sizing: border-box;  
+    margin: 5px 0; 
+    background-color: #e0e0e0;  
+    color: black;
+    overflow: visible; /* Explicitly set overflow to visible */
+    display: block; /* Ensure it is a block-level element, improving layout consistency */
+     }
+
+textarea, button {
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+button {
+    margin: 5px;  // Adds some space around the buttons
+}
+
+
 .content {
     max-width: 1200px;
     margin: auto;
