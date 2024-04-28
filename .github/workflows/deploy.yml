@@ -1,0 +1,25 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH Keys
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 170.75.160.240 > ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        run: |
+          rsync -avz --delete ./ ubuntu@170.75.160.240:/var/www/codecreole.net/html/
+          ssh ubuntu@170.75.160.240 'sudo systemctl reload nginx'
