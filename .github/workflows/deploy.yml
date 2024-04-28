@@ -17,7 +17,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 170.75.160.240 > ~/.ssh/known_hosts
+          ssh-keyscan  170.75.160.240 > ~/.ssh/known_hosts
 
       - name: Deploy to Server
         run: |
