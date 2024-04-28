@@ -11,7 +11,7 @@ from django.utils.translation import activate
 from django.utils.translation import gettext as _
 from django.contrib.auth import login , logout, authenticate, get_user_model, update_session_auth_hash
 from django.contrib import messages
-from .models import Article, Category, Tag, Thread, ThreadMessage
+from .models import Article, Category, Tag, Thread, ThreadMessage, UserSavesArticle
 import articles.handlers as h
 
 
@@ -109,6 +109,7 @@ def article_detail_view(request, article_id):
 		raw_article_content = article.get_content()
 		formatted_content = h.format_content(raw_article_content)
 		user_likes_article = h.check_if_article_liked(request.user, article)
+		article_saved = h.check_if_article_saved(request.user, article)
 		form = CommentForm()
 		num_comments = 0
 		comments = []
@@ -116,7 +117,7 @@ def article_detail_view(request, article_id):
 			comments = h.get_thread_messages_in_thread(article.thread)
 			num_comments = len(comments)
 
-		context = {"article":article, "formatted_content":formatted_content, "current_language":current_language, "user_likes_article":user_likes_article, "form":form, "comments":comments, "num_comments":num_comments} 
+		context = {"article":article, "formatted_content":formatted_content, "current_language":current_language, "user_likes_article":user_likes_article, "form":form, "comments":comments, "num_comments":num_comments, "article_saved":article_saved} 
 		return render(request, 'articles/article_detail.html', context)
 
 	if request.method == "POST":
@@ -142,6 +143,49 @@ def article_detail_view(request, article_id):
 			else:
 				messages.error(request, _("Failed to add comment."))
 				return redirect(request.path)
+
+
+def saved_articles(request):
+	if "is_currently_logged_in" not in request.session:
+		messages.error(request, _("You must log in to view your saved articles."))
+		return redirect("login_view")
+	user_saves_article_qs = UserSavesArticle.objects.filter(user=request.user)
+	saved_articles = []
+	for user_saves_article_instance in user_saves_article_qs:
+		saved_articles.append(user_saves_article_instance.article)
+
+	context = {"saved_articles":saved_articles}
+	return render(request, 'articles/saved_articles.html', context)
+
+@require_POST
+def save_article(request, article_pk):
+	
+	if request.method == "POST":
+		user = request.user
+		article = get_object_or_404(Article, pk=article_pk)
+
+		try:
+			UserSavesArticle.objects.create(article=article, user=user)
+			messages.success(request, _("Article saved!"))
+			return redirect("article_detail", article.pk) 
+		except Exception as e:
+			messages.error(request, _("Error occured saving article."))
+			return redirect("article_detail", article.pk) 
+
+@require_POST
+def unsave_article(request, article_pk):
+	if request.method == "POST":
+		user = request.user
+		article = get_object_or_404(Article, pk=article_pk)
+
+		try:
+			user_saves_article_instance = UserSavesArticle.objects.get(article=article, user=user)
+			user_saves_article_instance.delete()
+			messages.success(request, _("Action Successful."))
+			return redirect("article_detail", article.pk) 
+		except Exception as e:
+			messages.error(request, _("Action Failed"))
+			return redirect("article_detail", article.pk) 
 
 @csrf_exempt
 def set_language(request):

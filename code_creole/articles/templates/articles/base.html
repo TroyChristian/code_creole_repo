@@ -34,8 +34,9 @@
                     {% else %}
                         <div class="w3-dropdown-hover hover">
                         <button class="w3-buttton w3-hover-white user">{{ request.user.username }}</button>
+
                         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                          
+                           <a class="w3-bar-item w3-button link-item" href="{% url 'saved_articles' %}">{% trans 'Saved Articles' %}</a>
                           <a class="w3-bar-item w3-button link-item" href="{% url 'logout_view' %}">{% trans 'Logout' %}</a>
                         </div>
                       </div>
@@ -67,8 +68,8 @@
 
     <footer>
         <div class="footer">
-            <a> {% trans "About Code Creole" %}</a>
-            <a> {% trans "Contact Us" %}</a>
+        <a id="aboutLink" href="#" class="info-link">{% trans "About Code Creole" %}</a>
+        <a id="contactLink" href="#" class="info-link">{% trans "Contact Us" %}</a>
             <a class="social" href="https://twitter.com/CodeCreole1804" target="_blank"> 
                 <div>
                  <p> {% trans "Follow Us" %}:</p>
@@ -106,13 +107,32 @@ function changeLanguage() {
     // Submit the form
     document.getElementById('language_form').submit();
 }
+document.addEventListener('DOMContentLoaded', function() {
+    // Getting the links by their IDs
+    var aboutUsLink = document.getElementById('aboutLink');
+    var contactUsLink = document.getElementById('contactLink');
+
+    // Defining popup content
+    var aboutUsContent = "Welcome to Code Creole! We are dedicated to promoting coding and technology skills in Haitian Creole.";
+    var contactUsContent = "Contact us via email at codecreole@gmail.com";
+
+    // Adding click event listeners
+    aboutUsLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevents the link from navigating
+        alert(aboutUsContent);  // Replace alert with a modal popup if needed
+    });
+
+    contactUsLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        alert(contactUsContent);  // Replace alert with a modal popup if needed
+    });
+});
 </script>
 {% block script %}
 
 {% endblock %}
     </body>
-}
-}
+
 </html>
 
 

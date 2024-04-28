@@ -61,10 +61,13 @@
           <form action="{% url 'unlike_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
         {% endif %} 
         
-                            <span id="likeCount">{{article.like_count}}</span> {% trans 'Likes' %}
+                        <span id="likeCount">{{article.like_count}}</span> {% trans 'Likes' %}
                         </div>
-
-                        <button>{% trans 'Save' %}</button>
+                        {% if not  article_saved  %} 
+                       <form action="{% url 'save_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Save' %}</button> </form>
+                       {% else %}
+                       <form action="{% url 'unsave_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Unsave' %}</button> </form>
+                       {% endif %}
                     </section>
     
                     <div class="article_content">
@@ -102,11 +105,13 @@
                                     <img class="user_image" src="/static/icons/istockphoto-1495088043-612x612.png" alt="profile_pic">
                                     <p>{{ comment.sender.username }}</p>
                                 </div>
+                                {% if comment.sender == request.user %}
                                 <button class="btn waves-effect waves-light" onclick="editComment({{ comment.pk }})">{% trans "Edit Comment" %}</button>
                                 <form method="POST" action="{% url 'delete_comment' article.pk comment.pk %}">
                                     {% csrf_token %}
                                     <button class="btn waves-effect waves-light" type="submit" name="delete_comment_form">{% trans "Delete Comment" %}</button>
                                 </form>
+                                {% endif %}
                                
                                 <p class="font_white text" id="comment-text-{{ comment.pk }}">{{ comment.body }}</p>
 
