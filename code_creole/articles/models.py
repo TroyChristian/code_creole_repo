@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import get_language 
 from django.urls import reverse
+from django.db.models import Q
 #this app
 
 #third parties

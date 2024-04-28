@@ -21,10 +21,11 @@
                     <h4 class="sub_title">{% trans "source" %}</h4>
                 </div>
                 <div class="search_con">
-                    <input type="text" class="search-input" placeholder="Search...">
-                    <button class="search-button">
-                        <i class="fas fa-search"></i>
-                    </button>
+                <form id="search-form" action="/search/" method="get">
+                    <input type="text" name="q" id="search-query" placeholder="Search articles...">
+                    <button type="button" id="search-button">Search</button>
+                </form>
+
                 </div>
             </div>
             <div class="controls">
@@ -125,6 +126,23 @@ document.addEventListener('DOMContentLoaded', function() {
     contactUsLink.addEventListener('click', function(event) {
         event.preventDefault();
         alert(contactUsContent);  // Replace alert with a modal popup if needed
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var searchButton = document.getElementById('search-button');
+    var searchForm = document.getElementById('search-form');
+
+    searchButton.addEventListener('click', function() {
+        // You could validate or manipulate the input here if necessary
+        var queryInput = document.getElementById('search-query');
+        if (queryInput.value.trim() === '') {
+            alert('Please enter a search query.');
+            return false; // Prevent the form from being submitted if input is empty
+        }
+
+        // Submit the form
+        searchForm.submit();
     });
 });
 </script>

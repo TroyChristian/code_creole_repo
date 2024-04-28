@@ -13,6 +13,7 @@ from django.contrib.auth import login , logout, authenticate, get_user_model, up
 from django.contrib import messages
 from .models import Article, Category, Tag, Thread, ThreadMessage, UserSavesArticle
 import articles.handlers as h
+from django.db.models import Q
 
 
 #this app
@@ -143,6 +144,20 @@ def article_detail_view(request, article_id):
 			else:
 				messages.error(request, _("Failed to add comment."))
 				return redirect(request.path)
+
+def search_articles(request):
+    query = request.GET.get('q', '')  # Get the query from URL parameter 'q'
+    if query:
+        articles = Article.objects.filter(
+            Q(article_title_en__icontains=query) | 
+            Q(article_title_ht__icontains=query) |
+            Q(article_content_en__icontains=query) | 
+            Q(article_content_ht__icontains=query)
+        )
+    else:
+        articles = Article.objects.none()  # Return no articles if there is no query
+
+    return render(request, 'articles/article_search.html', {'articles': articles})
 
 
 def saved_articles(request):
