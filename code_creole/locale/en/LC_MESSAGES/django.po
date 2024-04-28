@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-26 15:31-0400\n"
+"POT-Creation-Date: 2024-04-27 16:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,18 +61,21 @@ msgstr ""
 #: articles/templates/articles/article_detail.html:38
 #: articles/templates/articles/home.html:47
 #: articles/templates/articles/home.html:103
+#: articles/templates/articles/saved_articles.html:30
 msgid "Contributers"
 msgstr "Contributers"
 
 #: articles/templates/articles/article_detail.html:41
 #: articles/templates/articles/home.html:73
 #: articles/templates/articles/home.html:112
+#: articles/templates/articles/saved_articles.html:39
 msgid "time_to_read"
 msgstr "time to read"
 
 #: articles/templates/articles/article_detail.html:41
 #: articles/templates/articles/home.html:73
 #: articles/templates/articles/home.html:112
+#: articles/templates/articles/saved_articles.html:39
 msgid "minutes"
 msgstr "minutes"
 
@@ -81,7 +84,7 @@ msgid "Comment"
 msgstr ""
 
 #: articles/templates/articles/article_detail.html:52
-#: articles/templates/articles/article_detail.html:87
+#: articles/templates/articles/article_detail.html:90
 msgid "Comments"
 msgstr ""
 
@@ -93,8 +96,20 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:94
+#: articles/templates/articles/article_detail.html:69
+msgid "Unsave"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:97
 msgid "Post Comment"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:108
+msgid "Edit Comment"
+msgstr ""
+
+#: articles/templates/articles/article_detail.html:111
+msgid "Delete Comment"
 msgstr ""
 
 #: articles/templates/articles/base.html:21
@@ -109,24 +124,29 @@ msgid "Login"
 msgstr ""
 
 #: articles/templates/articles/base.html:39
+msgid "Saved Articles"
+msgstr ""
+
+#: articles/templates/articles/base.html:40
 msgid "Logout"
 msgstr ""
 
-#: articles/templates/articles/base.html:70
+#: articles/templates/articles/base.html:71
 msgid "About Code Creole"
 msgstr "About Code Creole"
 
-#: articles/templates/articles/base.html:71
+#: articles/templates/articles/base.html:72
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: articles/templates/articles/base.html:74
-#: articles/templates/articles/base.html:82
+#: articles/templates/articles/base.html:75
+#: articles/templates/articles/base.html:83
 msgid "Follow Us"
 msgstr "Follow Us"
 
 #: articles/templates/articles/home.html:43
 #: articles/templates/articles/home.html:102
+#: articles/templates/articles/saved_articles.html:29
 msgid "Created by"
 msgstr "Created by"
 
@@ -151,32 +171,56 @@ msgstr ""
 msgid "Invalid username/password."
 msgstr ""
 
-#: articles/views.py:125
-msgid "(Cannot comment in a locked thread."
+#: articles/views.py:127
+msgid "Cannot comment in a locked thread."
 msgstr ""
 
-#: articles/views.py:139
+#: articles/views.py:141
 msgid "Comment Created"
 msgstr ""
 
-#: articles/views.py:142
+#: articles/views.py:144
 msgid "Failed to add comment."
 msgstr ""
 
-#: articles/views.py:166
-msgid "You must be logged in to like an article."
+#: articles/views.py:150
+msgid "You must log in to view your saved articles."
 msgstr ""
 
-#: articles/views.py:170
-msgid "You liked this article."
+#: articles/views.py:169
+msgid "Article saved!"
 msgstr ""
 
-#: articles/views.py:180
-msgid "You must be logged in to unlike an article."
+#: articles/views.py:172
+msgid "Error occured saving article."
 msgstr ""
 
 #: articles/views.py:184
+msgid "Action Successful."
+msgstr ""
+
+#: articles/views.py:187
+msgid "Action Failed"
+msgstr ""
+
+#: articles/views.py:211
+msgid "You must be logged in to like an article."
+msgstr ""
+
+#: articles/views.py:215
+msgid "You liked this article."
+msgstr ""
+
+#: articles/views.py:225
+msgid "You must be logged in to unlike an article."
+msgstr ""
+
+#: articles/views.py:229
 msgid "You unliked this article."
+msgstr ""
+
+#: articles/views.py:239
+msgid "Comment Deleted"
 msgstr ""
 
 #: code_creole/settings.py:146

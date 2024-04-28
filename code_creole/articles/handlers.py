@@ -37,6 +37,11 @@ def check_if_article_liked(user, article):
 			return True 
 		return False 
 
+def check_if_article_saved(user, article):
+		if UserSavesArticle.objects.filter(user=user.pk, article=article).exists():
+			return True 
+		return False 	
+
 
 
 ### Threads and ThreadMessages ###
