@@ -13,7 +13,10 @@ urlpatterns = [
 	path('article/delete-comment/<int:article_id>/<int:thread_message_id>', views.delete_comment, name="delete_comment"),
 	#save/unsave articles 
 	path('article/save/<int:article_pk>', views.save_article, name='save_article'),
-	path('article/unsave/<int:article_pk>', views.unsave_article, name='unsave_article'),
+	path('article/unsave/<int:article_pk>', views.unsave_article, name='unsave_article'), 
+
+	#article search
+	path('search/', views.search_articles, name='search_articles'),
 
 	#registration
 	path('sign_up', views.sign_up, name='sign_up'),
