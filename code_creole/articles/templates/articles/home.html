@@ -27,7 +27,7 @@
 
                     <a href="{{ article.get_absolute_url }}" class="art1_link">
                         {% if article.main_image %}
-                        <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image}}">
+                        <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image.url }}">
                         {% else %}
 
                      <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="static\css\Untitled.jpeg"> 
@@ -92,7 +92,7 @@
                 <div class="article">
                     <a href="{{ article.get_absolute_url }}">
                     {% if article.main_image %}
-                    <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image}}">
+                    <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image.url }}">
                     {% else %}
                      <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="static\css\Untitled.jpeg"> 
                     {% endif %}
