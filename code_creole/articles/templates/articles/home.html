@@ -23,7 +23,7 @@
                     <div class="position-relative">
                         <a href="{{ article.get_absolute_url }}" class="text-decoration-none">
                             {% if article.main_image %}
-                            <img src="{{ article.main_image }}" class="card-img-top">
+                            <img src="{{ article.main_image.url }}" class="card-img-top">
                             {% else %}
                             <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
                             {% endif %}
@@ -60,7 +60,7 @@
                 <div class="card article my-3 shadow-lg">
                     <a href="{{ article.get_absolute_url }}" class="text-decoration-none text-dark">
                         {% if article.main_image %}
-                        <img src="{{ article.main_image }}" class="card-img-top">
+                        <img src="{{ article.main_image.url }}" class="card-img-top">
                         {% else %}
                         <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
                         {% endif %}
