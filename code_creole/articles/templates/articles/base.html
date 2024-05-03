@@ -82,7 +82,7 @@
                     <input class="form-control me-2" type="search" name="q" placeholder="Search articles..." aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <div class="ms-3">
+                <div class="ms-3 d-flex align-items-center">
                     {% if request.user.is_anonymous %}
                         <a class="btn btn-outline-primary" href="{% url 'login_view'%}">{% trans 'Login' %}</a>
                     {% else %}
@@ -96,10 +96,20 @@
                             </ul>
                         </div>
                     {% endif %}
+                    <div class="nav-item dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle ms-2" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Language
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="">English</a></li>
+                            <li><a class="dropdown-item" href="">Kreyòl Ayisyen</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
+    
 
 
 
