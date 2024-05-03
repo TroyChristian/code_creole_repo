@@ -19,77 +19,78 @@
             {% for article in articles %}
             {% if forloop.first %}
             <div class="num1_articles_con ">
-                <a href="{{ article.get_absolute_url }}">
-                <div class="num1_article">
-
-                    <a class="art1_link">
-                     
-
-                    <a href="{{ article.get_absolute_url }}" class="art1_link">
-                        {% if article.main_image %}
-                        <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image}}">
-                        {% else %}
-
-                     <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="static\css\Untitled.jpeg"> 
-                    {% endif %}
-
-                    </a>
-                                
-                    <div class="container">
-                        <h3>{{ article.get_title }}</h3>
-                        <div class="author">
-
-                            <div class="auth">
-                                <p> {% trans "Created by" %}: {{ article.created_by.username }}</p> 
+                <div class="card article_ shadow-lg mb-4 bg-body rounded">
+                    <div class="position-relative">
+                        <a href="{{ article.get_absolute_url }}" class="text-decoration-none">
+                            {% if article.main_image %}
+                            <img src="{{ article.main_image }}" class="card-img-top">
+                            {% else %}
+                            <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
+                            {% endif %}
+                            <div class="card-img-overlay d-flex align-items-end p-0">
+                                <h5 class="card-title text-white w-100 text-center py-3" style="background: rgba(0, 0, 0, 0.5);">
+                                    {{ article.get_title }}
+                                </h5>
                             </div>
-                            
-                            <div class="contrib">
-                           <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
-                             {{ contributor.username }}
-                            {% endfor %}</p>
-                                
-                            </div>
-
-                            
-                            <br>
-
-
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>{% trans "Created by" %}:</strong> {{ article.created_by.username }}
+                        </p>
+                        <p class="card-text">
+                            <strong>{% trans "Contributors" %}:</strong>
+                            {% for contributor in article.get_contributors %}
+                            {{ contributor.username }}
+                            {% endfor %}
+                        </p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <span class="badge bg-primary">{% trans "Time to read:" %} {{ article.time_to_read }} {% trans "minutes" %}</span>
+                            <span class="badge bg-secondary">{{ article.created_at|date:"Y-m-d" }}</span>
                         </div>
-                        
-                        <div class="text">
-                            
-
-                        </div>
-
-                        
-                            
-                            <div class="info">
-                                <div class="img_div ">
-                                    <img class="sub_logo" src="/static/icons/codecreole.jpg">
-                                </div>
-                                <div class="text_div flex_row">
-                                    <p class="name">{{ article.created_by.username }}</p>
-                                    <p class="date">{{ article.created_at }}</p>
-                                    <p class="time_to_read"> {% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
-                                </div>
-                                
-                            </div>
-
-                        
-                        
-                        
                     </div>
                 </div>
-
+                
             </div> <!---end tag for most recently created article--->
             {% else %} 
             
 
             <div class="articles_con ">
 
+                <div class="card article my-3 shadow-lg">
+                    <a href="{{ article.get_absolute_url }}" class="text-decoration-none text-dark">
+                        {% if article.main_image %}
+                        <img src="{{ article.main_image }}" class="card-img-top">
+                        {% else %}
+                        <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.get_title }}</h5>
+                        </div>
+                    </a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{% trans "Created by" %}: {{ article.created_by.username }}</li>
+                        <li class="list-group-item">{% trans "Contributors" %}: 
+                            {% for contributor in article.get_contributors %}
+                            {{ contributor.username }}
+                            {% endfor %}
+                        </li>
+                    </ul>
+                    <div class="card-footer bg-white">
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-0">{% trans "Time to read:" %} {{ article.time_to_read }} {% trans "minutes" %}</p>
+                            <p class="mb-0">{{ article.created_at }}</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!---new test card-->
+                </div>
+                
                 
 
-                <div class="article">
+                <!-- OLD ARTICLE <div class="article">
+
                     <a href="{{ article.get_absolute_url }}">
                     {% if article.main_image %}
                     <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image}}">
@@ -113,9 +114,10 @@
                                 <p class="date">{{ article.created_at }}</p>
                             </div>
                            
-                        </div>
+                        </div> 
                     </div>
-                </div>
+                    
+                </div> OLD ARTICLE -->
 
 
 

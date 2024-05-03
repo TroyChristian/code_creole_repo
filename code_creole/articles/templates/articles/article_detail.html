@@ -12,19 +12,14 @@
 {% block content %}
 {% include 'articles/messages.html' %}
         <div class="content">
-
-
-    
-            <main>
             {% if current_language == "ht" %}
             <img class="water_mark" src="/static/icons/Flag_of_Haiti.svg.png" alt="haiti-flag">
             {% else %}
             <img class="water_mark" src="/static/icons/usa_flag.png" alt="usa-flag">
             {% endif %}
-                
+            <main>
+           
                 <article>
-
-
                     <div class="title_block  col-xs col-sm col-md col-lg">
                         <h1 class="title"> {{ article.get_title }}</h1>
                         <div class="publishers_block">
@@ -40,51 +35,85 @@
                             {% endfor %}</p>
                             <p>{% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
                             <p>{{ article.created_at }}</p>
-
                         </div>
                     </div>
-    
+
                     <section class="stats font_white ">
-                        <div class="comment">
-                            <button onclick="scrollToComments()" class="like-button" > <!-- Using the same class name to keep things  dry -->
-                                <i class="fas fa-comment"></i> {% trans 'Comment' %}
-                            </button>
-                            <p id="commentCount">{{ num_comments }}</p>{% trans 'Comments' %}
-                        </div>
-                        
-                     <div class="like">
-                    {%  if not user_likes_article %}
-                    <form action="{% url 'like_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
-                    {% else %}
+                            <div class="comment">
+                                <button onclick="scrollToComments()" class="like-button" > 
+                                    <i class="fas fa-comment"></i> {% trans 'Comment' %}
+                                </button>
+                                <p id="commentCount">{{ num_comments }}</p>{% trans 'Comments' %}
+                            </div>
 
-        
-          <form action="{% url 'unlike_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
-        {% endif %} 
-        
-                        <span id="likeCount">{{article.like_count}}</span> {% trans 'Likes' %}
-                        </div>
-                        {% if not  article_saved  %} 
-                       <form action="{% url 'save_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Save' %}</button> </form>
-                       {% else %}
-                       <form action="{% url 'unsave_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Unsave' %}</button> </form>
-                       {% endif %}
+                            <div class="like">
+                                {%  if not user_likes_article %}
+                                <form action="{% url 'like_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
+                                {% else %}
+
+                    
+                                <form action="{% url 'unlike_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
+                                        {% endif %} 
+                    
+                                    <span id="likeCount">{{article.like_count}}</span> {% trans 'Likes' %}
+                            </div>
+                            {% if not  article_saved  %} 
+                            <form action="{% url 'save_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Save' %}</button> </form>
+                            {% else %}
+                            <form action="{% url 'unsave_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Unsave' %}</button> </form>
+                            {% endif %}
                     </section>
-    
                     <div class="article_content">
-
-                       
-
-                        
-                        <p class="font_white">{{ formatted_content|safe }}</p>
-
-                        
+                        <p class="">{{ formatted_content|safe }}</p>
                     </div>
-
-                  
                 </article>
             </main>
-    
-            <div class="container">
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="text-white">{% trans 'Comments' %}</h4>
+                        <div class="card bg-dark text-white mb-3">
+                            <div class="card-body">
+                                <form method="POST" class="mb-4">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        {{ form.as_p }}
+                                    </div>
+                                    <button class="btn btn-primary" type="submit" name="comment_form">{% trans "Post Comment" %}</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            {% for comment in comments %}
+                            <div class="card mb-3 bg-secondary text-white">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img class="rounded-circle me-3" src="/static/icons/istockphoto-1495088043-612x612.png" alt="profile_pic" style="width: 50px; height: 50px;">
+                                        <strong>{{ comment.sender.username }}</strong>
+                                    </div>
+                                    <p>{{ comment.body }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small>{{ comment.created_at }}</small>
+                                        {% if comment.sender == request.user %}
+                                        <div>
+                                            <button class="btn btn-outline-light btn-sm" onclick="editComment({{ comment.pk }})">{% trans "Edit Comment" %}</button>
+                                            <form method="POST" action="{% url 'delete_comment' article.pk comment.pk %}" class="d-inline">
+                                                {% csrf_token %}
+                                                <button class="btn btn-danger btn-sm" type="submit" name="delete_comment_form">{% trans "Delete Comment" %}</button>
+                                            </form>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- old comment section <div class="container">
                 <div class="row">
                     <div  id="commentSection" class="col">
                         <h4 class="font_white">{% trans 'Comments' %}</h4>
@@ -97,7 +126,6 @@
                                 <button class="btn waves-effect waves-light" type="submit" name="comment_form">{% trans "Post Comment" %}</button>
                             </form>
                         </div>
-            
                          <div class="user_comments">
                             {% for comment in comments %}
                             <div class="w3-card w3-light-blue" id="comment-card-{{ comment.pk }}">
@@ -121,88 +149,13 @@
                             </div>
                             {% endfor %}
                         </div>
-
-                           
-                            <!-- End comment block -->
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            </div> 
         </div>
 {% endblock %} 
 {% block script %}
 <script src="{% static 'js\article_detail.js'%}"></script>
-<script>
-function editComment(commentId) {
-    var commentTextElement = document.getElementById('comment-text-' + commentId);
-    var textarea = document.getElementById('edit-textarea-' + commentId);
-    var saveButton = document.getElementById('save-button-' + commentId);
 
-    // Toggle the display of textarea and buttons if they already exist
-    if (textarea && saveButton) {
-        if (textarea.style.display === 'none') {
-            // Show textarea with the original text
-            textarea.style.display = 'block';
-            saveButton.style.display = 'block';
-            textarea.value = commentTextElement.getAttribute('data-original-text');  // Use the original text saved in an attribute
-        } else {
-            // Hide textarea and reset the text to original
-            textarea.style.display = 'none';
-            saveButton.style.display = 'none';
-        }
-    } else {
-        // First time setup: add textarea and save button
-        var currentText = commentTextElement.innerHTML;
-        commentTextElement.setAttribute('data-original-text', currentText);  // Save the original text
-
-        var textareaHTML = '<textarea id="edit-textarea-' + commentId + '" style="display:block;">' + currentText + '</textarea>';
-        var saveButtonHTML = '<button id="save-button-' + commentId + '" onclick="saveComment(' + commentId + ')" style="display:block;">Save</button>';
-        var cancelButtonHTML = '<button onclick="editComment(' + commentId + ')" style="display:block;">Cancel</button>';
-
-        // Replace the paragraph with a textarea and add save and cancel buttons
-        commentTextElement.innerHTML = textareaHTML + saveButtonHTML + cancelButtonHTML;
-    }
-}
-
-function saveComment(commentId) {
-    var editedText = document.getElementById('edit-textarea-' + commentId).value;
-    var commentTextElement = document.getElementById('comment-text-' + commentId);
-
-    // Prepare the AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/save-comment/', true); // Adjust the URL as needed
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken')); // CSRF token for Django
-
-    // Handle the response
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            // Update the UI on successful save
-            commentTextElement.innerHTML = editedText;
-        } else {
-            // Handle errors
-            alert('Error saving comment: ' + xhr.responseText);
-        }
-    };
-
-    // Send the request
-    xhr.send(JSON.stringify({ commentId: commentId, text: editedText }));
-}
-
-// Function to get CSRF token from cookies
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-</script>
 {% endblock %}
