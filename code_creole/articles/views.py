@@ -96,6 +96,7 @@ def logout_view(request):
 
 def home(request):
 	if request.method == "GET":
+		#import pdb; pdb.set_trace()
 		articles = Article.objects.all().order_by("-created_at")
 		categories = Category.objects.all() 
 		tags = Tag.objects.all() 
