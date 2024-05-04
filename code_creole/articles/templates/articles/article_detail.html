@@ -86,13 +86,13 @@
                         </div>
                         <div>
                             {% for comment in comments %}
-                            <div class="card mb-3 bg-secondary text-white">
+                            <div class="card mb-3 bg-secondary text-white" id="comment-card-{{ comment.pk }}">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center mb-3">
                                         <img class="rounded-circle me-3" src="/static/icons/istockphoto-1495088043-612x612.png" alt="profile_pic" style="width: 50px; height: 50px;">
                                         <strong>{{ comment.sender.username }}</strong>
                                     </div>
-                                    <p>{{ comment.body }}</p>
+                                    <p id="comment-text-{{ comment.pk }}">{{ comment.body }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small>{{ comment.created_at }}</small>
                                         {% if comment.sender == request.user %}

@@ -103,10 +103,47 @@
             <div class="row justify-content-center text-center">
                 <div class="d-flex justify-content-evenly align-items-center flex-wrap">
                     <div class="p-2">
-                        <a href="#" class="text-white">{% trans "About Code Creole" %}</a>
+                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#aboutModal">{% trans "About Code Creole" %}</a>
+                    <!-- About Us Modal -->
+                    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="aboutModalLabel">About Code Creole</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your About Us content goes here -->
+                                    <p>{% trans "about_code_creole_desc" %}</p>
+                   </div>
+                 <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 </div>
+                 </div>
+                 </div>
+                  </div> <!-- About Us Modal End -->
+                   
                     </div>
                     <div class="p-2">
-                        <a href="#" class="text-white">{% trans "Contact Us" %}</a>
+                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#contactModal">{% trans "Contact Us" %}</a>
+                        <!-- Contact Us Modal -->
+                    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your Contact Us content or form goes here -->
+                                    <p>{% trans "contact_us_desc" %}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Contact Us Modal End -->
                     </div>
                     <div class="p-2">
                         <a href="https://x.com/@CodeCreole" target="_blank" class="text-white">
@@ -134,22 +171,11 @@
     <!-- javascript for toggling currently selected language -->
     <script>
 function changeLanguage(lang) {
-        // Get the current URL from the window location
-/*    var currentUrl = window.location.href;
-
-    // Set the 'next' input field to the current URL
-    document.getElementsByName('next')[0].value = currentUrl;
-
-    // Log to console for debugging (optional)
-    console.log("Redirecting to:", currentUrl);*/
-
-    // Submit the form
-    console.log("Changing Language To:", lang);
     document.getElementById('language_input').value = lang; // Set the language
     document.getElementById('language_form').submit();
-    console.log("Form Submitted");
+
 }
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Getting the links by their IDs
     var aboutUsLink = document.getElementById('aboutLink');
     var contactUsLink = document.getElementById('contactLink');
@@ -185,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Submit the form
         searchForm.submit();
     });
-});*/
+});
 </script>
 {% block script %}
 

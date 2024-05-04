@@ -123,11 +123,12 @@ def article_detail_view(request, article_id):
 		return render(request, 'articles/article_detail.html', context)
 
 	if request.method == "POST":
+		article = get_object_or_404(Article, pk=article_id)
 		if "comment_form" in request.POST:
 			if not "is_currently_logged_in" in request.session:
 				messages.error(request, _("You must be logged in to comment on an article."))
 				return redirect("article_detail", article.pk)
-			article = get_object_or_404(Article, pk=article_id)
+
 			if article.thread and article.thread.locked:
 				messages.warning(request, _("Cannot comment in a locked thread."))
 				return redirect(request.path)
