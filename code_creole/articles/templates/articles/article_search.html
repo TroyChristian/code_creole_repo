@@ -13,8 +13,8 @@
 
 {% block content %}
     <h2>Search Results</h2>
-    {% if articles %}
-            {% for article in articles %}
+    {% if title_matching_articles %}
+            {% for article in title_matching_articles %}
                 <div class="article ">
                     <a href="{{ article.get_absolute_url }}">
                     {% if article.main_image %}
@@ -44,7 +44,39 @@
                 </div>
             {% endfor %}
 
+    {% elif content_matching_articles and not title_matching_articles  %}
+        <h1>No articles match your exact search. But here are some that mention your query:</h1>
+            {% for article in content_matching_articles %}
+                <div class="article ">
+                    <a href="{{ article.get_absolute_url }}">
+                    {% if article.main_image %}
+                    <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image.url }}">
+                    {% else %}
+                     <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="static\css\Untitled.jpeg"> 
+                    {% endif %}
+                        <p>{{ article.get_title }}</p>
+                    </a>
+                    <div class="author_block ">
+                        <p>{% trans "Created by" %}: {{ article.created_by.username }}</p>
+                        <p>{% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
+                             {{ contributor.username }}
+                            {% endfor %}</p>
+                    </div>
+                    <div class="extras">
+                        <img class="sub_logo" src="/static/icons/codecreole.jpg">
+                        <div class="extras-sub">
+                            <p class="name"></p>
+                            <div class="flex_div">   
+                                <p class="time_to_read"> {% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
+                                <p class="date">{{ article.created_at }}</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
     {% else %}
-        <p>No articles found.</p>
+    <h1> No articles mention your search query. Submit a request for a topic to be covered!</h1>
+
     {% endif %}
 {% endblock %}

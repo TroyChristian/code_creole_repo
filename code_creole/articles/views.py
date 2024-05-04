@@ -151,18 +151,23 @@ def article_detail_view(request, article_id):
 				return redirect(request.path)
 
 def search_articles(request):
-    query = request.GET.get('q', '')  # Get the query from URL parameter 'q'
-    if query:
-        articles = Article.objects.filter(
-            Q(article_title_en__icontains=query) | 
-            Q(article_title_ht__icontains=query) |
-            Q(article_content_en__icontains=query) | 
-            Q(article_content_ht__icontains=query)
-        )
-    else:
-        articles = Article.objects.none()  # Return no articles if there is no query
+	query = request.GET.get('q', '')  # Get the query from URL parameter 'q'
+	content_matching_articles = []
+	title_matching_articles = []
+	if query:
+		title_matching_articles = Article.objects.filter(Q(article_title_en__icontains=query) | Q(article_title_ht__icontains=query))
+		
+		if not title_matching_articles: #if no articles have the search query in their title, suggest articles that mention the query in their article content
+			content_matching_articles = Article.objects.filter(
+			Q(article_content_en__icontains=query) | 
+			Q(article_content_ht__icontains=query)
 
-    return render(request, 'articles/article_search.html', {'articles': articles})
+				)
+	else:
+
+		title_matching_articles = Article.objects.none()  # Return no articles if there is no query
+		content_matching_articles = Article.objects.none() 
+	return render(request, 'articles/article_search.html', {'title_matching_articles': title_matching_articles, 'content_matching_articles':content_matching_articles})
 
 
 def saved_articles(request):
@@ -265,15 +270,15 @@ def delete_comment(request, article_id, thread_message_id ):
 
 @require_POST
 def save_comment(request):
-    import json
-    data = json.loads(request.body)
-    comment_id = data['commentId']
-    new_text = data['text']
+	import json
+	data = json.loads(request.body)
+	comment_id = data['commentId']
+	new_text = data['text']
 
-    try:
-        comment = ThreadMessage.objects.get(pk=comment_id)
-        comment.body = new_text
-        comment.save()
-        return JsonResponse({'status': 'success'})
-    except Comment.DoesNotExist:
-        return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404)
+	try:
+		comment = ThreadMessage.objects.get(pk=comment_id)
+		comment.body = new_text
+		comment.save()
+		return JsonResponse({'status': 'success'})
+	except Comment.DoesNotExist:
+		return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404)
