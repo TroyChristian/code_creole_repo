@@ -97,13 +97,18 @@ def logout_view(request):
 	return redirect('home')
 
 ### HOME ###
-def home(request):
+def home(request, category_pk=None):
 	if request.method == "GET":
-		#import pdb; pdb.set_trace()
-		articles = Article.objects.all().order_by("-created_at")
-		categories = Category.objects.all() 
-		tags = Tag.objects.all() 
-		#search_form_here
+		if not category_pk: # if user not filtering by category
+			articles = Article.objects.all().order_by("-created_at")
+			categories = Category.objects.all() 
+			tags = Tag.objects.all() 
+		if category_pk:
+			category = get_object_or_404(Category, pk=category_pk)
+			articles = Article.objects.filter(category=category_pk).order_by("-created_at")
+			categories = Category.objects.all()
+			tags = Tag.objects.all() 
+
 		
 		return render(request, 'articles/home.html', {'articles': articles, 'categories':categories})
 
@@ -285,5 +290,5 @@ def categories(request):
 		context = {"categories":categories}
 		return render(request, "articles/categories.html", context) 
 
-def category_filter(request):
+def category_filter(request, category_pk):
 	pass

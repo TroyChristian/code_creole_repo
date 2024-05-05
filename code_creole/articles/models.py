@@ -63,6 +63,9 @@ class Category(models.Model):
 	def __str__(self):
 		return f"{self.category_name_en} / {self.category_name_ht}"
 
+	def get_article_count(self):
+		return len(Article.objects.filter(category=self.pk))
+
 class Tag(models.Model):
 	tag_name_en = models.CharField(max_length=255)
 	tag_name_ht = models.CharField(max_length=255)

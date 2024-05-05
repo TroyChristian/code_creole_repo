@@ -44,10 +44,10 @@
             {% endif %}
                     <div class="col-md-3">
                         <div class="card">
-                            <img src="{{ category.thumbnail.url }}" class="card-img-top" alt="{{ category.get_category_name }}">
+                            <a href="{% url 'filter_articles_by_category' category.pk %}"> <img src="{{ category.thumbnail.url }}"  class="card-img-top" alt="{{ category.get_category_name }}"> </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ category.get_category_name }}</h5>
-                                <p class="card-text">Articles: {{ category.articles_count }}</p>
+                                <p class="card-text">Articles: {{ category.get_article_count }}</p>
                                 <a href="{% url 'filter_articles_by_category' category.pk %}" class="btn btn-primary">View Articles</a>
                             </div>
                         </div>
@@ -73,6 +73,9 @@
 </div>
 
         <div class="grid_container ">
+            {% if not articles %}
+            <h1> {% trans "This category currently has no articles." %} </h1>
+            {% endif %}
             {% for article in articles %}
                 <div class="card article_ shadow-lg mb-4 bg-body rounded">
                     <div class="position-relative">

@@ -6,6 +6,7 @@ urlpatterns = [
 ### ARTICLE PATHS ###
 
 	path('', views.home, name='home'), 
+	path('category-filter/<int:category_pk>', views.home, name='filter_articles_by_category'), 
 	path('article/<int:article_id>', views.article_detail_view, name='article_detail'),
 	path('saved', views.saved_articles, name='saved_articles'),
 	#like/unlike articles
@@ -35,5 +36,5 @@ urlpatterns = [
 
 ### AJAX ###
 	 path('save-comment/', views.save_comment, name='save_comment'),
-	 path('category-filter/<int:category_pk>', views.category_filter, name='filter_articles_by_category'),
+	 
 ]
