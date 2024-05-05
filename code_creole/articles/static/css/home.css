@@ -235,10 +235,12 @@ a {
 }
 
 .card-img-top {
-    width: 100%;
-    height: 200px; 
-    object-fit: cover; 
+
+    width: 100%;    /* Ensures the image takes the full width of the card */
+    height: 600px;  /* Fixed height for all images */
+    object-fit: cover; /* Ensures images cover the area without distorting aspect ratio */
 }
+
 
 .card:hover {
     transform: translateY(-5px); 
@@ -261,32 +263,6 @@ a {
     padding: 0.5em 0.75em; 
 }
 
-/* Old num1 art .num1_article {
-    display: flex;
-    align-items: flex-start; 
-    justify-content: flex-start; 
-    max-width: 1200px; 
-    margin: 20px auto; 
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.art1_link {
-    flex: 1; 
-}
-
-.art1_link img {
-    width: 100%; 
-    height: 100%;
-    display: block;
-    
-}
-
-.container {
-    padding: 0 10px; 
-    margin-left: 5px;
-}
 
 /* Enhance readability and aesthetics */
 h3, .author, .text, .info {
@@ -342,75 +318,6 @@ h3, .author, .text, .info {
 .shadow-lg {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
-
-/* old article css .article {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    justify-content: flex-start; 
-    margin: 20px auto; 
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgb(147, 169, 255);
-    
-}
-
-.article > * {
-    width: 100%;
-}
-
-
-.article > a > p {
-    color: blue;
-}
-
-.author_block {
-    display: flex;
-
-}
-
-.extras {
-    display: grid;
-    grid-template-columns: auto auto auto;
-
-}
-
-.flex_div {
-    display: flex;
-  
-    justify-content: space-around;
-    color: #585656ef;
-}
-
-.flex_row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-}
-
-
-
-.info {
-    width: 55%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.tri_row {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    width: auto;
-    margin: auto;
-    gap: 25px;
-    align-self: center;
-    padding: 2px;
-    margin-top: 15px;
-} */
 
 
 
@@ -491,8 +398,30 @@ h3, .author, .text, .info {
 .social_icon {
     width: auto;
     height: 50px;
+} 
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Default to one columns for smaller screens */
+    gap: 20px;
+    margin-top: 20px;
 }
 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .grid_container {
+        grid-template-columns: repeat(2, 1fr); /* Three columns on medium screens */
+        gap: 30px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .grid_container {
+        grid-template-columns: repeat(4, 1fr); /* Four columns on large screens */
+        gap: 50px;
+    }
+}
 
 /* Media Queries */
 

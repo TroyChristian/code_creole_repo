@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 16:12-0400\n"
+"POT-Creation-Date: 2024-05-05 02:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,176 +50,240 @@ msgstr ""
 msgid "add a comment"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:36
+#: articles/templates/articles/article_detail.html:31
 msgid "Published in"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:37
+#: articles/templates/articles/article_detail.html:32
 msgid "Published by"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:38
-#: articles/templates/articles/home.html:47
-#: articles/templates/articles/home.html:103
-#: articles/templates/articles/saved_articles.html:30
-msgid "Contributers"
+#: articles/templates/articles/article_detail.html:33
+#: articles/templates/articles/article_search.html:40
+#: articles/templates/articles/article_search.html:76
+#: articles/templates/articles/home.html:100
+#: articles/templates/articles/saved_articles.html:43
+#, fuzzy
+#| msgid "Contributers"
+msgid "Contributors"
 msgstr "Contributers"
 
-#: articles/templates/articles/article_detail.html:41
-#: articles/templates/articles/home.html:73
-#: articles/templates/articles/home.html:112
-#: articles/templates/articles/saved_articles.html:39
+#: articles/templates/articles/article_detail.html:38
 msgid "time_to_read"
 msgstr "time to read"
 
-#: articles/templates/articles/article_detail.html:41
-#: articles/templates/articles/home.html:73
-#: articles/templates/articles/home.html:112
-#: articles/templates/articles/saved_articles.html:39
+#: articles/templates/articles/article_detail.html:38
+#: articles/templates/articles/article_search.html:46
+#: articles/templates/articles/article_search.html:82
+#: articles/templates/articles/home.html:106
+#: articles/templates/articles/saved_articles.html:49
 msgid "minutes"
 msgstr "minutes"
 
-#: articles/templates/articles/article_detail.html:50
+#: articles/templates/articles/article_detail.html:47
 msgid "Comment"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:52
-#: articles/templates/articles/article_detail.html:90
+#: articles/templates/articles/article_detail.html:49
+#: articles/templates/articles/article_detail.html:101
+#: articles/templates/articles/article_detail.html:145
 msgid "Comments"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:64
+#: articles/templates/articles/article_detail.html:60
+#: articles/templates/articles/article_detail.html:68
 msgid "Likes"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:67
+#: articles/templates/articles/article_detail.html:79
 msgid "Save"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:69
+#: articles/templates/articles/article_detail.html:84
 msgid "Unsave"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:97
+#: articles/templates/articles/article_detail.html:109
+#: articles/templates/articles/article_detail.html:152
 msgid "Post Comment"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:108
+#: articles/templates/articles/article_detail.html:126
+#: articles/templates/articles/article_detail.html:163
 msgid "Edit Comment"
 msgstr ""
 
-#: articles/templates/articles/article_detail.html:111
+#: articles/templates/articles/article_detail.html:129
+#: articles/templates/articles/article_detail.html:166
 msgid "Delete Comment"
 msgstr ""
 
-#: articles/templates/articles/base.html:21
-msgid "source"
-msgstr ""
-"Your source for learning about technology in Haitian Creole. Powered by AI."
-
-#: articles/templates/articles/base.html:33
-#: articles/templates/articles/login.html:14
-#: articles/templates/articles/login.html:19
-msgid "Login"
+#: articles/templates/articles/article_search.html:15
+msgid "Search Results"
 msgstr ""
 
-#: articles/templates/articles/base.html:39
-msgid "Saved Articles"
-msgstr ""
-
-#: articles/templates/articles/base.html:40
-msgid "Logout"
-msgstr ""
-
-#: articles/templates/articles/base.html:71
-msgid "About Code Creole"
-msgstr "About Code Creole"
-
-#: articles/templates/articles/base.html:72
-msgid "Contact Us"
-msgstr "Contact Us"
-
-#: articles/templates/articles/base.html:75
-#: articles/templates/articles/base.html:83
-msgid "Follow Us"
-msgstr "Follow Us"
-
-#: articles/templates/articles/home.html:43
-#: articles/templates/articles/home.html:102
-#: articles/templates/articles/saved_articles.html:29
+#: articles/templates/articles/article_search.html:37
+#: articles/templates/articles/article_search.html:73
+#: articles/templates/articles/home.html:97
+#: articles/templates/articles/saved_articles.html:40
 msgid "Created by"
 msgstr "Created by"
 
-#: articles/templates/articles/login.html:22
+#: articles/templates/articles/article_search.html:46
+#: articles/templates/articles/article_search.html:82
+#: articles/templates/articles/home.html:106
+#: articles/templates/articles/saved_articles.html:49
+#, fuzzy
+#| msgid "time_to_read"
+msgid "Time to read:"
+msgstr "time to read"
+
+#: articles/templates/articles/article_search.html:54
+msgid ""
+"No articles match your exact search. But here are some that mention your "
+"query:"
+msgstr ""
+
+#: articles/templates/articles/article_search.html:89
+msgid ""
+"No articles mention your search query. Submit a request for a topic to be "
+"covered!"
+msgstr ""
+
+#: articles/templates/articles/base.html:38
+#: articles/templates/articles/login.html:24
+#: articles/templates/articles/login.html:28
+msgid "Login"
+msgstr ""
+
+#: articles/templates/articles/base.html:45
+msgid "Saved Articles"
+msgstr ""
+
+#: articles/templates/articles/base.html:46
+msgid "Logout"
+msgstr ""
+
+#: articles/templates/articles/base.html:80
+#: articles/templates/articles/base.html:106
+msgid "About Code Creole"
+msgstr "About Code Creole"
+
+#: articles/templates/articles/base.html:81
+#: articles/templates/articles/base.html:128
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: articles/templates/articles/base.html:84
+#: articles/templates/articles/base.html:92
+msgid "Follow Us"
+msgstr "Follow Us"
+
+#: articles/templates/articles/base.html:117
+#, fuzzy
+#| msgid "About Code Creole"
+msgid "code_creole_desc"
+msgstr ""
+"Code Creole is a technology education platform to help create the next "
+"generation of technologists. "
+
+#: articles/templates/articles/base.html:139
+msgid "contact_us_desc"
+msgstr "Contact us via email at codecreole@gmail.com"
+
+#: articles/templates/articles/base.html:151
+#, fuzzy
+#| msgid "Follow Us"
+msgid "Follow Us on X"
+msgstr "Follow Us"
+
+#: articles/templates/articles/base.html:156
+msgid "Subscribe on YouTube"
+msgstr ""
+
+#: articles/templates/articles/home.html:77
+msgid "This category currently has no articles."
+msgstr ""
+
+#: articles/templates/articles/login.html:30
 msgid "Don't have an account?"
 msgstr ""
 
-#: articles/templates/articles/login.html:23
-#: articles/templates/articles/sign-up.html:17
+#: articles/templates/articles/login.html:30
+#: articles/templates/articles/sign-up.html:20
+#: articles/templates/articles/sign-up.html:24
 msgid "Sign Up"
 msgstr ""
 
-#: articles/views.py:50
-msgid "Account created!  Welcome to Code Creole!"
+#: articles/templates/articles/saved_articles.html:18
+msgid "Your Saved Articles"
 msgstr ""
 
 #: articles/views.py:53
+msgid "Account created!  Welcome to Code Creole!"
+msgstr ""
+
+#: articles/views.py:56
 msgid "An error occured during your request. Please try again."
 msgstr ""
 
-#: articles/views.py:81 articles/views.py:84
+#: articles/views.py:84 articles/views.py:87
 msgid "Invalid username/password."
 msgstr ""
 
-#: articles/views.py:127
-msgid "Cannot comment in a locked thread."
-msgstr ""
-
-#: articles/views.py:141
-msgid "Comment Created"
+#: articles/views.py:140
+msgid "You must be logged in to comment on an article."
 msgstr ""
 
 #: articles/views.py:144
+msgid "Cannot comment in a locked thread."
+msgstr ""
+
+#: articles/views.py:158
+msgid "Comment Created"
+msgstr ""
+
+#: articles/views.py:161
 msgid "Failed to add comment."
 msgstr ""
 
-#: articles/views.py:150
+#: articles/views.py:186
 msgid "You must log in to view your saved articles."
 msgstr ""
 
-#: articles/views.py:169
+#: articles/views.py:205
 msgid "Article saved!"
 msgstr ""
 
-#: articles/views.py:172
+#: articles/views.py:208
 msgid "Error occured saving article."
 msgstr ""
 
-#: articles/views.py:184
+#: articles/views.py:220
 msgid "Action Successful."
 msgstr ""
 
-#: articles/views.py:187
+#: articles/views.py:223
 msgid "Action Failed"
 msgstr ""
 
-#: articles/views.py:211
+#: articles/views.py:236
 msgid "You must be logged in to like an article."
 msgstr ""
 
-#: articles/views.py:215
+#: articles/views.py:240
 msgid "You liked this article."
 msgstr ""
 
-#: articles/views.py:225
+#: articles/views.py:250
 msgid "You must be logged in to unlike an article."
 msgstr ""
 
-#: articles/views.py:229
+#: articles/views.py:254
 msgid "You unliked this article."
 msgstr ""
 
-#: articles/views.py:239
+#: articles/views.py:264
 msgid "Comment Deleted"
 msgstr ""
 
@@ -230,3 +294,11 @@ msgstr "English"
 #: code_creole/settings.py:147
 msgid "Haitian Creole"
 msgstr "Haitian Creole"
+
+#~ msgid "Contributers"
+#~ msgstr "Contributers"
+
+#~ msgid "source"
+#~ msgstr ""
+#~ "Your source for learning about technology in Haitian Creole. Powered by "
+#~ "AI."

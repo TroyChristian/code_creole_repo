@@ -1,51 +1,60 @@
 {% extends 'articles/base.html' %}
 {% load static %}
-{% load i18n %} 
-
+{% load i18n %}
 
 {% block header %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Creole home</title>
-     <link rel="stylesheet" href="{% static 'css/saved_articles.css' %}">
+     <link rel="stylesheet" href="{% static 'css/home.css' %}">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-{% endblock %} 
 
 
- {% block content %}
- {% for article in saved_articles %} 
- 
- <div class="article">
-                    <a href="{{ article.get_absolute_url }}">
-                    {% if article.main_image %}
-                    <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image}}">
-                    {% else %}
-                     <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="static\css\Untitled.jpeg"> 
-                    {% endif %}
-                        <p>{{ article.get_title }}</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>{% trans "Created by" %}: {{ article.created_by.username }}</p>
-                        <p>{% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
-                             {{ contributor.username }}
-                            {% endfor %}</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/icons/codecreole.jpg">
-                        <div class="extras-sub">
-                            <p class="name"></p>
-                            <div class="flex_div">   
-                                <p class="time_to_read"> {% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
-                                <p class="date">{{ article.created_at }}</p>
+{% endblock %}
+
+{% block content %}
+{% include 'articles/messages.html' %}
+<h3> {% trans "Your Saved Articles" %} </h3>
+        <div class="container mt-5">
+        <div class="grid_container">
+
+            {% for article in saved_articles %}
+                <div class="card article_ shadow-lg mb-4 bg-body rounded">
+                    <div class="position-relative">
+                        <a href="{{ article.get_absolute_url }}" class="text-decoration-none">
+                            {% if article.main_image %}
+                            <img src="{{ article.thumbnail.url }}" class="card-img-top">
+                            {% else %}
+                            <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
+                            {% endif %}
+                            <div class="card-img-overlay d-flex align-items-end p-0">
+                                <h5 class="card-title text-white w-100 text-center py-3" style="background: rgba(0, 0, 0, 0.5);">
+                                    {{ article.get_title }}
+                                </h5>
                             </div>
-                           
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>{% trans "Created by" %}:</strong> {{ article.created_by.username }}
+                        </p>
+                        <p class="card-text">
+                            <strong>{% trans "Contributors" %}:</strong>
+                            {% for contributor in article.get_contributors %}
+                            {{ contributor.username }}
+                            {% endfor %}
+                        </p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <span class="badge bg-primary">{% trans "Time to read:" %} {{ article.time_to_read }} {% trans "minutes" %}</span>
+                            <span class="badge bg-secondary">{{ article.created_at|date:"Y-m-d" }}</span>
                         </div>
                     </div>
                 </div>
-{% endfor %} 
-{% endblock %}
 
-{% block script %}
+            {% endfor %}
+            </div> <!--- end grid container--> 
+        </div><!----container mt-5-->
+                   
 
-{% endblock %}
+ {% endblock %}

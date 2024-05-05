@@ -9,21 +9,79 @@
      <link rel="stylesheet" href="{% static 'css/home.css' %}">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #007bff; /* Bootstrap primary blue */
+    }
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+</style>
 
 
 {% endblock %}
 
 {% block content %}
 {% include 'articles/messages.html' %}
-        <div class="home_dashboard">
-            {% for article in articles %}
+        <div class="container mt-5">
+    <!-- Multi-item Bootstrap Carousel -->
+ <div id="multiItemCategoryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for category in categories %}
             {% if forloop.first %}
-            <div class="num1_articles_con ">
+            <div class="carousel-item active">
+                <div class="row">
+            {% endif %}
+
+            <!-- Display categories in sets of four -->
+            {% if forloop.counter0|divisibleby:4 and not forloop.first %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+            {% endif %}
+                    <div class="col-md-3">
+                        <div class="card">
+                            <a href="{% url 'filter_articles_by_category' category.pk %}"> <img src="{{ category.thumbnail.url }}"  class="card-img-top" alt="{{ category.get_category_name }}"> </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ category.get_category_name }}</h5>
+                                <p class="card-text">Articles: {{ category.get_article_count }}</p>
+                                <a href="{% url 'filter_articles_by_category' category.pk %}" class="btn btn-primary">View Articles</a>
+                            </div>
+                        </div>
+                    </div>
+
+            {% if forloop.last %}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#multiItemCategoryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#multiItemCategoryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+</div>
+
+        <div class="grid_container ">
+            {% if not articles %}
+            <h1> {% trans "This category currently has no articles." %} </h1>
+            {% endif %}
+            {% for article in articles %}
                 <div class="card article_ shadow-lg mb-4 bg-body rounded">
                     <div class="position-relative">
                         <a href="{{ article.get_absolute_url }}" class="text-decoration-none">
                             {% if article.main_image %}
-                            <img src="{{ article.main_image.url }}" class="card-img-top">
+                            <img src="{{ article.thumbnail.url }}" class="card-img-top">
                             {% else %}
                             <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
                             {% endif %}
@@ -50,84 +108,10 @@
                         </div>
                     </div>
                 </div>
-                
-            </div> <!---end tag for most recently created article--->
-            {% else %} 
-            
 
-            <div class="articles_con ">
-
-                <div class="card article my-3 shadow-lg">
-                    <a href="{{ article.get_absolute_url }}" class="text-decoration-none text-dark">
-                        {% if article.main_image %}
-                        <img src="{{ article.main_image.url }}" class="card-img-top">
-                        {% else %}
-                        <img src="{% static 'css/Untitled.jpeg' %}" class="card-img-top">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ article.get_title }}</h5>
-                        </div>
-                    </a>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{% trans "Created by" %}: {{ article.created_by.username }}</li>
-                        <li class="list-group-item">{% trans "Contributors" %}: 
-                            {% for contributor in article.get_contributors %}
-                            {{ contributor.username }}
-                            {% endfor %}
-                        </li>
-                    </ul>
-                    <div class="card-footer bg-white">
-                        <div class="d-flex justify-content-between">
-                            <p class="mb-0">{% trans "Time to read:" %} {{ article.time_to_read }} {% trans "minutes" %}</p>
-                            <p class="mb-0">{{ article.created_at }}</p>
-                        </div>
-                    </div>
-                </div>
-    
-                <!---new test card-->
-                </div>
-                
-                
-
-                <!-- OLD ARTICLE <div class="article">
-
-                    <a href="{{ article.get_absolute_url }}">
-                    {% if article.main_image %}
-                    <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="{{ article.main_image}}">
-                    {% else %}
-                     <img class="thumb_nail hidden-xs hidden-sm img-responsive"  src="static\css\Untitled.jpeg"> 
-                    {% endif %}
-                        <p>{{ article.get_title }}</p>
-                    </a>
-                    <div class="author_block ">
-                        <p>{% trans "Created by" %}: {{ article.created_by.username }}</p>
-                        <p>{% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
-                             {{ contributor.username }}
-                            {% endfor %}</p>
-                    </div>
-                    <div class="extras">
-                        <img class="sub_logo" src="/static/icons/codecreole.jpg">
-                        <div class="extras-sub">
-                            <p class="name"></p>
-                            <div class="flex_div">   
-                                <p class="time_to_read"> {% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
-                                <p class="date">{{ article.created_at }}</p>
-                            </div>
-                           
-                        </div> 
-                    </div>
-                    
-                </div> OLD ARTICLE -->
-
-
-
-            </div> <!---the end of the three row stacks--> 
-            {% endif %} <!-- ending the check if the article is the first in the queryset --> 
             {% endfor %}
-
-        </div><!----this div-tag is the closing tag for home dashboard
-                    this div is the parent div that contains the links
-                    to articles and the side pannel for the tags and categories-->
+            </div> <!--- end grid container--> 
+        </div><!----container mt-5-->
                    
 
  {% endblock %}

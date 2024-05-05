@@ -41,7 +41,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function editComment(commentId) {
+/*function editComment(commentId) {
     var commentTextElement = document.getElementById('comment-text-' + commentId);
     var textarea = document.getElementById('edit-textarea-' + commentId);
     var saveButton = document.getElementById('save-button-' + commentId);
@@ -70,11 +70,50 @@ function editComment(commentId) {
         // Replace the paragraph with a textarea and add save and cancel buttons
         commentTextElement.innerHTML = textareaHTML + saveButtonHTML + cancelButtonHTML;
     }
+}*/
+
+function editComment(commentId) {
+    var commentContainer = document.getElementById('comment-text-' + commentId);
+    var editArea = document.getElementById('edit-textarea-' + commentId);
+    var saveButton = document.getElementById('save-button-' + commentId);
+
+    if (editArea) {
+        // Toggle the display of textarea and buttons if they already exist
+        if (editArea.style.display === 'none') {
+            // Show textarea with the original text
+            editArea.style.display = 'block';
+            saveButton.style.display = 'block';
+            commentContainer.style.display = 'none'; // Hide the original <p> tag
+        } else {
+            // Hide textarea and show the original <p> tag with updated text
+            editArea.style.display = 'none';
+            saveButton.style.display = 'none';
+            commentContainer.style.display = 'block'; // Show the original <p> tag
+            commentContainer.innerHTML = currentText.value; //  If comment not saved, show original text 
+        }
+    } else {
+        // First time setup: replace <p> tag with textarea and add save button
+        var currentText = commentContainer.innerHTML;
+        var textareaHTML = '<textarea id="edit-textarea-' + commentId + '" style="display:block;">' + currentText + '</textarea>';
+        var saveButtonHTML = '<button id="save-button-' + commentId + '" onclick="saveComment(' + commentId + ')" style="display:block;">Save</button>';
+        /*var cancelButtonHTML = '<button onclick="editComment(' + commentId + ')" style="display:block;">Cancel</button>'; */
+
+        // Insert the textarea and buttons and hide the original <p> tag
+        commentContainer.insertAdjacentHTML('afterend', textareaHTML + saveButtonHTML);
+        commentContainer.style.display = 'none'; // Hide the original <p> tag
+    }
 }
 
 function saveComment(commentId) {
+    debugger;
+    var commentContainer = document.getElementById('comment-text-' + commentId);
+    var editArea = document.getElementById('edit-textarea-' + commentId);
     var editedText = document.getElementById('edit-textarea-' + commentId).value;
     var commentTextElement = document.getElementById('comment-text-' + commentId);
+    var saveButton = document.getElementById('save-button-' + commentId);
+    editArea.style.display = 'none';
+    saveButton.style.display = 'none';  /* hide the save and text edit area after the save button is clicked */
+    commentContainer.style.display = 'block';
 
     // Prepare the AJAX request
     var xhr = new XMLHttpRequest();
@@ -94,6 +133,7 @@ function saveComment(commentId) {
     };
 
     // Send the request
+    console.log("Sent request to edit comment to backend.")
     xhr.send(JSON.stringify({ commentId: commentId, text: editedText }));
 }
 

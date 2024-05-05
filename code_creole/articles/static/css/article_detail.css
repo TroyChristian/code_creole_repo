@@ -210,6 +210,8 @@ section {
 .publishers_block {
     display: flex;
     flex-direction: column;
+    background-color: #f8f9fa; /* Light grey background */
+    border: 1px solid #e0e0e0; /* Light grey border */
 }
 
 .publishers_block > p  {

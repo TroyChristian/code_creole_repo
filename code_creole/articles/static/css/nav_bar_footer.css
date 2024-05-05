@@ -274,6 +274,10 @@ a {
     height: 50px;
 }
 
+.modal-body > p{
+    color:black;
+
+}
 
 /* Media Queries */
 

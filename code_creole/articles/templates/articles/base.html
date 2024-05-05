@@ -13,56 +13,7 @@
 {% endblock %}
 </head>
 <body>
-    <!-- <div class="home_nav_con">
-        <div class="sub_con">
-            <div class="img_div"> <a href="{% url 'home' %}"><img class="header_logo hidden-xs hidden-sm img-responsive" id="header_logo" src="{% static 'icons/codecreole.jpg' %}" alt="Code Creole logo"> </a></div>
-            <div class="grid_box">
-                <div class="">
-                    <h2 class="nav_title">Code Creole</h2>
-                    <h4 class="sub_title">{% trans "source" %}</h4>
-                </div>
-                <div class="search_con">
-                <form id="search-form" action="/search/" method="get">
-                    <input type="text" name="q" id="search-query" placeholder="Search articles...">
-                    <button type="button" id="search-button">Search</button>
-                </form>
 
-                </div>
-            </div>
-            <div class="controls">
-                <div class="sign_in">
-                    {% if request.user.is_anonymous %}
-                    <a href="{% url 'login_view'%}">{% trans 'Login' %}</a>
-                    {% else %}
-                        <div class="w3-dropdown-hover hover">
-                        <button class="w3-buttton w3-hover-white user">{{ request.user.username }}</button>
-
-                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                           <a class="w3-bar-item w3-button link-item" href="{% url 'saved_articles' %}">{% trans 'Saved Articles' %}</a>
-                          <a class="w3-bar-item w3-button link-item" href="{% url 'logout_view' %}">{% trans 'Logout' %}</a>
-                        </div>
-                      </div>
-
-                    {% endif %}
-                </div>
-                <div class="language">
-                    <form action="/i18n/setlang/" method="post" id="language_form">
-                        {% csrf_token %}
-                        <input name="next" type="hidden" value="{% url 'home' %}"/>
-                        <select name="language" onchange="changeLanguage()">
-                            {% get_current_language as LANGUAGE_CODE %}
-                            {% get_available_languages as LANGUAGES %}
-                            {% for lang in LANGUAGES %}
-                                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
-                                    {{ lang.1 }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> old navbar-->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -75,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#"></a>
                     </li>
                 </ul>
                 <form class="d-flex" action="/search/" method="get">
@@ -101,9 +52,17 @@
                             Language
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="">English</a></li>
-                            <li><a class="dropdown-item" href="">Kreyòl Ayisyen</a></li>
+                            <li><a class="dropdown-item" href="" onclick="changeLanguage('en'); return false;">English</a></li>
+                            <li><a class="dropdown-item" href="" onclick="changeLanguage('ht'); return false;">Kreyòl Ayisyen</a></li>
                         </ul>
+                    </div>
+                    <!-- Hidden Form for Posting Language Data -->
+                    <div class="language" style="display:none;">
+                        <form action="/i18n/setlang/" method="post" id="language_form">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.path }}">
+                            <input id="language_input" name="language" type="hidden"/>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -144,10 +103,47 @@
             <div class="row justify-content-center text-center">
                 <div class="d-flex justify-content-evenly align-items-center flex-wrap">
                     <div class="p-2">
-                        <a href="#" class="text-white">{% trans "About Code Creole" %}</a>
+                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#aboutModal">{% trans "About Code Creole" %}</a>
+                    <!-- About Us Modal -->
+                    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="aboutModalLabel">About Code Creole</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your About Us content goes here -->
+                                    <p>{% trans "code_creole_desc" %}</p>
+                   </div>
+                 <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 </div>
+                 </div>
+                 </div>
+                  </div> <!-- About Us Modal End -->
+                   
                     </div>
                     <div class="p-2">
-                        <a href="#" class="text-white">{% trans "Contact Us" %}</a>
+                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#contactModal">{% trans "Contact Us" %}</a>
+                        <!-- Contact Us Modal -->
+                    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your Contact Us content or form goes here -->
+                                    <p>{% trans "contact_us_desc" %}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Contact Us Modal End -->
                     </div>
                     <div class="p-2">
                         <a href="https://x.com/@CodeCreole" target="_blank" class="text-white">
@@ -174,18 +170,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <!-- javascript for toggling currently selected language -->
     <script>
-function changeLanguage() {
-        // Get the current URL from the window location
-    var currentUrl = window.location.href;
-
-    // Set the 'next' input field to the current URL
-    document.getElementsByName('next')[0].value = currentUrl;
-
-    // Log to console for debugging (optional)
-    console.log("Redirecting to:", currentUrl);
-
-    // Submit the form
+function changeLanguage(lang) {
+    document.getElementById('language_input').value = lang; // Set the language
     document.getElementById('language_form').submit();
+
 }
 document.addEventListener('DOMContentLoaded', function() {
     // Getting the links by their IDs

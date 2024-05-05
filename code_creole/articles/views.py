@@ -30,6 +30,8 @@ AVAILABLE_LANGUAGES = ['en', 'ht']
 LANGUAGE_SESSION_KEY = 'django_language'
 
 
+
+### AUTH FUNCTIONS ###
 def sign_up(request):
 	if request.method == "GET":
 		if request.session.get('is_currently_logged_in'):
@@ -94,14 +96,24 @@ def logout_view(request):
 	logout(request)
 	return redirect('home')
 
-def home(request):
+### HOME ###
+def home(request, category_pk=None):
 	if request.method == "GET":
-		articles = Article.objects.all().order_by("-created_at")
-		categories = Category.objects.all() 
-		tags = Tag.objects.all() 
-		#search_form_here
+		if not category_pk: # if user not filtering by category
+			articles = Article.objects.all().order_by("-created_at")
+			categories = Category.objects.all() 
+			tags = Tag.objects.all() 
+		if category_pk:
+			category = get_object_or_404(Category, pk=category_pk)
+			articles = Article.objects.filter(category=category_pk).order_by("-created_at")
+			categories = Category.objects.all()
+			tags = Tag.objects.all() 
+
 		
-		return render(request, 'articles/home.html', {'articles': articles})
+		return render(request, 'articles/home.html', {'articles': articles, 'categories':categories})
+
+
+### ARTICLE FUNCTIONS ###
 
 def article_detail_view(request, article_id):
 	if request.method == "GET":
@@ -122,11 +134,12 @@ def article_detail_view(request, article_id):
 		return render(request, 'articles/article_detail.html', context)
 
 	if request.method == "POST":
+		article = get_object_or_404(Article, pk=article_id)
 		if "comment_form" in request.POST:
 			if not "is_currently_logged_in" in request.session:
 				messages.error(request, _("You must be logged in to comment on an article."))
 				return redirect("article_detail", article.pk)
-			article = get_object_or_404(Article, pk=article_id)
+
 			if article.thread and article.thread.locked:
 				messages.warning(request, _("Cannot comment in a locked thread."))
 				return redirect(request.path)
@@ -149,18 +162,23 @@ def article_detail_view(request, article_id):
 				return redirect(request.path)
 
 def search_articles(request):
-    query = request.GET.get('q', '')  # Get the query from URL parameter 'q'
-    if query:
-        articles = Article.objects.filter(
-            Q(article_title_en__icontains=query) | 
-            Q(article_title_ht__icontains=query) |
-            Q(article_content_en__icontains=query) | 
-            Q(article_content_ht__icontains=query)
-        )
-    else:
-        articles = Article.objects.none()  # Return no articles if there is no query
+	query = request.GET.get('q', '')  # Get the query from URL parameter 'q'
+	content_matching_articles = []
+	title_matching_articles = []
+	if query:
+		title_matching_articles = Article.objects.filter(Q(article_title_en__icontains=query) | Q(article_title_ht__icontains=query))
+		
+		if not title_matching_articles: #if no articles have the search query in their title, suggest articles that mention the query in their article content
+			content_matching_articles = Article.objects.filter(
+			Q(article_content_en__icontains=query) | 
+			Q(article_content_ht__icontains=query)
 
-    return render(request, 'articles/article_search.html', {'articles': articles})
+				)
+	else:
+
+		title_matching_articles = Article.objects.none()  # Return no articles if there is no query
+		content_matching_articles = Article.objects.none() 
+	return render(request, 'articles/article_search.html', {'title_matching_articles': title_matching_articles, 'content_matching_articles':content_matching_articles})
 
 
 def saved_articles(request):
@@ -205,18 +223,7 @@ def unsave_article(request, article_pk):
 			messages.error(request, _("Action Failed"))
 			return redirect("article_detail", article.pk) 
 
-@csrf_exempt
-def set_language(request):
-	if request.method == 'POST':
-		data = json.loads(request.body)
-		language = data.get('language')
-		if language in AVAILABLE_LANGUAGES:
-			activate(language)
-			request.session[LANGUAGE_SESSION_KEY] = language
-			return JsonResponse({'status': 'success', 'language': language})
-		else:
-			return JsonResponse({'status': 'error', 'message': 'Invalid language selected'}, status=400)
-	return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
 
 
 @require_POST
@@ -263,15 +270,25 @@ def delete_comment(request, article_id, thread_message_id ):
 
 @require_POST
 def save_comment(request):
-    import json
-    data = json.loads(request.body)
-    comment_id = data['commentId']
-    new_text = data['text']
+	import json
+	data = json.loads(request.body)
+	comment_id = data['commentId']
+	new_text = data['text']
 
-    try:
-        comment = ThreadMessage.objects.get(pk=comment_id)
-        comment.body = new_text
-        comment.save()
-        return JsonResponse({'status': 'success'})
-    except Comment.DoesNotExist:
-        return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404)
+	try:
+		comment = ThreadMessage.objects.get(pk=comment_id)
+		comment.body = new_text
+		comment.save()
+		return JsonResponse({'status': 'success'})
+	except Comment.DoesNotExist:
+		return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404) 
+
+### CATEGORIES FUNCTIONS ###
+def categories(request):
+	if request.method == "GET":
+		categories = Category.objects.all()
+		context = {"categories":categories}
+		return render(request, "articles/categories.html", context) 
+
+def category_filter(request, category_pk):
+	pass
