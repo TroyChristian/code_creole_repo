@@ -221,35 +221,48 @@ a {
     justify-content: center;
     width: 100%;
     margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.article {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.card-img-top {
+
+    width: 100%;    /* Ensures the image takes the full width of the card */
+    height: 600px;  /* Fixed height for all images */
+    object-fit: cover; /* Ensures images cover the area without distorting aspect ratio */
 }
 
 
-.num1_article {
-    display: flex;
-    align-items: flex-start; 
-    justify-content: flex-start; 
-    max-width: 1200px; 
-    margin: 20px auto; 
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
 
-.art1_link {
-    flex: 1; /* Allows the image link to grow and fill the space */
+.card-title {
+    margin-bottom: 0; 
 }
 
-.art1_link img {
-    width: 100%; /* Make the image responsive within its container */
-    height: 100%;
-    display: block;
-    
+.card-img-overlay {
+    transition: background-color 0.3s ease;
 }
 
-.container {
-    padding: 0 10px; 
-    margin-left: 5px;
+.card-img-overlay:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
+
+.badge {
+    padding: 0.5em 0.75em; 
+}
+
 
 /* Enhance readability and aesthetics */
 h3, .author, .text, .info {
@@ -260,7 +273,7 @@ h3, .author, .text, .info {
 
 .time_to_read, .date, .name {
     color: #585656ef;
-}
+} */
 
 
 
@@ -279,72 +292,31 @@ h3, .author, .text, .info {
 }
 
 .article {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    justify-content: flex-start; 
-    margin: 20px auto; 
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgb(147, 169, 255);
-    
-}
-
-.article > * {
     width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #f8f9fa; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 0.25rem; 
+    overflow: hidden; /
 }
 
-
-.article > a > p {
-    color: blue;
-}
-
-.author_block {
-    display: flex;
-
-}
-
-.extras {
-    display: grid;
-    grid-template-columns: auto auto auto;
-
-}
-
-.flex_div {
-    display: flex;
-  
-    justify-content: space-around;
-    color: #585656ef;
-}
-
-.flex_row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+.card-img-top {
     width: 100%;
+    height: auto;
+    object-fit: cover; 
 }
 
-
-
-.info {
-    width: 55%;
-    display: flex;
-    justify-content: space-between;
+.card-title {
+    color: #007bff;
 }
 
-.tri_row {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    width: auto;
-    margin: auto;
-    gap: 25px;
-    align-self: center;
-    padding: 2px;
-    margin-top: 15px;
+.card-footer {
+    background-color: #f8f9fa; 
+}
+
+.shadow-lg {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 
@@ -426,6 +398,13 @@ h3, .author, .text, .info {
 .social_icon {
     width: auto;
     height: 50px;
+} 
+
+.grid_container {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px; /* Adds space between the cards */
+    margin-top: 20px; /* Optional: adds some space above the grid */
 }
 
 
