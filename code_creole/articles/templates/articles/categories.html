@@ -1,0 +1,32 @@
+{% extends 'articles/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block header %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Creole home</title>
+<link rel="stylesheet" href="{% static 'css/categories.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="grid-container">
+    {% for category in categories %}
+    <div class="card" style="width: 18rem;">
+      <img src="{{ category.thumbnail.url }}" class="card-img-top" alt="Category Image">
+      <div class="card-body">
+        <h5 class="card-title">{{ category.get_category_name }}</h5>
+        <p class="card-text">Articles: {{ category.articles_count }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

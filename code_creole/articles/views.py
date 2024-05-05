@@ -30,6 +30,8 @@ AVAILABLE_LANGUAGES = ['en', 'ht']
 LANGUAGE_SESSION_KEY = 'django_language'
 
 
+
+### AUTH FUNCTIONS ###
 def sign_up(request):
 	if request.method == "GET":
 		if request.session.get('is_currently_logged_in'):
@@ -94,6 +96,7 @@ def logout_view(request):
 	logout(request)
 	return redirect('home')
 
+### HOME ###
 def home(request):
 	if request.method == "GET":
 		#import pdb; pdb.set_trace()
@@ -103,6 +106,9 @@ def home(request):
 		#search_form_here
 		
 		return render(request, 'articles/home.html', {'articles': articles})
+
+
+### ARTICLE FUNCTIONS ###
 
 def article_detail_view(request, article_id):
 	if request.method == "GET":
@@ -212,18 +218,7 @@ def unsave_article(request, article_pk):
 			messages.error(request, _("Action Failed"))
 			return redirect("article_detail", article.pk) 
 
-@csrf_exempt
-def set_language(request):
-	if request.method == 'POST':
-		data = json.loads(request.body)
-		language = data.get('language')
-		if language in AVAILABLE_LANGUAGES:
-			activate(language)
-			request.session[LANGUAGE_SESSION_KEY] = language
-			return JsonResponse({'status': 'success', 'language': language})
-		else:
-			return JsonResponse({'status': 'error', 'message': 'Invalid language selected'}, status=400)
-	return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
 
 
 @require_POST
@@ -281,4 +276,11 @@ def save_comment(request):
 		comment.save()
 		return JsonResponse({'status': 'success'})
 	except Comment.DoesNotExist:
-		return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404)
+		return JsonResponse({'status': 'error', 'message': 'Comment not found'}, status=404) 
+
+### CATEGORIES FUNCTIONS ###
+def categories(request):
+	if request.method == "GET":
+		categories = Category.objects.all()
+		context = {"categories":categories}
+		return render(request, "articles/categories.html", context)

@@ -157,8 +157,7 @@ msgid "Follow Us"
 msgstr "Swiv Nou"
 
 #: articles/templates/articles/base.html:117
-#, fuzzy
-#| msgid "About Code Creole"
+
 msgid "code_creole_desc"
 msgstr "Code Creole se yon platfòm edikasyon teknoloji pou ede kreye pwochen jenerasyon teknològ la."
 
@@ -168,8 +167,7 @@ msgid "contact_us_desc"
 msgstr "Kontakte nou pa imel nan codecreole@gmail.com"
 
 #: articles/templates/articles/base.html:151
-#, fuzzy
-#| msgid "Follow Us"
+
 msgid "Follow Us on X"
 msgstr "Swiv Nou Sou X"
 

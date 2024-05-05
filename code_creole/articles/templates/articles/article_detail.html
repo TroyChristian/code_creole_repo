@@ -22,48 +22,74 @@
                 <article>
                     <div class="title_block  col-xs col-sm col-md col-lg">
                         <h1 class="title"> {{ article.get_title }}</h1>
-                        <div class="publishers_block">
-                            {% if article.main_image %}
-                            <img class="logo img-responsive" src="{{ article.main_image.url }}" alt="Publisher Logo">
-                            {% else %}
-                            <img class="logo img-responsive" src="/static/css/code_creole_log.png" alt="Publisher Logo">
-                            {% endif %}
-                            <p> {% trans "Published in" %}: {{ article.category.get_category_name }}</p>
-                            <p> {% trans "Published by" %}: {{ article.created_by }}</p>
-                            <p> {% trans "Contributers" %}:  {% for contributor in article.get_contributors %}
-                             {{ contributor.username }}
-                            {% endfor %}</p>
-                            <p>{% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
-                            <p>{{ article.created_at }}</p>
-                        </div>
-                    </div>
+<div class="publishers_block p-3 shadow rounded">
+    {% if article.main_image %}
+        <img class="logo img-fluid rounded-circle mb-3" src="{{ article.thumbnail.url }}" alt="Publisher Logo">
+    {% else %}
+        <img class="logo img-fluid rounded-circle mb-3" src="/static/css/code_creole_log.png" alt="Publisher Logo">
+    {% endif %}
+    <p class="mb-1"> {% trans "Published in" %}: <strong>{{ article.category.get_category_name }}</strong></p>
+    <p class="mb-1"> {% trans "Published by" %}: <strong>{{ article.created_by }}</strong></p>
+    <p class="mb-1"> {% trans "Contributors" %}:  
+        {% for contributor in article.get_contributors %}
+            {{ contributor.username }}
+        {% endfor %}
+    </p>
+    <p class="mb-1">{% trans "time_to_read" %} {{article.time_to_read}} {% trans "minutes" %}</p>
+    <p class="mb-0">{{ article.created_at | date:"Y-m-d" }}</p>
+</div>
 
-                    <section class="stats font_white ">
-                            <div class="comment">
-                                <button onclick="scrollToComments()" class="like-button" > 
-                                    <i class="fas fa-comment"></i> {% trans 'Comment' %}
-                                </button>
-                                <p id="commentCount">{{ num_comments }}</p>{% trans 'Comments' %}
-                            </div>
+<section class="stats bg-light p-3 border rounded">
+    <div class="d-flex justify-content-between align-items-center">
+        <!-- Comments Section -->
+        <div class="comment me-4"> <!-- Added margin-right to the entire comment block -->
+            <button onclick="scrollToComments()" class="btn btn-outline-primary me-2"> <!-- Added margin-right to the button -->
+                <i class="fas fa-comment"></i> {% trans 'Comment' %}
+            </button>
+            <span id="commentCount" class="badge bg-secondary">{{ num_comments }}</span> {% trans 'Comments' %}
+        </div>
 
-                            <div class="like">
-                                {%  if not user_likes_article %}
-                                <form action="{% url 'like_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
-                                {% else %}
+        <!-- Like Section -->
+        <div class="like me-4"> <!-- Added margin-right to the entire like block -->
+            {% if not user_likes_article %}
+                <form action="{% url 'like_article' article.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-success me-2" type="submit"> <!-- Added margin-right to the button -->
+                        <i class="fas fa-thumbs-up"></i>
+                    </button>
+                    <span id="likeCount" class="badge bg-success">{{ article.like_count }}</span> {% trans 'Likes' %}
+                </form>
+            {% else %}
+                <form action="{% url 'unlike_article' article.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-success me-2" type="submit"> <!-- Added margin-right to the button -->
+                        <i class="fas fa-thumbs-up"></i>
+                    </button>
+                    <span id="likeCount" class="badge bg-success">{{ article.like_count }}</span> {% trans 'Likes' %}
+                </form>
+            {% endif %}
+            
+        </div>
 
-                    
-                                <form action="{% url 'unlike_article' article.pk  %}" method="POST"> {% csrf_token %} <button class="like-button" type="submit"> <i class="fas fa-thumbs-up"></i> </button> </form>
-                                        {% endif %} 
-                    
-                                    <span id="likeCount">{{article.like_count}}</span> {% trans 'Likes' %}
-                            </div>
-                            {% if not  article_saved  %} 
-                            <form action="{% url 'save_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Save' %}</button> </form>
-                            {% else %}
-                            <form action="{% url 'unsave_article' article.pk  %}" method="POST"> {% csrf_token %}  <button>{% trans 'Unsave' %}</button> </form>
-                            {% endif %}
-                    </section>
-                    <div class="article_content">
+        <!-- Save Section -->
+        <div>
+            {% if not article_saved %}
+                <form action="{% url 'save_article' article.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-info">{% trans 'Save' %}</button>
+                </form>
+            {% else %}
+                <form action="{% url 'unsave_article' article.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-info">{% trans 'Unsave' %}</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+                    <div class="publishers_block p-3 shadow rounded article_content">
                         <p class="">{{ formatted_content|safe }}</p>
                     </div>
                 </article>

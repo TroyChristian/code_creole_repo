@@ -50,6 +50,8 @@ class ThreadMessage(models.Model):
 class Category(models.Model):
 	category_name_en = models.CharField(max_length=255)
 	category_name_ht = models.CharField(max_length=255)
+	category_image = models.ImageField(upload_to="category_images", null=True, blank=True) 
+	thumbnail = ImageSpecField(source="category_image", processors=[ResizeToFill(1200,1200)], format="JPEG", options={"qaulity":100}) 
 	def get_category_name(self):
 		"""Get the articles title depending on current language selected"""
 		current_language = get_language() 
@@ -79,7 +81,7 @@ class Article(models.Model):
 	article_content_en = models.TextField()
 	article_content_ht = models.TextField()
 	main_image = models.ImageField(upload_to="article_main_images", null=True, blank=True) #if is main image show in LTD and in gallery view, else show static/defaults/no_image_available
-	thumbnail = ImageSpecField(source="main_image", processors=[ResizeToFit(433,243)], format="JPEG", options={"qaulity":100}) #show on listing card if is main image
+	thumbnail = ImageSpecField(source="main_image", processors=[ResizeToFill(600,600)], format="JPEG", options={"qaulity":100}) #show on listing card if is main image
 	contributors = models.ManyToManyField(User, related_name="article_contributors")
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_creator")
 	created_at = models.DateTimeField(auto_now_add=True)

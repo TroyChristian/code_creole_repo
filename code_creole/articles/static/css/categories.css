@@ -235,12 +235,10 @@ a {
 }
 
 .card-img-top {
-
-    width: 100%;    /* Ensures the image takes the full width of the card */
-    height: 600px;  /* Fixed height for all images */
-    object-fit: cover; /* Ensures images cover the area without distorting aspect ratio */
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
 }
-
 
 .card:hover {
     transform: translateY(-5px); 
@@ -264,7 +262,6 @@ a {
 }
 
 
-/* Enhance readability and aesthetics */
 h3, .author, .text, .info {
     margin: 10px 0;
     display: flex;
@@ -318,6 +315,7 @@ h3, .author, .text, .info {
 .shadow-lg {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
+
 
 
 
@@ -398,15 +396,20 @@ h3, .author, .text, .info {
 .social_icon {
     width: auto;
     height: 50px;
-} 
-
-.grid_container {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px; /* Adds space between the cards */
-    margin-top: 20px; /* Optional: adds some space above the grid */
 }
 
+
+/* Grid Container for Category cards  */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* Adds space between the cards */
+  margin-top: 20px; /* Optional: adds some space above the grid */
+}
+
+.card {
+  /* Adjust card width if needed, or remove width styling from inline styles */
+}
 
 /* Media Queries */
 
@@ -527,4 +530,10 @@ h3, .author, .text, .info {
     .footer > a {
         flex-shrink: 1;
     }
+} 
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* one columns on smaller screens */
+  }
 }
