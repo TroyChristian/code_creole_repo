@@ -12,7 +12,7 @@
 
 
 {% block content %}
-    <h2>Search Results</h2>
+    <h2>{% trans "Search Results" %}</h2>
         <div class="container mt-5">
         <div class="grid_container">
     {% if title_matching_articles %}
@@ -51,7 +51,7 @@
             {% endfor %}
 
     {% elif content_matching_articles and not title_matching_articles  %}
-        <h1>No articles match your exact search. But here are some that mention your query:</h1>
+        <h1> {% trans "No articles match your exact search. But here are some that mention your query:" %}</h1>
             {% for article in content_matching_articles %}
                 <div class="card article_ shadow-lg mb-4 bg-body rounded">
                     <div class="position-relative">
@@ -86,7 +86,7 @@
                 </div>
                 {% endfor %}
     {% else %}
-    <h1> No articles mention your search query. Submit a request for a topic to be covered!</h1>
+    <h1> {% trans "No articles mention your search query. Submit a request for a topic to be covered!" %}</h1>
 
     {% endif %}
         </div> <!--- end grid container--> 
