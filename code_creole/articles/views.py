@@ -105,7 +105,7 @@ def home(request):
 		tags = Tag.objects.all() 
 		#search_form_here
 		
-		return render(request, 'articles/home.html', {'articles': articles})
+		return render(request, 'articles/home.html', {'articles': articles, 'categories':categories})
 
 
 ### ARTICLE FUNCTIONS ###
@@ -283,4 +283,7 @@ def categories(request):
 	if request.method == "GET":
 		categories = Category.objects.all()
 		context = {"categories":categories}
-		return render(request, "articles/categories.html", context)
+		return render(request, "articles/categories.html", context) 
+
+def category_filter(request):
+	pass

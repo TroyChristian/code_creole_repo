@@ -35,4 +35,5 @@ urlpatterns = [
 
 ### AJAX ###
 	 path('save-comment/', views.save_comment, name='save_comment'),
+	 path('category-filter/<int:category_pk>', views.category_filter, name='filter_articles_by_category'),
 ]

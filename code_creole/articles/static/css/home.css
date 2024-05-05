@@ -401,12 +401,27 @@ h3, .author, .text, .info {
 } 
 
 .grid_container {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px; /* Adds space between the cards */
-    margin-top: 20px; /* Optional: adds some space above the grid */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Default to one columns for smaller screens */
+    gap: 20px;
+    margin-top: 20px;
 }
 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .grid_container {
+        grid-template-columns: repeat(2, 1fr); /* Three columns on medium screens */
+        gap: 30px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .grid_container {
+        grid-template-columns: repeat(4, 1fr); /* Four columns on large screens */
+        gap: 50px;
+    }
+}
 
 /* Media Queries */
 

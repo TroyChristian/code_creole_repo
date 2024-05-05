@@ -9,6 +9,16 @@
      <link rel="stylesheet" href="{% static 'css/home.css' %}">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #007bff; /* Bootstrap primary blue */
+    }
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+</style>
 
 
 {% endblock %}
@@ -16,7 +26,53 @@
 {% block content %}
 {% include 'articles/messages.html' %}
         <div class="container mt-5">
-        <div class="grid_container">
+    <!-- Multi-item Bootstrap Carousel -->
+ <div id="multiItemCategoryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for category in categories %}
+            {% if forloop.first %}
+            <div class="carousel-item active">
+                <div class="row">
+            {% endif %}
+
+            <!-- Display categories in sets of four -->
+            {% if forloop.counter0|divisibleby:4 and not forloop.first %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+            {% endif %}
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="{{ category.thumbnail.url }}" class="card-img-top" alt="{{ category.get_category_name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ category.get_category_name }}</h5>
+                                <p class="card-text">Articles: {{ category.articles_count }}</p>
+                                <a href="{% url 'filter_articles_by_category' category.pk %}" class="btn btn-primary">View Articles</a>
+                            </div>
+                        </div>
+                    </div>
+
+            {% if forloop.last %}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#multiItemCategoryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#multiItemCategoryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+</div>
+
+        <div class="grid_container ">
             {% for article in articles %}
                 <div class="card article_ shadow-lg mb-4 bg-body rounded">
                     <div class="position-relative">
